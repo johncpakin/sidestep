@@ -1,0 +1,33 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sidestep mark: the account shifter — slot, gates, knob -->
+  <defs>
+    <radialGradient id="knob" cx="0.35" cy="0.3" r="0.9">
+      <stop offset="0" stop-color="#e9edf2"/>
+      <stop offset="0.35" stop-color="#aeb7c3"/>
+      <stop offset="0.75" stop-color="#5d6773"/>
+      <stop offset="1" stop-color="#3a424c"/>
+    </radialGradient>
+    <radialGradient id="core" cx="0.4" cy="0.35" r="0.9">
+      <stop offset="0" stop-color="#ffb469"/>
+      <stop offset="1" stop-color="#e87a16"/>
+    </radialGradient>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#232935"/>
+      <stop offset="1" stop-color="#161b24"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="152" height="152" rx="36" fill="url(#tile)"/>
+  <rect x="4.75" y="4.75" width="150.5" height="150.5" rx="35.25" stroke="#ffffff" stroke-opacity="0.09" stroke-width="1.5"/>
+  <!-- slot -->
+  <rect x="72" y="30" width="16" height="100" rx="8" fill="#0c0f14"/>
+  <rect x="72" y="30" width="16" height="100" rx="8" stroke="#000000" stroke-opacity="0.6" stroke-width="1"/>
+  <!-- gate notches -->
+  <rect x="52" y="42" width="14" height="5" rx="2.5" fill="#3d4653"/>
+  <rect x="94" y="70" width="14" height="5" rx="2.5" fill="#3d4653"/>
+  <rect x="52" y="98" width="14" height="5" rx="2.5" fill="#e87a16" opacity="0.95"/>
+  <!-- knob parked in the lit gate -->
+  <circle cx="80" cy="100" r="21" fill="url(#knob)"/>
+  <circle cx="80" cy="100" r="21" stroke="#000000" stroke-opacity="0.55" stroke-width="1.5"/>
+  <circle cx="80" cy="100" r="8.5" fill="url(#core)"/>
+  <circle cx="80" cy="100" r="8.5" stroke="#ffffff" stroke-opacity="0.25" stroke-width="1"/>
+</svg>

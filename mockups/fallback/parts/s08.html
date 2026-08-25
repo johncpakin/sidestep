@@ -1,0 +1,231 @@
+<style>/* s08 */
+/* ── A · The Close ── */
+.s08a-wrap{padding:112px 0 120px}
+.s08a-card{position:relative;overflow:hidden;text-align:center;background:linear-gradient(180deg,#12171f,#0c1015);border:1px solid var(--line);border-radius:32px;padding:96px 56px 72px;box-shadow:0 50px 120px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06)}
+.s08a-card::before{content:"";position:absolute;left:50%;top:-140px;width:980px;height:760px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse at center,rgba(245,133,31,.42),rgba(245,133,31,.13) 38%,transparent 66%);pointer-events:none;filter:blur(4px)}
+.s08a-in{position:relative;z-index:1}
+.s08a-icon{display:flex;justify-content:center;margin:0 0 26px;--ssd:110}
+.s08a-icon .ss-app{font-size:104px}
+@media (max-width:900px){.s08a-icon .ss-app{font-size:80px}}
+.s08a-h{font:700 clamp(52px,7.8vw,108px)/.9 var(--cond);letter-spacing:-.035em;text-transform:uppercase;color:var(--ink);margin:20px auto 24px;max-width:15ch}
+.s08a-h .o{color:var(--acc)}
+.s08a-sub{font:400 19px/1.5 var(--sans);color:var(--ink2);max-width:44ch;margin:0 auto}
+.s08a-cta{margin-top:38px;display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap}
+.s08a-chip{display:inline-flex;align-items:center;gap:10px;background:#0b0e12;border:1px solid var(--line);border-radius:9px;padding:12px 15px;font:500 12.5px var(--mono);color:var(--acc2);white-space:nowrap}
+.s08a-chip i{font-style:normal;color:var(--ink4)}
+.s08a-said{margin:34px auto 0;font:400 13.5px/1.7 var(--sans);color:var(--ink3);max-width:60ch}
+.s08a-said b{color:var(--ink2);font-weight:500}
+.s08a-facts{margin-top:34px;padding-top:22px;border-top:1px solid var(--line2);display:flex;justify-content:center;flex-wrap:wrap;gap:0;font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.s08a-facts span{padding:2px 20px;border-left:1px solid var(--line2)}
+.s08a-facts span:first-child{border-left:0}
+.s08a-facts span b{color:var(--ink);font-weight:500}
+@media (max-width:900px){.s08a-wrap{padding:76px 0 84px}.s08a-card{padding:56px 22px 40px;border-radius:22px}.s08a-h{font-size:clamp(42px,13vw,68px)}.s08a-sub{font-size:16.5px}.s08a-facts{gap:6px 18px}.s08a-facts span{border-left:0;padding:0}}
+
+/* ── B · The Receipt ── */
+.s08b-wrap{padding:104px 0 112px;background:linear-gradient(180deg,var(--bg),#0c0f14)}
+.s08b-col{max-width:520px;margin:0 auto}
+.s08b-lead{text-align:center;margin-bottom:34px}
+.s08b-h{font:700 clamp(34px,4.4vw,50px)/1.02 var(--cond);letter-spacing:-.02em;color:var(--ink);margin:14px 0 12px}
+.s08b-h .o{color:var(--acc)}
+.s08b-lead p{font:400 15.5px/1.55 var(--sans);color:var(--ink2);max-width:40ch;margin:0 auto}
+.s08b-jag{height:9px;background-image:linear-gradient(45deg,transparent 50%,#12161d 50%),linear-gradient(-45deg,transparent 50%,#12161d 50%);background-size:14px 9px;background-repeat:repeat-x;background-position:0 0}
+.s08b-jag.t{transform:scaleY(-1)}
+.s08b-paper{background:#12161d;border-left:1px solid var(--line2);border-right:1px solid var(--line2);padding:26px 30px 24px;font:400 12.5px/1.75 var(--mono);color:var(--ink2);box-shadow:0 34px 80px rgba(0,0,0,.5)}
+.s08b-ttl{text-align:center;font:600 15px var(--mono);letter-spacing:.34em;color:var(--ink);text-transform:uppercase}
+.s08b-meta{text-align:center;font:400 10px var(--mono);letter-spacing:.12em;color:var(--ink4);text-transform:uppercase;margin-top:5px}
+.s08b-rule{border-top:1px dashed rgba(255,255,255,.18);margin:16px 0 12px}
+.s08b-sec{font:500 10px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink4);margin-bottom:6px}
+.s08b-li{display:flex;gap:12px;align-items:baseline}
+.s08b-li .n{flex:1;min-width:0;color:var(--ink2)}
+.s08b-li .n small{display:block;font-size:10.5px;color:var(--ink4);letter-spacing:.02em;line-height:1.5}
+.s08b-li .v{flex:none;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.s08b-li .v.z{color:var(--ink3)}
+.s08b-li + .s08b-li{margin-top:7px}
+.s08b-tot{display:flex;gap:12px;align-items:baseline;font:600 16px var(--mono);color:var(--ink);letter-spacing:.06em;margin-top:4px}
+.s08b-tot .n{flex:1;letter-spacing:.2em;font-size:13px;text-transform:uppercase}
+.s08b-tot .v{color:var(--acc)}
+.s08b-fine{font:400 10.5px/1.7 var(--mono);color:var(--ink4);letter-spacing:.03em;text-transform:uppercase}
+.s08b-fine b{color:var(--ink3);font-weight:400}
+.s08b-btn{display:flex;width:100%;justify-content:center;margin-top:18px;font-size:13px;letter-spacing:.22em;padding:16px 20px}
+.s08b-thx{text-align:center;font:500 10px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--ink4);margin-top:16px}
+.s08b-after{margin-top:26px}
+.s08b-after .mb{box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.s08b-cap{margin-top:9px;text-align:center;font:400 11.5px var(--mono);color:var(--ink4);letter-spacing:.04em}
+.s08b-cap b{color:var(--acc);font-weight:500}
+@media (max-width:900px){.s08b-wrap{padding:72px 0 80px}.s08b-paper{padding:22px 18px 20px}}
+@media (max-width:620px){.s08b-after .mb{padding:0 10px}.s08b-after .mb .l span:nth-child(n+3){display:none}}
+
+/* ── C · Full-Bleed Menu Bar ── */
+.s08c-wrap{position:relative;overflow:hidden;background:#0a0d11;border-top:1px solid var(--line2);padding-bottom:112px}
+.s08c-wrap::before{content:"";position:absolute;left:64%;top:-60px;width:900px;height:720px;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(245,133,31,.24),rgba(245,133,31,.06) 42%,transparent 70%);pointer-events:none}
+.s08c-bar{position:relative;z-index:2;background:rgba(10,13,17,.98)}
+.s08c-bar .mb{height:34px;font-size:12.5px;padding:0 26px}
+.s08c-bar .mb .l{gap:20px}
+.s08c-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 520px;gap:48px;align-items:start;padding-top:56px}
+.s08c-left{padding-top:44px}
+.s08c-h{font:700 clamp(40px,5.4vw,72px)/.96 var(--cond);letter-spacing:-.03em;color:var(--ink);margin:16px 0 18px;max-width:13ch}
+.s08c-h .o{color:var(--acc)}
+.s08c-p{font:400 17px/1.55 var(--sans);color:var(--ink2);max-width:38ch}
+.s08c-cta{margin-top:30px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.s08c-cmd{font:400 12px var(--mono);color:var(--ink4);letter-spacing:.03em}
+.s08c-cmd code{font-size:12px}
+.s08c-facts{margin-top:36px;padding-top:20px;border-top:1px solid var(--line2);display:flex;flex-direction:column;gap:7px;font:500 11px var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);max-width:54ch}
+.s08c-facts span b{color:var(--ink);font-weight:500}
+.s08c-stage{position:relative;margin-top:-56px;min-width:0}
+.s08c-drop{position:relative;padding-top:10px}
+.s08c-drop::before{content:"";position:absolute;right:52px;top:0;width:12px;height:12px;background:linear-gradient(135deg,#1a2029,#1a2029);border-left:1px solid var(--line);border-top:1px solid var(--line);transform:rotate(45deg) translateY(4px);z-index:2}
+.s08c-drop .app{margin-left:auto}
+.s08c-open{opacity:0;transform:translateY(-12px) scale(.985);transform-origin:top right;transition:opacity .4s cubic-bezier(.2,.8,.2,1),transform .45s cubic-bezier(.2,.9,.3,1)}
+.s08c-open.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.s08c-open{opacity:1;transform:none}}
+@media (max-width:1000px){.s08c-wrap{padding-bottom:76px}.s08c-grid{grid-template-columns:1fr;gap:34px;padding-top:44px}.s08c-drop{overflow-x:auto;padding-bottom:26px}.s08c-left{padding-top:0}.s08c-stage{margin-top:0}.s08c-drop::before{display:none}.s08c-drop .app{margin:0 auto}.s08c-bar .mb{padding:0 16px}.s08c-bar .mb .l span:nth-child(n+3){display:none}}
+</style>
+<section class="sblk" id="s08" data-sec="s08" data-count="3">
+  <header class="sbar"><div class="sbar-w">
+    <div class="sbar-id"><span class="sbar-n">07</span><span class="sbar-t">Get it</span><span class="sbar-k">the last word · one button, no pitch</span></div>
+    <div class="sbar-nav"><span class="sbar-lbl" data-lbl>The Close</span>
+      <button class="sw-arw" data-step="-1" aria-label="Previous version">‹</button>
+      <div class="sw-dots"><button class="sw-dot on" data-go="0" title="The Close">A</button><button class="sw-dot" data-go="1" title="The Receipt">B</button><button class="sw-dot" data-go="2" title="Full-Bleed Menu Bar">C</button></div>
+      <button class="sw-arw" data-step="1" aria-label="Next version">›</button></div>
+  </div></header>
+  <div class="vars">
+
+    <!-- A · The Close -->
+    <div class="var on" data-var="0" data-label="The Close">
+      <div class="s08a-wrap"><div class="w">
+        <div class="s08a-card rv">
+          <div class="s08a-in">
+            <div class="s08a-icon ss-scroll"><span class="ss-app"><svg class="ss" viewBox="50 62 466 556" aria-hidden="true"><use href="#ssTop" class="ss-t"/><use href="#ssBot" class="ss-b"/></svg></span></div>
+            <div class="eyebrow"><b>07</b> · Get it</div>
+            <h2 class="s08a-h">You already paid for<br>the <span class="o">other one.</span></h2>
+            <p class="s08a-sub rv d1">Every Claude account in the menu bar. Drag the knob, keep working.</p>
+            <div class="s08a-cta rv d2">
+              <a class="btn primary lg" href="#s07">Install Sidestep</a>
+              <span class="s08a-chip"><i>$</i>./scripts/build-app.sh --install</span>
+            </div>
+            <p class="s08a-said rv d3">Native Swift, nine files you can read in an afternoon. Tokens stay on your Mac, it backs up every file before it writes one, and it talks to nobody but Anthropic. <b>No telemetry, no server, no account with us.</b></p>
+            <div class="s08a-facts rv d3">
+              <span><b>Native</b> Swift</span><span><b>Zero</b> Electron</span><span><b>5 min</b> refresh</span><span>Tokens <b>stay local</b></span><span>macOS <b>14+</b></span>
+            </div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- B · The Receipt -->
+    <div class="var" data-var="1" data-label="The Receipt">
+      <div class="s08b-wrap"><div class="w">
+        <div class="s08b-col">
+          <div class="s08b-lead rv">
+            <div class="eyebrow"><b>07</b> · Get it</div>
+            <h2 class="s08b-h">Here's the whole bill.<br><span class="o">It's short.</span></h2>
+            <p>Itemized, because people keep asking what the catch is.</p>
+          </div>
+          <div class="rv d1">
+            <div class="s08b-jag t"></div>
+            <div class="s08b-paper">
+              <div class="s08b-ttl"><svg class="ss" viewBox="50 62 466 556" aria-hidden="true" style="height:.9em;margin-right:.35em"><use href="#ssTop" class="ss-t"/><use href="#ssBot" class="ss-b"/></svg>Sidestep</div>
+              <div class="s08b-meta">menu bar · macOS 14+ · order #0001</div>
+              <div class="s08b-rule"></div>
+
+              <div class="s08b-sec">You get</div>
+              <div class="s08b-li"><span class="n">Usage meter<small>5H, 7D and FABLE, one ladder each, every account</small></span><span class="v z">0.00</span></div>
+              <div class="s08b-li"><span class="n">Gear shifter<small>one gate per account, switches mid-session</small></span><span class="v z">0.00</span></div>
+              <div class="s08b-li"><span class="n">Reset tape<small>±7 days, so you know which one to grab</small></span><span class="v z">0.00</span></div>
+              <div class="s08b-rule"></div>
+
+              <div class="s08b-sec">It phones home</div>
+              <div class="s08b-li"><span class="n">Telemetry events</span><span class="v">0</span></div>
+              <div class="s08b-li"><span class="n">Servers in the middle</span><span class="v">0</span></div>
+              <div class="s08b-li"><span class="n">Accounts with us</span><span class="v">0</span></div>
+              <div class="s08b-rule"></div>
+
+              <div class="s08b-sec">It writes</div>
+              <div class="s08b-li"><span class="n">Files touched per switch<small>proxy snapshot, Keychain item, ~/.claude.json</small></span><span class="v">3</span></div>
+              <div class="s08b-li"><span class="n">Backed up before every write</span><span class="v">3</span></div>
+              <div class="s08b-li"><span class="n">Swift files you can read</span><span class="v">9</span></div>
+              <div class="s08b-rule"></div>
+
+              <div class="s08b-tot"><span class="n">Total</span><span class="v">$0.00</span></div>
+              <div class="s08b-fine" style="margin-top:8px">Tender: <b>none</b> · Tokens never leave this Mac · Returns accepted, it's a folder</div>
+              <a class="btn primary s08b-btn" href="#s07">Install</a>
+              <div class="s08b-thx">Thank you · come back angry</div>
+            </div>
+            <div class="s08b-jag"></div>
+          </div>
+          <div class="s08b-after rv d2">
+            <div class="mb"><div class="l"><span class="a">Sidestep</span><span>File</span><span>Edit</span><span>View</span></div><div class="r"><span class="pill"><span class="g"></span>17% · 4%</span><span>Mon 9:41 AM</span></div></div>
+            <div class="s08b-cap">Five minutes later: <b>17% · 4%</b> · john@sidestep.sh</div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- C · Full-Bleed Menu Bar -->
+    <div class="var" data-var="2" data-label="Full-Bleed Menu Bar">
+      <div class="s08c-wrap">
+        <div class="s08c-bar">
+          <div class="mb flush" id="s08cMb">
+            <div class="l"><span class="a">Sidestep</span><span>File</span><span>Edit</span><span>View</span><span>Window</span><span>Help</span></div>
+            <div class="r"><span class="pill"><span class="g"></span><span class="t">17% · 4%</span></span><span>Mon 9:41 AM</span></div>
+          </div>
+        </div>
+        <div class="w">
+          <div class="s08c-grid">
+            <div class="s08c-left">
+              <div class="eyebrow rv"><b>07</b> · Get it</div>
+              <h2 class="s08c-h rv d1">Four accounts. <span class="o">One pill.</span></h2>
+              <p class="s08c-p rv d2">Click it, drag the knob, keep working. Claude Code picks up the new account on its next turn.</p>
+              <div class="s08c-cta rv d2">
+                <a class="btn primary lg" href="#s07">Install Sidestep</a>
+                <span class="s08c-cmd"><code>./scripts/build-app.sh --install</code></span>
+              </div>
+              <div class="s08c-facts rv d3">
+                <span><b>Native Swift</b> · nine files, zero Electron</span>
+                <span><b>Tokens stay local</b> · no telemetry, no server</span>
+                <span><b>Three writes per switch</b> · each one backed up</span>
+              </div>
+            </div>
+            <div class="s08c-stage rv d1">
+              <div class="s08c-drop"><div class="s08c-open" id="s08cOpen"><div id="s08cApp"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<script>(function(){
+  const sec=document.getElementById('s08'); if(!sec) return;
+  const vars=sec.querySelectorAll(':scope > .vars > .var');
+
+  /* C · full-bleed menu bar, popover hanging open, one automatic switch */
+  const cEl=document.getElementById('s08cApp'), cOpen=document.getElementById('s08cOpen'), cMb=document.getElementById('s08cMb');
+  let cApp=null;
+  function localPill(s,w){
+    if(!cMb) return;
+    const t=cMb.querySelector('.pill .t'), g=cMb.querySelector('.pill .g');
+    const mx=Math.max(s,w);
+    g.className='g '+(mx>=80?'c':mx>=50?'w':'');
+    t.textContent=s+'% · '+w+'%';
+  }
+  function setPill(s,w){ localPill(s,w); pillTo(s,w); }
+  function cRender(){
+    if(!cEl) return null;
+    clearTimeout(cEl._t1); clearTimeout(cEl._t2);
+    cOpen.classList.remove('on');
+    cApp=renderApp(cEl,{active:2,tape:true,footer:true,fluid:true,onSwitch:a=>setPill(a.s,a.w)});
+    localPill(17,4);
+    if(document.fonts) document.fonts.ready.then(()=>cApp&&cApp._layout());
+    return cApp;
+  }
+  function cShow(){
+    if(!cRender()) return;
+    if(reduceMotion){ cOpen.classList.add('on'); cApp._layout(); return; }
+    cEl._t1=setTimeout(()=>{ cOpen.classList.add('on'); cApp._layout(); },260);
+    cEl._t2=setTimeout(()=>{ cApp._layout(); cApp._go(1); },1500);
+  }
+  vars[2]._onShow=cShow;
+  cRender(); cOpen.classList.add('on');
+})();</script>

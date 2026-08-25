@@ -1,0 +1,342 @@
+<style>/* s06 */
+.s06-sec{padding-top:104px;padding-bottom:104px}
+@media (max-width:900px){.s06-sec{padding-top:72px;padding-bottom:72px}}
+
+/* ─────────── A · The Sign-In Panel ─────────── */
+.s06a-grid{display:grid;grid-template-columns:1fr 480px;gap:64px;align-items:start}
+.s06a-h{font:700 clamp(30px,3.6vw,46px)/1.05 var(--cond);letter-spacing:-.02em;margin:14px 0 18px}
+.s06a-h b{color:var(--acc);font-weight:700}
+.s06a-lede{font:400 16.5px/1.6 var(--sans);color:var(--ink2);max-width:46ch}
+.s06a-list{list-style:none;margin:30px 0 0;padding:0;display:flex;flex-direction:column;gap:1px;border-top:1px solid var(--line2)}
+.s06a-list li{border-bottom:1px solid var(--line2);padding:15px 0 15px 0;display:grid;grid-template-columns:132px 1fr;gap:20px;align-items:start}
+.s06a-k{font:600 10px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--acc);padding-top:3px}
+.s06a-v{font:400 14.5px/1.62 var(--sans);color:var(--ink2)}
+.s06a-v b{color:var(--ink);font-weight:600}
+.s06a-v code{font-size:.82em}
+.s06a-panel{position:relative}
+.s06a-cap{margin-top:20px;font:400 11px/1.7 var(--mono);letter-spacing:.06em;color:var(--ink4);text-transform:uppercase}
+.s06a-cap b{color:var(--ink3);font-weight:400}
+.s06a-panel .app .login input.s06a-typed{color:var(--ink);border-color:rgba(245,133,31,.4)}
+.s06a-panel .app .login .s06a-lit{color:#ffe3c8;border-color:rgba(245,133,31,.9);background:linear-gradient(180deg,rgba(245,133,31,.5),rgba(245,133,31,.22));box-shadow:0 0 0 3px rgba(245,133,31,.14)}
+.s06a-writes{margin-top:22px;border-top:1px solid var(--line2)}
+.s06a-writes .hh{font:500 9.5px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink4);padding:14px 0 4px}
+.s06a-wr{display:grid;grid-template-columns:22px 1fr;gap:12px;padding:9px 0;border-top:1px solid var(--line2);align-items:baseline}
+.s06a-wr .i{font:500 9px var(--mono);color:var(--acc);letter-spacing:.06em}
+.s06a-wr .p{font:500 11.5px/1.5 var(--mono);color:var(--ink2);word-break:break-all}
+.s06a-wr .p small{display:block;font:400 11.5px/1.5 var(--sans);color:var(--ink4);letter-spacing:0}
+.s06a-caret{display:inline-block;width:6px;height:11px;background:var(--acc);vertical-align:-1px;margin-left:1px;animation:s06aBlink 1s steps(1) infinite}
+@keyframes s06aBlink{50%{opacity:0}}
+@media (max-width:900px){.s06a-grid{grid-template-columns:1fr;gap:36px}.s06a-list li{grid-template-columns:1fr;gap:5px}}
+
+/* ─────────── B · Where Things Live ─────────── */
+.s06b-head{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:end;margin-bottom:56px}
+.s06b-h{font:700 clamp(28px,3.2vw,42px)/1.06 var(--cond);letter-spacing:-.02em;margin:12px 0 0}
+.s06b-h b{color:var(--acc);font-weight:700}
+.s06b-sub{font:400 15px/1.62 var(--sans);color:var(--ink2)}
+.s06b-diag{border:1px solid var(--line2);border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,0));padding:26px 26px 30px;position:relative}
+.s06b-tag{position:absolute;top:-8px;left:22px;background:var(--bg);padding:0 9px;font:500 9.5px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink4)}
+.s06b-eps{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:760px;margin:0 auto}
+.s06b-ep{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:11px 13px}
+.s06b-ep .v{font:600 9px var(--mono);letter-spacing:.14em;color:var(--acc2);display:block;margin-bottom:5px}
+.s06b-ep .u{font:400 11.5px/1.45 var(--mono);color:var(--ink);word-break:break-all}
+.s06b-ep .n{display:block;margin-top:6px;font:400 9.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink4)}
+.s06b-rail{position:relative;height:52px;max-width:760px;margin:0 auto}
+.s06b-rail .hz{position:absolute;top:26px;height:1px;background:var(--line)}
+.s06b-rail .vt{position:absolute;width:1px;background:var(--line)}
+.s06b-rail .ar{position:absolute;transform:translateX(-50%);font:400 9px var(--mono);color:var(--ink4);line-height:1}
+.s06b-rail[data-rail="down"]{max-width:none}
+.s06b-rail .lb{position:absolute;top:16px;left:50%;transform:translateX(-50%);background:var(--bg);padding:0 10px;font:500 8.5px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink4);white-space:nowrap}
+.s06b-core{max-width:480px;margin:0 auto}
+.s06b-core .app{box-shadow:0 18px 50px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.07)}
+.s06b-corelb{text-align:center;font:500 9px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink4);margin-top:9px}
+.s06b-places{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.s06b-pl{border:1px solid var(--line2);border-radius:9px;background:var(--bg2);padding:13px 14px 14px;display:flex;flex-direction:column;gap:7px}
+.s06b-pl .t{font:600 9px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.s06b-pl .p{font:500 11.5px/1.45 var(--mono);color:var(--acc);word-break:break-all}
+.s06b-pl .d{font:400 12.5px/1.55 var(--sans);color:var(--ink3)}
+.s06b-pl .io{margin-top:auto;padding-top:9px;border-top:1px solid var(--line2);font:500 8.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink4)}
+.s06b-pl .io b{color:var(--acc2);font-weight:500}
+.s06b-promise{margin-top:44px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+.s06b-pr{padding:20px 22px 4px 0;border-right:1px solid var(--line2)}
+.s06b-pr:last-child{border-right:0}
+.s06b-pr .m{font:400 16px var(--mono);line-height:1;color:var(--acc);display:block;margin-bottom:11px}
+.s06b-pr.no .m{color:var(--ink4)}
+.s06b-pr .t{font:600 13px var(--cond);letter-spacing:.05em;text-transform:uppercase;color:var(--ink);display:block;margin-bottom:5px}
+.s06b-pr .d{font:400 13px/1.55 var(--sans);color:var(--ink3)}
+@media (max-width:900px){
+  .s06b-head{grid-template-columns:1fr;gap:16px}
+  .s06b-eps{grid-template-columns:1fr;gap:12px}
+  .s06b-rail{display:none}
+  .s06b-core{margin:20px auto}
+  .s06b-places{grid-template-columns:1fr;margin-top:22px}
+  .s06b-promise{grid-template-columns:1fr}
+  .s06b-pr{border-right:0;border-bottom:1px solid var(--line2);padding:16px 0}
+}
+
+/* ─────────── C · The Footer, Explained ─────────── */
+.s06c-top{text-align:center;max-width:60ch;margin:0 auto 46px}
+.s06c-h{font:700 clamp(28px,3.4vw,44px)/1.06 var(--cond);letter-spacing:-.02em;margin:12px 0 14px}
+.s06c-h b{color:var(--acc);font-weight:700}
+.s06c-sub{font:400 15.5px/1.6 var(--sans);color:var(--ink2)}
+.s06c-stage{width:768px;max-width:100%;margin:0 auto;position:relative}
+.s06c-zoom{zoom:1.6}
+.s06c-zoom .app{margin:0 auto}
+.s06c-elb{position:relative;height:56px;margin-top:2px}
+.s06c-elb i{position:absolute;background:var(--line);display:block}
+.s06c-elb i.v{width:1px}
+.s06c-elb i.h{height:1px}
+.s06c-elb b{position:absolute;transform:translateX(-50%);font:400 9px var(--mono);color:var(--ink4);line-height:1}
+.s06c-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.s06c-card{border:1px solid var(--line2);border-radius:10px;background:var(--bg2);padding:16px 18px 18px}
+.s06c-card .n{font:700 10px var(--mono);letter-spacing:.1em;color:#1a0d02;background:var(--acc);padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:11px}
+.s06c-card .t{font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);display:block;margin-bottom:8px}
+.s06c-card .d{font:400 13.5px/1.6 var(--sans);color:var(--ink3)}
+.s06c-card .d code{font-size:.84em}
+.s06c-src{margin-top:52px;display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center}
+.s06c-src .term{font-size:12px;line-height:1.85;white-space:pre}
+.s06c-src .term b{color:var(--ink);font-weight:500}
+.s06c-src .term em{font-style:normal;color:var(--ink4)}
+.s06c-say{font:700 clamp(20px,2.1vw,28px)/1.2 var(--cond);letter-spacing:-.01em;color:var(--ink)}
+.s06c-say b{color:var(--acc);font-weight:700}
+.s06c-say span{display:block;margin-top:12px;font:400 14px/1.6 var(--sans);color:var(--ink3);letter-spacing:0}
+@media (max-width:1100px){.s06c-stage{width:480px}.s06c-zoom{zoom:1}}
+@media (max-width:900px){
+  .s06c-elb{display:none}
+  .s06c-cards{grid-template-columns:1fr;margin-top:26px}
+  .s06c-src{grid-template-columns:1fr;gap:22px}
+}
+</style>
+
+<section class="sblk" id="s06" data-sec="s06" data-count="3">
+  <header class="sbar"><div class="sbar-w">
+    <div class="sbar-id"><span class="sbar-n">06</span><span class="sbar-t">Accounts</span><span class="sbar-k">add one, fix one, same button · and the boring important part</span></div>
+    <div class="sbar-nav"><span class="sbar-lbl" data-lbl>The Sign-In Panel</span>
+      <button class="sw-arw" data-step="-1" aria-label="Previous version">‹</button>
+      <div class="sw-dots"><button class="sw-dot on" data-go="0" title="The Sign-In Panel">A</button><button class="sw-dot" data-go="1" title="Where Things Live">B</button><button class="sw-dot" data-go="2" title="The Footer, Explained">C</button></div>
+      <button class="sw-arw" data-step="1" aria-label="Next version">›</button></div>
+  </div></header>
+
+  <div class="vars">
+
+    <!-- ══════════ A ══════════ -->
+    <div class="var on" data-var="0" data-label="The Sign-In Panel">
+      <div class="w s06-sec">
+        <div class="s06a-grid">
+          <div>
+            <div class="eyebrow rv">06 · <b>Accounts</b></div>
+            <h2 class="s06a-h rv d1">Add one. Fix one. <b>Same button.</b></h2>
+            <p class="s06a-lede rv d1">+ ADD ACCOUNT runs the real PKCE flow, the same one Claude Code runs. Browser opens, you approve, the token lands on your Mac. Nothing about it is a re-implementation with vibes.</p>
+            <ul class="s06a-list rv d2">
+              <li><span class="s06a-k">Browser first</span><span class="s06a-v">It opens the Anthropic sign-in and waits on <code>localhost:54545</code> for the callback. Use a browser signed into the account you actually want. A private window saves you a lot of grief.</span></li>
+              <li><span class="s06a-k">Paste if it's weird</span><span class="s06a-v">Locked-down network, odd default browser, localhost blocked by something with a compliance dashboard. Open the paste-mode link, copy the <code>code#state</code> string back into the box, hit USE.</span></li>
+              <li><span class="s06a-k">It files itself</span><span class="s06a-v">The token gets saved under <b>whichever account actually approved it</b>, not the one you meant to pick. Sign in as Derek, you get Derek. No mislabeled rows.</span></li>
+              <li><span class="s06a-k">Adding is repairing</span><span class="s06a-v">The result is written in the CLI proxy's own file format, with tokens refreshed on the way through. So adding an account here quietly fixes a dead one for the proxy too.</span></li>
+            </ul>
+          </div>
+          <div class="s06a-panel rv d2">
+            <div id="s06a-app"></div>
+            <p class="s06a-cap">The panel while it waits. <b>Accounts list hides, footer stays.</b> Cancel puts everything back.</p>
+            <div class="s06a-writes">
+              <div class="hh">When it works, four things move</div>
+              <div class="s06a-wr"><span class="i">01</span><span class="p">~/.cli-proxy-api/claude-&lt;email&gt;.json<small>Written in the proxy's own format, tokens refreshed.</small></span></div>
+              <div class="s06a-wr"><span class="i">02</span><span class="p">Claude Code-credentials<small>The Keychain item Claude Code reads on its next turn.</small></span></div>
+              <div class="s06a-wr"><span class="i">03</span><span class="p">~/.claude.json<small>oauthAccount, so the CLI agrees with the menu bar.</small></span></div>
+              <div class="s06a-wr"><span class="i">04</span><span class="p">*.sidestep-bak<small>The backup. Taken before any of the other three.</small></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ B ══════════ -->
+    <div class="var" data-var="1" data-label="Where Things Live">
+      <div class="w s06-sec">
+        <div class="s06b-head rv">
+          <div>
+            <div class="eyebrow">06 · <b>Accounts</b></div>
+            <h2 class="s06b-h">Where things <b>live.</b></h2>
+          </div>
+          <p class="s06b-sub">Three files, two endpoints, one Mac. That's the whole surface area. If you want to audit it, this is the map you'd audit against.</p>
+        </div>
+
+        <div class="s06b-diag rv d1">
+          <span class="s06b-tag">System sketch</span>
+
+          <div class="s06b-eps">
+            <div class="s06b-ep">
+              <span class="v">GET</span>
+              <span class="u">api.anthropic.com/api/oauth/usage</span>
+              <span class="n">Every 5 min · the numbers on the ladders</span>
+            </div>
+            <div class="s06b-ep">
+              <span class="v">POST</span>
+              <span class="u">platform.claude.com/v1/oauth/token</span>
+              <span class="n">PKCE exchange · refresh · nothing else</span>
+            </div>
+          </div>
+
+          <div class="s06b-rail" data-rail="up">
+            <i class="hz" style="left:calc((100% - 24px)/4);right:calc((100% - 24px)/4)"></i>
+            <i class="vt" style="left:calc((100% - 24px)/4);top:0;height:26px"></i>
+            <i class="vt" style="right:calc((100% - 24px)/4);top:0;height:26px"></i>
+            <i class="vt" style="left:50%;top:26px;height:26px"></i>
+            <span class="ar" style="left:50%;bottom:-2px">▼</span>
+            <span class="lb">Two endpoints · that is the whole network</span>
+          </div>
+
+          <div class="s06b-core">
+            <div id="s06b-app"></div>
+            <div class="s06b-corelb">Sidestep · native, on your Mac</div>
+          </div>
+
+          <div class="s06b-rail" data-rail="down">
+            <i class="vt" style="left:50%;top:0;height:26px"></i>
+            <i class="hz" style="left:calc((100% - 36px)/6);right:calc((100% - 36px)/6)"></i>
+            <i class="vt" style="left:calc((100% - 36px)/6);top:26px;height:24px"></i>
+            <i class="vt" style="left:50%;top:26px;height:24px"></i>
+            <i class="vt" style="right:calc((100% - 36px)/6);top:26px;height:24px"></i>
+            <span class="ar" style="left:calc((100% - 36px)/6);bottom:-3px">▼</span>
+            <span class="ar" style="left:50%;bottom:-3px">▼</span>
+            <span class="ar" style="right:calc((100% - 36px)/6);bottom:-3px;transform:translateX(50%)">▼</span>
+            <span class="lb">Reads three · writes three · backs up first</span>
+          </div>
+
+          <div class="s06b-places">
+            <div class="s06b-pl">
+              <span class="t">The proxy file</span>
+              <span class="p">~/.cli-proxy-api/claude-&lt;email&gt;.json</span>
+              <span class="d">One file per account, in the CLI proxy's own format. Snapshotted on every switch so the proxy and the app never disagree.</span>
+              <span class="io">Read <b>·</b> Write <b>·</b> Backup</span>
+            </div>
+            <div class="s06b-pl">
+              <span class="t">The Keychain item</span>
+              <span class="p">Claude Code-credentials</span>
+              <span class="d">The login Claude Code actually uses. Read with the same <code>security</code> call it makes, written on switch, never sent anywhere.</span>
+              <span class="io">Read <b>·</b> Write <b>·</b> Backup</span>
+            </div>
+            <div class="s06b-pl">
+              <span class="t">The account pointer</span>
+              <span class="p">~/.claude.json</span>
+              <span class="d">One key, <code>oauthAccount</code>, saying who you are right now. Copied to <code>.sidestep-bak</code> before it gets touched.</span>
+              <span class="io">Read <b>·</b> Write <b>·</b> Backup</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="s06b-promise rv d2">
+          <div class="s06b-pr"><span class="m">✓</span><span class="t">Native Swift</span><span class="d">Nine files and a menu bar item. Not a Chromium window in a trench coat.</span></div>
+          <div class="s06b-pr"><span class="m">✓</span><span class="t">Tokens stay here</span><span class="d">They were already on your Mac. Sidestep moves them between two places on the same disk.</span></div>
+          <div class="s06b-pr"><span class="m">✓</span><span class="t">Backups first</span><span class="d">Every write gets a <code>.sidestep-bak</code> beside it. Restoring is a copy command, not a support ticket.</span></div>
+          <div class="s06b-pr no"><span class="m">✗</span><span class="t">No telemetry</span><span class="d">No accounts, no analytics, no server of ours. There is nothing to opt out of.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ C ══════════ -->
+    <div class="var" data-var="2" data-label="The Footer, Explained">
+      <div class="w s06-sec">
+        <div class="s06c-top rv">
+          <div class="eyebrow">06 · <b>Accounts</b></div>
+          <h2 class="s06c-h">Three buttons. <b>No settings window.</b></h2>
+          <p class="s06c-sub">The bottom strip of the popover is the entire configuration surface of this app. Here it is at 1.6x so there's nowhere to hide.</p>
+        </div>
+
+        <div class="s06c-stage rv d1">
+          <div class="s06c-zoom"><div id="s06c-app"></div></div>
+          <div class="s06c-elb" id="s06c-elb"></div>
+          <div class="s06c-cards">
+            <div class="s06c-card"><span class="n">01</span><span class="t">+ Add account</span><span class="d">Runs the real PKCE flow. Browser out to Anthropic, callback back to <code>localhost:54545</code>, or paste <code>code#state</code> when localhost is being difficult. Tokens get refreshed on the way through and the result is written in the CLI proxy's own file format, which is why adding an account also repairs a dead one.</span></div>
+            <div class="s06c-card"><span class="n">02</span><span class="t">Login item</span><span class="d">Launch at login, through the system API macOS gives you for exactly this. One checkbox. No plist to hand edit, no helper app hiding in your Library, no permission dialog that makes you feel watched.</span></div>
+            <div class="s06c-card"><span class="n">03</span><span class="t">Quit</span><span class="d">QUIT quits. ⌘Q also quits. Revolutionary. Nothing keeps running after it, because there was never a background daemon to leave behind.</span></div>
+          </div>
+        </div>
+
+        <div class="s06c-src rv d2">
+          <div class="term"><b>Sources/Sidestep/</b>
+  App.swift        <em>menu bar item, popover, the 17% · 4% title</em>
+  Models.swift     <em>Account, usage snapshot, the percentages</em>
+  Monitor.swift    <em>the 5 min poll, GET /api/oauth/usage</em>
+  OAuth.swift      <em>PKCE, localhost:54545, token refresh</em>
+  Shifter.swift    <em>the knob, the gates, the three writes</em>
+  Stores.swift     <em>Keychain, proxy files, ~/.claude.json</em>
+  Theme.swift      <em>the colors you are looking at</em>
+  Timeline.swift   <em>the ±7 day reset windows</em>
+  Views.swift      <em>every pixel of the popover</em><span class="cur"></span></div>
+          <div>
+            <p class="s06c-say">Nine Swift files.<br><b>Read them</b> before you trust it with your Keychain.
+              <span>We did. That's the whole pitch: it's small enough that reading it is a coffee, not a project.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>(function(){
+  var sec = document.getElementById('s06');
+  if(!sec) return;
+  var vars = sec.querySelectorAll(':scope > .vars > .var');
+
+  /* ── A · sign-in panel, footer, no accounts ── */
+  var aEl = document.getElementById('s06a-app');
+  renderApp(aEl, {login:true, accounts:null, footer:true, upd:'2S', every:'5 MIN', req:31});
+  var aInput = aEl.querySelector('.login input');
+  var aUse   = aEl.querySelector('.login .r:last-child .glass.ok');
+  var aTimer = null;
+  function aReset(){
+    if(aTimer){ clearInterval(aTimer); aTimer = null; }
+    if(aInput){ aInput.value=''; aInput.classList.remove('s06a-typed'); }
+    if(aUse) aUse.classList.remove('s06a-lit');
+  }
+  function aType(){
+    aReset();
+    if(!aInput) return;
+    var txt = 'code#state', i = 0;
+    if(reduceMotion){ aInput.value = txt; aInput.classList.add('s06a-typed'); if(aUse) aUse.classList.add('s06a-lit'); return; }
+    aInput.classList.add('s06a-typed');
+    aTimer = setInterval(function(){
+      i++; aInput.value = txt.slice(0,i);
+      if(i >= txt.length){
+        clearInterval(aTimer); aTimer = null;
+        if(aUse) setTimeout(function(){ aUse.classList.add('s06a-lit'); }, 220);
+      }
+    }, 95);
+  }
+  vars[0]._onShow = function(){ setTimeout(aType, 420); };
+
+  /* ── B · header-only panel at the center of the sketch ── */
+  renderApp(document.getElementById('s06b-app'), {accounts:null, upd:'12S', every:'5 MIN', req:184});
+
+  /* ── C · footer hero, measured callout elbows ── */
+  var cEl = document.getElementById('s06c-app');
+  renderApp(cEl, {accounts:null, footer:true, upd:'5S', every:'5 MIN', req:7});
+  var elb = document.getElementById('s06c-elb');
+  function cElbows(){
+    if(!elb) return;
+    elb.innerHTML = '';
+    if(window.innerWidth < 901) return;
+    var stage = elb.parentElement, ftr = cEl.querySelector('.ftr');
+    if(!ftr) return;
+    var sr = stage.getBoundingClientRect();
+    if(!sr.width) return;
+    var targets = [ftr.querySelector('.glass.ok'), ftr.querySelector('label'), ftr.querySelector('.glass:not(.ok)')];
+    var H = 56, mid = 26;
+    targets.forEach(function(t, i){
+      if(!t) return;
+      var r = t.getBoundingClientRect();
+      var x = ((r.left + r.width/2) - sr.left) / sr.width * 100;
+      var c = (i*2 + 1) / 6 * 100;
+      var lo = Math.min(x, c), hi = Math.max(x, c);
+      elb.insertAdjacentHTML('beforeend',
+        '<i class="v" style="left:'+x.toFixed(2)+'%;top:0;height:'+mid+'px"></i>' +
+        '<i class="h" style="left:'+lo.toFixed(2)+'%;width:'+(hi-lo).toFixed(2)+'%;top:'+mid+'px"></i>' +
+        '<i class="v" style="left:'+c.toFixed(2)+'%;top:'+mid+'px;height:'+(H-mid-8)+'px"></i>' +
+        '<b style="left:'+c.toFixed(2)+'%;bottom:0">▼</b>');
+    });
+  }
+  vars[2]._onShow = cElbows;
+  window.addEventListener('resize', cElbows);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(cElbows);
+  setTimeout(cElbows, 300);
+})();</script>

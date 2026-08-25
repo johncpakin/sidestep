@@ -1,0 +1,85 @@
+<footer class="w" style="border-top:1px solid var(--line2);padding:36px 0 48px;font:400 12px var(--mono);color:var(--ink4);letter-spacing:.04em;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+  <div style="font:700 16px var(--cond);color:var(--ink2);display:flex;align-items:center;gap:8px"><svg class="ss" viewBox="50 62 466 556" aria-hidden="true" style="height:18px"><use href="#ssTop" class="ss-t"/><use href="#ssBot" class="ss-b"/></svg>Side<b style="color:var(--acc)">step</b></div>
+  <div>a menu bar meter and switcher for Claude accounts · made by people who hit the wall a lot</div>
+</footer>
+
+<script>
+/* ═══════════ THE MARK · scroll driver. Anything .ss-scroll gets --ssp = how far its centre is from the viewport centre (0 centred → 1 far), so the S pieces sidestep apart as it leaves and slide back together as it arrives. */
+(function(){
+  const els=[...document.querySelectorAll('.ss-scroll')]; if(!els.length) return;
+  if(reduceMotion){ els.forEach(el=>el.style.setProperty('--ssp','0')); return; }
+  let tick=false;
+  function upd(){ tick=false; const vh=innerHeight;
+    els.forEach(el=>{ const r=el.getBoundingClientRect(); if(!r.height) return;
+      const ec=r.top+r.height/2; let p=Math.min(1,Math.max(0,Math.abs(vh/2-ec)/(vh*.8)));
+      p=p*p*(3-2*p); el.style.setProperty('--ssp',p.toFixed(3)); });
+  }
+  const req=()=>{ if(!tick){ tick=true; requestAnimationFrame(upd); } };
+  addEventListener('scroll',req,{passive:true}); addEventListener('resize',req);
+  new MutationObserver(req).observe(document.body,{attributes:true,attributeFilter:['class'],subtree:true});
+  upd();
+})();
+</script>
+
+<script>
+/* ═══════════ SHUFFLER ═══════════ */
+(function(){
+  const DEFAULT_RECIPE = 'CBCAACA';
+  const KEY = 'sidestep.recipe.v1';
+  const secs = [...document.querySelectorAll('.sblk')];
+  const letters = 'ABCD';
+  function count(s){ return s.querySelectorAll(':scope > .vars > .var').length; }
+  function set(s, i, opts={}){
+    const vars=[...s.querySelectorAll(':scope > .vars > .var')]; i=((i%vars.length)+vars.length)%vars.length;
+    vars.forEach((v,j)=>v.classList.toggle('on',j===i));
+    s.querySelectorAll('.sw-dot').forEach((d,j)=>d.classList.toggle('on',j===i));
+    const lbl=s.querySelector('[data-lbl]'); if(lbl) lbl.textContent=vars[i].dataset.label||'';
+    const toc=document.querySelector('[data-toc="'+s.id+'"]'); if(toc) toc.textContent=letters[i];
+    s.dataset.cur=i;
+    vars[i].querySelectorAll('.app').forEach(a=>a._layout&&a._layout());
+    vars[i].querySelectorAll('.rv').forEach(r=>r.classList.add('in'));
+    if(vars[i]._onShow) vars[i]._onShow();
+    if(!opts.silent) save();
+  }
+  function recipe(){ return secs.map(s=>letters[+s.dataset.cur||0]).join(''); }
+  function apply(str, opts){ secs.forEach((s,k)=>{ const i=letters.indexOf((str[k]||'A').toUpperCase()); set(s, i<0||i>=count(s)?0:i, opts); }); }
+  function save(){ try{ const o={}; secs.forEach(s=>o[s.id]=+s.dataset.cur||0); localStorage.setItem(KEY,JSON.stringify(o)); document.getElementById('saved').classList.add('on'); }catch(e){} document.getElementById('recipe').textContent=recipe(); }
+  function load(){ try{ const o=JSON.parse(localStorage.getItem(KEY)||'null'); if(o){ secs.forEach(s=>{ const i=o[s.id]; set(s, (i!=null&&i<count(s))?i:0, {silent:true}); }); return true; } }catch(e){} return false; }
+  // toc
+  const toc=document.getElementById('tocGrid');
+  secs.forEach((s,k)=>{ const t=s.querySelector('.sbar-t'); const a=document.createElement('a'); a.href='#'+s.id; a.innerHTML='<i>'+String(k+1).padStart(2,'0')+'</i>'+(t?t.textContent:s.id)+'<b data-toc="'+s.id+'">A</b>'; toc.appendChild(a); });
+  // per-section controls
+  secs.forEach(s=>{
+    s.querySelectorAll('.sw-dot').forEach(d=>d.addEventListener('click',()=>set(s,+d.dataset.go)));
+    s.querySelectorAll('.sw-arw').forEach(b=>b.addEventListener('click',()=>set(s,(+s.dataset.cur||0)+(+b.dataset.step))));
+  });
+  // top bar
+  const $=id=>document.getElementById(id);
+  $('allA').onclick=()=>apply('A'.repeat(secs.length));
+  $('allB').onclick=()=>apply('B'.repeat(secs.length));
+  $('allC').onclick=()=>apply('C'.repeat(secs.length));
+  $('shuffle').onclick=()=>apply(secs.map(s=>letters[Math.floor(Math.random()*count(s))]).join(''));
+  $('copyRecipe').onclick=async()=>{ try{ await navigator.clipboard.writeText(recipe()); $('copyRecipe').textContent='Copied'; setTimeout(()=>$('copyRecipe').textContent='Copy',1200);}catch(e){} };
+  $('pasteRecipe').onclick=()=>{ const r=prompt('Recipe (one letter per section, top to bottom):', recipe()); if(r) apply(r); };
+  $('resetRecipe').onclick=()=>{ try{localStorage.removeItem(KEY);}catch(e){} apply(DEFAULT_RECIPE); $('saved').classList.remove('on'); };
+  $('replay').onclick=()=>{ document.querySelectorAll('.rv').forEach(r=>{ r.classList.remove('in'); }); setTimeout(()=>document.querySelectorAll('.rv').forEach(r=>io.observe(r)),50); document.querySelectorAll('.var.on').forEach(v=>v._onShow&&v._onShow()); };
+  // chrome toggle
+  const tog=$('chromeToggle'); const CK='sidestep.chrome';
+  function chrome(on){ document.body.classList.toggle('chrome-on',on); tog.textContent=on?'Sections · on':'Sections'; try{localStorage.setItem(CK,on?'1':'0');}catch(e){} }
+  tog.onclick=()=>chrome(!document.body.classList.contains('chrome-on'));
+  try{ chrome(localStorage.getItem(CK)==='1'); }catch(e){}
+  // load priority: hash → saved → default
+  const h=location.hash.match(/r=([A-Da-d]+)/);
+  if(h) apply(h[1],{silent:true}); else if(!load()) apply(DEFAULT_RECIPE,{silent:true});
+  $('recipe').textContent=recipe();
+  // reveal
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.1});
+  document.querySelectorAll('.rv').forEach(r=>io.observe(r));
+  // nav current
+  const links=[...document.querySelectorAll('.snav ul a')];
+  const nio=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) links.forEach(a=>a.classList.toggle('cur',a.getAttribute('href')==='#'+e.target.id)); }),{rootMargin:'-40% 0px -55% 0px'});
+  secs.forEach(s=>nio.observe(s));
+  // keyboard: ← → on a focused section
+  secs.forEach(s=>{ s.tabIndex=-1; s.addEventListener('keydown',e=>{ if(e.key==='ArrowRight') set(s,(+s.dataset.cur||0)+1); if(e.key==='ArrowLeft') set(s,(+s.dataset.cur||0)-1); }); });
+})();
+</script>

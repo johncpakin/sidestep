@@ -1,0 +1,181 @@
+<style>/* s05 */
+/* ── A · The Tape ── */
+.s05a-wrap{padding:112px 0 120px;background:linear-gradient(180deg,var(--bg) 0%,#0d1116 100%);border-top:1px solid var(--line2)}
+.s05a-top{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:44px}
+.s05a-top h2{font-size:clamp(44px,6vw,76px);font-weight:700;line-height:.98;margin-top:14px}
+.s05a-top h2 .o{color:var(--acc)}
+.s05a-lede{font-size:18px;color:var(--ink2);max-width:46ch;padding-bottom:8px}
+.s05a-stage{position:relative;border-radius:16px;padding:6px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid var(--line)}
+.s05a-stage .app{width:100%;box-shadow:none;border:0;background:linear-gradient(180deg,#171d26,#121820)}
+.s05a-stage .app .accounts{display:none}
+.s05a-stage .app .tape{margin-top:0;border-top:0;padding-top:4px;zoom:1.55}
+.s05a-stage .app .gantt{grid-template-columns:84px 1fr}
+.s05a-stage.pre .app .win b{width:0!important;transition:none}
+.s05a-stage.run .app .win b{transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.s05a-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:44px}
+.s05a-cols h3{font-size:22px;font-weight:600;margin-bottom:8px}
+.s05a-cols p{color:var(--ink2);font-size:16px;max-width:48ch}
+.s05a-cols .eyebrow{margin-bottom:10px}
+@media (max-width:900px){.s05a-wrap{padding:80px 0}.s05a-top,.s05a-cols{grid-template-columns:1fr;gap:20px}.s05a-stage .app .tape{zoom:1}.s05a-top h2{font-size:44px}}
+
+/* ── B · Two At Seventy ── */
+.s05b-wrap{padding:104px 0 112px;border-top:1px solid var(--line2);background:var(--bg)}
+.s05b-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.s05b-grid>*{min-width:0}
+.s05b-h{font-size:clamp(36px,4.4vw,56px);font-weight:700;line-height:1.02;margin:12px 0 22px}
+.s05b-nums{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:26px 0}
+.s05b-num{border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.015));position:relative;overflow:hidden}
+.s05b-num .big{font:600 72px/1 var(--cond);letter-spacing:-.03em;color:var(--warn);font-variant-numeric:tabular-nums}
+.s05b-num .sub{font:500 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-top:12px}
+.s05b-num .sub b{color:var(--ink);font-weight:500}
+.s05b-num .who{font:600 14px var(--cond);color:var(--ink2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.s05b-num.pick{border-color:rgba(245,133,31,.55);box-shadow:0 0 0 1px rgba(245,133,31,.25),0 12px 40px rgba(245,133,31,.12)}
+.s05b-num.pick .who{color:var(--acc)}
+.s05b-num.pick::after{content:"← THIS ONE";position:absolute;right:14px;top:14px;font:600 9px var(--mono);letter-spacing:.16em;color:var(--acc)}
+.s05b-line{font-size:20px;color:var(--ink);font-weight:500;margin-bottom:22px}
+.s05b-line span{color:var(--ink3)}
+.s05b-panel{position:relative}
+.s05b-panel .app{margin:0 auto}
+.s05b-panel .app .lane .nm.act{text-shadow:0 0 12px rgba(245,133,31,.5)}
+.s05b-cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.s05b-cta .res{font:500 11px var(--mono);letter-spacing:.1em;color:var(--ink3);text-transform:uppercase}
+.s05b-cta .res b{color:var(--acc);font-weight:500}
+@media (max-width:900px){.s05b-wrap{padding:80px 0}.s05b-grid{grid-template-columns:1fr;gap:36px}.s05b-num .big{font-size:56px}}
+@media (max-width:520px){.s05b-nums{grid-template-columns:1fr}.s05b-panel{overflow-x:auto}.s05b-panel .app{min-width:440px}}
+
+/* ── C · Read It In Three Seconds ── */
+.s05c-wrap{padding:104px 0 112px;border-top:1px solid var(--line2);background:#0d1116;background-image:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px);background-size:22px 22px}
+.s05c-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:36px;flex-wrap:wrap}
+.s05c-head h2{font-size:clamp(38px,4.6vw,58px);font-weight:700;line-height:1;margin-top:12px}
+.s05c-head p{color:var(--ink2);max-width:44ch;font-size:16px}
+.s05c-sheet{border:1px solid var(--line);background:linear-gradient(180deg,#141920,#10141a);border-radius:14px;padding:22px 24px;position:relative}
+.s05c-sheet .tag{position:absolute;top:-11px;left:22px;font:600 10px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);background:#12171e;padding:2px 10px;border:1px solid var(--line);border-radius:5px}
+.s05c-sheet .app{width:100%;box-shadow:none;border:0;background:transparent;padding:10px 4px 0}
+.s05c-sheet .app .accounts{display:none}
+.s05c-sheet .app .tape{margin-top:0;border-top:0;zoom:1.25}
+.s05c-sheet .app .gantt{grid-template-columns:84px 1fr}
+.s05c-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:22px;counter-reset:s05c}
+.s05c-card{border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));padding:16px 16px 14px;position:relative;min-width:0}
+.s05c-card::before{counter-increment:s05c;content:"FIG. " counter(s05c);font:600 9px var(--mono);letter-spacing:.2em;color:var(--acc)}
+.s05c-card .ex{margin:12px 0 14px;height:44px;position:relative;border:1px dashed var(--line);border-radius:6px;background:repeating-linear-gradient(90deg,var(--line2) 0 1px,transparent 1px 100%);background-size:calc(100%/7) 100%;overflow:visible}
+.s05c-card .ex .app{width:100%;height:100%;border:0;box-shadow:none;background:transparent;padding:0;border-radius:0}
+.s05c-card .ex .app .tr{height:44px;border-top:0;background:none}
+.s05c-card .ex .app .tr::before{display:none}
+.s05c-card .ex .app .tr.now::before{display:block;left:50%}
+.s05c-card .ex .app .win{top:18px}
+.s05c-card .ex .app .win.model{top:27px}
+.s05c-card .ex .app .sess{top:11px}
+.s05c-card .ex .app .sess::after{color:var(--ink2)}
+.s05c-card .ex .nowlbl{position:absolute;left:50%;top:2px;transform:translateX(-50%);font:600 8px var(--mono);color:var(--acc);letter-spacing:.16em}
+.s05c-card h4{font:600 16px var(--cond);margin:0 0 5px;color:var(--ink)}
+.s05c-card p{font-size:13px;line-height:1.5;color:var(--ink2)}
+.s05c-card .brk{position:absolute;left:0;right:0;top:-8px;display:flex;justify-content:space-between;padding:0 1px;font:400 8px var(--mono);color:var(--ink4);letter-spacing:.1em}
+.s05c-foot{margin-top:28px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.s05c-foot p{color:var(--ink2);font-size:16px;max-width:60ch}
+@media (max-width:1100px){.s05c-cards{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:900px){.s05c-wrap{padding:80px 0}.s05c-sheet .app .tape{zoom:1}.s05c-cards{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.s05c-cards{grid-template-columns:1fr}.s05c-sheet{overflow-x:auto}.s05c-sheet .app .tape{min-width:440px}}
+@media (max-width:600px){.s05a-stage{overflow-x:auto}.s05a-stage .app .tape{min-width:440px}}
+</style>
+<section class="sblk" id="s05" data-sec="s05" data-count="3">
+  <header class="sbar"><div class="sbar-w">
+    <div class="sbar-id"><span class="sbar-n">05</span><span class="sbar-t">Reset windows</span><span class="sbar-k">the timeline · when it changes, not just where you are</span></div>
+    <div class="sbar-nav"><span class="sbar-lbl" data-lbl>The Tape</span>
+      <button class="sw-arw" data-step="-1" aria-label="Previous version">‹</button>
+      <div class="sw-dots"><button class="sw-dot on" data-go="0" title="The Tape">A</button><button class="sw-dot" data-go="1" title="Two At Seventy">B</button><button class="sw-dot" data-go="2" title="Read It In Three Seconds">C</button></div>
+      <button class="sw-arw" data-step="1" aria-label="Next version">›</button></div>
+  </div></header>
+  <div class="vars">
+
+    <!-- A · The Tape -->
+    <div class="var on" data-var="0" data-label="The Tape">
+      <div class="s05a-wrap"><div class="w">
+        <div class="s05a-top">
+          <div class="rv"><div class="eyebrow"><b>05</b> · Reset windows · ±7 days</div><h2>See the <span class="o">whole week.</span></h2></div>
+          <p class="s05a-lede rv d1">Percentages tell you where you are. The tape tells you when it changes. Every account's 7-day window, drawn against the calendar, with NOW down the middle.</p>
+        </div>
+        <div class="s05a-stage rv d1 pre" id="s05aStage"><div id="s05aApp"></div></div>
+        <div class="s05a-cols">
+          <div class="rv d2"><div class="eyebrow">Each row</div><h3>One bar per account. It fills as you spend.</h3><p>The bar runs from when the weekly window opened to when it resets. The label on the end tick is the only number you need: how much is gone, and when it comes back. The thin orange line underneath is the Fable bucket on the same clock.</p></div>
+          <div class="rv d3"><div class="eyebrow">Picking one</div><h3>Switch to whichever resets soonest.</h3><p>Everything right of NOW is still coming. Grab the account whose tick lands first. The ◆ is the 5-hour session reset, usually tonight. Locked accounts show NO DATA · SIGN IN rather than a guess.</p></div>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- B · Two At Seventy -->
+    <div class="var" data-var="1" data-label="Two At Seventy">
+      <div class="s05b-wrap"><div class="w">
+        <div class="s05b-grid">
+          <div>
+            <div class="eyebrow rv"><b>05</b> · Reset windows</div>
+            <h2 class="s05b-h rv">Two accounts. Both at seventy. <span class="dim">Not the same.</span></h2>
+            <div class="s05b-nums">
+              <div class="s05b-num rv d1" id="s05bNumJ"><div class="who">John</div><div class="big">70%</div><div class="sub">7D · resets <b>tonight, 9 PM</b></div></div>
+              <div class="s05b-num rv d2" id="s05bNumD"><div class="who">Derek</div><div class="big">70%</div><div class="sub">7D · resets <b>Sunday, 2 PM</b></div></div>
+            </div>
+            <p class="s05b-line rv d2">The percentages look identical. <span>The tape doesn't.</span></p>
+            <div class="s05b-cta rv d3"><button class="btn primary" id="s05bGo">Switch to the one that resets first</button><span class="res" id="s05bRes">Active: <b>Derek</b> · resets Sunday</span></div>
+          </div>
+          <div class="s05b-panel rv d1"><div id="s05bApp"></div></div>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- C · Read It In Three Seconds -->
+    <div class="var" data-var="2" data-label="Read It In Three Seconds">
+      <div class="s05c-wrap"><div class="w">
+        <div class="s05c-head">
+          <div class="rv"><div class="eyebrow"><b>05</b> · Field manual · reset windows</div><h2>Read it in three seconds.</h2></div>
+          <p class="rv d1">Five marks. That's the entire notation. Once you've seen it you can't unsee it, which is the point of a chart.</p>
+        </div>
+        <div class="s05c-sheet rv d1"><span class="tag">Plate 1 · the tape as drawn</span><div id="s05cApp"></div></div>
+        <div class="s05c-cards">
+          <div class="s05c-card rv d1"><div class="ex"><div class="app"><div class="tr"><div class="win" style="left:14%;width:72%"><b style="width:0"></b><span class="end"></span></div></div></div><span class="brk"><span>OPEN</span><span>RESET</span></span></div><h4>Bar length = 7-day window</h4><p>Starts when your weekly quota opened. Ends at the tick where it resets. Always seven days wide, wherever it sits on the calendar.</p></div>
+          <div class="s05c-card rv d1"><div class="ex"><div class="app"><div class="tr"><div class="win" data-k="warn" style="left:14%;width:72%"><b style="width:70%"></b><span class="end"></span></div></div></div></div><h4>Fill = used</h4><p>Grey under 50, amber to 79, red from 80. The label at the tick says the number and the day: "70% SUN 2P".</p></div>
+          <div class="s05c-card rv d2"><div class="ex"><div class="app"><div class="tr"><div class="win model" style="left:14%;width:72%"><b style="width:44%"></b></div></div></div></div><h4>Thin orange = the Fable bucket</h4><p>Fable has its own weekly limit, separate from the 7D row. Same clock, thinner line, so it never gets confused with the weekly.</p></div>
+          <div class="s05c-card rv d2"><div class="ex"><div class="app"><div class="tr"><div class="sess" style="left:38%" data-l="5H 8:10P"></div></div></div></div><h4>◆ = 5H reset</h4><p>The session window. It's a point, not a bar, because five hours is a blink at this scale. Usually the thing you're actually waiting on.</p></div>
+          <div class="s05c-card rv d3"><div class="ex"><div class="app"><div class="tr now"></div></div><span class="nowlbl">NOW</span></div><h4>Orange line = NOW</h4><p>Dead center, always. Left is spent. Right is coming. Whatever tick is nearest on the right is your next switch.</p></div>
+        </div>
+        <div class="s05c-foot rv d3"><p>It refreshes every five minutes with the rest of the panel, so the ticks drift left in real time. Watch one cross NOW and you'll see the bar empty out. Cheap thrills, but ours.</p><span class="eyebrow">Timeline.swift · ResetTimeline</span></div>
+      </div></div>
+    </div>
+
+  </div>
+</section>
+<script>(function(){
+  const sec = document.getElementById('s05'); if(!sec) return;
+  const vars = sec.querySelectorAll(':scope > .vars > .var');
+
+  /* ── A: full-width tape, hide account rows via wrapper CSS ── */
+  const aApp = renderApp(document.getElementById('s05aApp'), {header:false, accounts:ACCTS, active:2, shifter:false, tape:true, fluid:true, toast:false});
+  const aStage = document.getElementById('s05aStage');
+  vars[0]._onShow = function(){
+    if(reduceMotion){ aStage.classList.remove('pre','run'); return; }
+    aStage.classList.remove('run'); aStage.classList.add('pre');
+    void aStage.offsetWidth;
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{ aStage.classList.remove('pre'); aStage.classList.add('run'); }));
+  };
+
+  /* ── B: two accounts at 70, different reset days ── */
+  const B = [
+    {k:'Derek', mail:'derek@sidestep.sh', tier:'MAX 20X', model:'FABLE', s:12, w:70, m:41, sCd:'4H 02M', wCd:'5D 6H', sRst:'Today at 11:40 PM', wRst:'Sunday at 2 PM', win:{left:37,lb:'SUN 2P'}, sess:52, sessL:'5H 11:40P'},
+    {k:'John',  mail:'john@sidestep.sh',  tier:'MAX 20X', model:'FABLE', s:31, w:70, m:58, sCd:'1H 12M', wCd:'0D 3H',  sRst:'Today at 8:50 PM', wRst:'Today at 9 PM',   win:{left:2,lb:'TUE 9P'},  sess:null},
+  ];
+  const bRes = document.getElementById('s05bRes'), numJ = document.getElementById('s05bNumJ'), numD = document.getElementById('s05bNumD');
+  const bApp = renderApp(document.getElementById('s05bApp'), {header:false, accounts:B, active:0, tape:true, footer:false, onSwitch:(a,i)=>{
+    bRes.innerHTML = 'Active: <b>'+a.k+'</b> · resets '+(i===1?'tonight':'Sunday');
+    numJ.classList.toggle('pick', i===1); numD.classList.toggle('pick', i===0);
+    pillTo(a.s, a.w);
+  }});
+  document.getElementById('s05bGo').addEventListener('click', ()=>{ bApp._go(1); });
+  vars[1]._onShow = function(){
+    numJ.classList.remove('pick'); numD.classList.add('pick');
+    bRes.innerHTML = 'Active: <b>Derek</b> · resets Sunday';
+    if(bApp._active() !== 0) bApp._go(0);
+    bApp._layout();
+  };
+
+  /* ── C: plate + legend cards ── */
+  renderApp(document.getElementById('s05cApp'), {header:false, accounts:ACCTS, active:2, shifter:false, tape:true, fluid:true, toast:false});
+  vars[2]._onShow = function(){};
+})();</script>

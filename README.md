@@ -32,6 +32,12 @@ Alexa ▸ 7% · 35%        ← account · running-marker · 5-hour % · weekly %
 
 ## Install
 
+```bash
+curl -fsSL https://sidestep.sh/install | sh
+```
+
+Or from source:
+
 ```sh
 ./scripts/build-app.sh --install   # builds and copies Sidestep.app to /Applications
 open /Applications/Sidestep.app

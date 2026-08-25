@@ -1,0 +1,193 @@
+<style>
+/* ═══ s01 · HERO ═══
+   A · The Panel     · headline + the real popover, tilted, doing a switch on load
+   B · The Menu Bar  · a full-width macOS menu bar with the popover hanging open under the pill
+   C · The Wall      · one giant ladder filling to red, then two words
+*/
+/* ── A · The Panel ── */
+.s01a{padding:72px 0 64px;position:relative;overflow:hidden}
+.s01a::before{content:"";position:absolute;inset:0;background:radial-gradient(1000px 520px at 78% 10%,rgba(245,133,31,.13),transparent 60%);pointer-events:none}
+.s01a-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:48px;align-items:start;position:relative}
+.s01a h1{font-size:clamp(52px,7vw,96px);line-height:.92;font-weight:700;letter-spacing:-.025em;margin-top:18px}
+.s01a-lede{font-size:19px;color:var(--ink2);margin:24px 0 0;max-width:44ch}
+.s01a-cta{display:flex;gap:12px;align-items:center;margin-top:30px;flex-wrap:wrap}
+.s01a-fine{font:400 12px var(--mono);color:var(--ink4);margin-top:16px;letter-spacing:.03em}
+.s01a-try{margin-top:36px;padding:16px 18px;border:1px dashed var(--line);border-radius:12px;font:400 13px/1.6 var(--mono);color:var(--ink3)}
+.s01a-try b{color:var(--acc);font-weight:500}
+.s01a-deck{position:relative;perspective:1500px;display:flex;justify-content:flex-end}
+.s01a-deck .app{transform:rotateY(-5deg) rotateX(2deg);transform-origin:70% 40%;transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .9s}
+.s01a-deck .app.pre{opacity:0;transform:rotateY(-12deg) rotateX(5deg) translateY(28px)}
+.s01a-cap{margin:40px 0 0;font:400 12px var(--mono);color:var(--ink4);letter-spacing:.03em;text-align:right}
+.s01a-cap button{background:none;border:1px solid var(--line2);color:var(--ink3);font:500 10.5px var(--mono);letter-spacing:.08em;padding:5px 10px;border-radius:6px;cursor:pointer;margin-left:10px}
+.s01a-cap button:hover{color:var(--ink);border-color:var(--line)}
+@media (max-width:980px){.s01a-grid{grid-template-columns:1fr}.s01a-deck{justify-content:center}.s01a-deck .app{transform:none}.s01a-deck .app.pre{transform:none;opacity:0}}
+
+.s01a .ss-hero{right:30%;top:46%}
+.s01a-grid{z-index:1}
+/* ── B · The Menu Bar ── */
+.s01b{background:#0d1015;padding:0 0 88px;position:relative;overflow:hidden}
+.s01b-desk{position:relative;background:radial-gradient(1200px 600px at 50% -10%,#1e2632,#0d1015 70%);border-bottom:1px solid var(--line2)}
+.s01b-desk .mb{height:32px;font-size:12.5px;padding:0 20px;border-radius:0;border:0;border-bottom:1px solid var(--line2);background:rgba(20,24,31,.9)}
+.s01b-desk .mb .r .pill{position:relative}
+.s01b-stage{position:relative;height:min(78vh,700px);display:flex;justify-content:flex-end;padding-right:max(20px,calc((100% - 1160px)/2 + 32px))}
+.s01b-pop{position:relative;margin-top:8px;filter:drop-shadow(0 30px 60px rgba(0,0,0,.7));transform-origin:top right;animation:s01bDrop .55s cubic-bezier(.2,.9,.2,1.1) both}
+.s01b-pop::before{content:"";position:absolute;top:-6px;right:60px;width:12px;height:12px;background:#1a2029;border-left:1px solid var(--line);border-top:1px solid var(--line);transform:rotate(45deg)}
+@keyframes s01bDrop{from{opacity:0;transform:translateY(-14px) scale(.98)}to{opacity:1;transform:none}}
+.s01b-copy{position:absolute;left:max(20px,calc((100% - 1160px)/2 + 32px));top:64px;max-width:520px}
+.s01b-copy h1{font-size:clamp(48px,6.4vw,88px);line-height:.92;font-weight:700;letter-spacing:-.025em;margin-top:14px}
+.s01b-copy p{font-size:18px;color:var(--ink2);margin:22px 0 0;max-width:40ch}
+.s01b-copy .s01b-cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.s01b-strip{display:flex;gap:28px;justify-content:center;margin-top:48px;font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink4);flex-wrap:wrap}
+.s01b-strip b{color:var(--ink2);font-weight:500}
+@media (max-width:980px){.s01b-stage{height:auto;flex-direction:column;padding:24px 20px 0}.s01b-copy{position:static;max-width:none;margin-bottom:28px}.s01b-pop{align-self:center}.s01b-pop::before{display:none}}
+
+.s01b-desk .ss-hero{right:34%;top:48%;height:min(96%,760px)}
+.s01b-stage,.s01b-desk .mb{position:relative;z-index:1}
+/* ── C · The Wall ── */
+.s01c{background:#0b0e12;padding:56px 0 96px;position:relative;overflow:hidden;min-height:min(92vh,860px);display:flex;align-items:center}
+.s01c::after{content:"";position:absolute;inset:auto 0 0 0;height:1px;background:var(--line2)}
+.s01c-in{width:100%;position:relative;z-index:1}
+.s01c .ss-hero{right:4%;top:52%;height:min(92%,720px)}
+@media (min-width:1181px){.s01c-in{padding-top:120px}}
+.s01c-lbl{display:flex;justify-content:space-between;align-items:baseline;font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.s01c-lbl b{color:var(--ink);font-weight:600;font-size:16px;font-variant-numeric:tabular-nums}
+.s01c-lbl b.hot{color:var(--crit)}
+.s01c-lad{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px;height:56px;margin:16px 0 0}
+.s01c-lad i{display:block;border-radius:4px;background:var(--seg);transition:background .15s,box-shadow .15s}
+.s01c-lad i.on{background:var(--ink2)}
+.s01c-lad[data-k="warn"] i.on{background:var(--warn);box-shadow:0 0 14px rgba(240,179,42,.35)}
+.s01c-lad[data-k="crit"] i.on{background:var(--crit);box-shadow:0 0 18px rgba(224,85,74,.45)}
+.s01c-lad i.on.tip{animation:breathe .9s ease-in-out infinite alternate}
+.s01c-sub{display:flex;justify-content:space-between;font:400 11px var(--mono);letter-spacing:.06em;color:var(--ink4);margin-top:10px}
+.s01c h1{font-size:clamp(64px,11vw,168px);line-height:.88;font-weight:700;letter-spacing:-.035em;margin-top:56px}
+.s01c h1 span{display:block}
+.s01c h1 .a{color:var(--ink4);opacity:0;transform:translateY(12px);transition:opacity .5s,transform .5s}
+.s01c.fresh .s01c-lbl span#s01cWho{color:var(--acc)}
+.s01c h1 .b{color:var(--acc);opacity:0;transform:translateY(12px);transition:opacity .5s .25s,transform .5s .25s}
+.s01c.go h1 .a,.s01c.go h1 .b{opacity:1;transform:none}
+.s01c-row{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;margin-top:40px}
+.s01c-row p{font-size:19px;color:var(--ink2);max-width:52ch}
+.s01c-row .s01c-cta{display:flex;gap:12px;flex-wrap:wrap}
+.s01c-mini{position:absolute;right:max(20px,calc((100% - 1160px)/2 + 32px));top:40px;zoom:.72;opacity:0;transition:opacity .6s .5s}
+.s01c.go .s01c-mini{opacity:1}
+@media (max-width:1180px){.s01c-mini{display:none}}
+@media (max-width:980px){.s01c-row{grid-template-columns:1fr}.s01c-lad{height:36px;gap:4px}}
+</style>
+
+<section class="sblk" id="s01" data-sec="s01" data-count="3">
+  <header class="sbar"><div class="sbar-w">
+    <div class="sbar-id"><span class="sbar-n">01</span><span class="sbar-t">Hero</span><span class="sbar-k">the whole app, in the first screen</span></div>
+    <div class="sbar-nav"><span class="sbar-lbl" data-lbl>The Panel</span>
+      <button class="sw-arw" data-step="-1" aria-label="Previous version">‹</button>
+      <div class="sw-dots"><button class="sw-dot on" data-go="0" title="The Panel">A</button><button class="sw-dot" data-go="1" title="The Menu Bar">B</button><button class="sw-dot" data-go="2" title="The Wall">C</button></div>
+      <button class="sw-arw" data-step="1" aria-label="Next version">›</button></div>
+  </div></header>
+  <div class="vars">
+
+    <!-- A · The Panel -->
+    <div class="var on" data-var="0" data-label="The Panel">
+      <div class="s01a"><div class="ss-hero ss-scroll" aria-hidden="true"><svg class="ss" viewBox="50 62 466 556"><use href="#ssTop" class="ss-t"/><use href="#ssBot" class="ss-b"/></svg></div><div class="w s01a-grid">
+        <div>
+          <div class="eyebrow">A menu bar app for people with <b>more than one Claude</b></div>
+          <h1>Claude said<br>you've had<br><span class="o">enough.</span><br>You haven't.</h1>
+          <p class="s01a-lede">Sidestep watches every Claude account you're signed into and steps Claude Code around the wall to the one with the most gas left. No restart. No re-login. No sad little wait-until-Tuesday.</p>
+          <div class="s01a-cta"><a class="btn primary lg" href="#s07">Install Sidestep →</a><a class="btn lg" href="#s04">See the shifter</a></div>
+          <div class="s01a-fine">macOS 14+ · Apple silicon &amp; Intel · reads the same auth files as your CLI proxy</div>
+          <div class="s01a-try"><b>This panel is live.</b> Grab the knob and drag it to <b>Derek</b>. Try dragging it to <b>Alexa</b>, whose token needs a sign-in. Hover a countdown. Click ↻.</div>
+        </div>
+        <div>
+          <div class="s01a-deck"><div id="s01aApp"></div></div>
+          <p class="s01a-cap">This is the actual popover, not a render. <button id="s01aReplay">REPLAY</button></p>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- B · The Menu Bar -->
+    <div class="var" data-var="1" data-label="The Menu Bar">
+      <div class="s01b">
+        <div class="s01b-desk"><div class="ss-hero ss-scroll" aria-hidden="true"><svg class="ss" viewBox="50 62 466 556"><use href="#ssTop" class="ss-t"/><use href="#ssBot" class="ss-b"/></svg></div>
+          <div class="mb"><div class="l"><span class="a"></span><span class="a">Sidestep</span><span>File</span><span>Accounts</span><span>Help</span></div><div class="r"><span class="pill" id="s01bPill"><span class="g"></span><span class="t">17% · 4%</span></span><span>◐</span><span>🔋 100%</span><span>Mon Aug 24&nbsp; 4:47 PM</span></div></div>
+          <div class="s01b-stage">
+            <div class="s01b-copy">
+              <div class="eyebrow">It lives <b>up there</b>, next to the clock</div>
+              <h1>One meter.<br>Every account.<br><span class="o">Never</span> the wall.</h1>
+              <p>Two numbers in the menu bar, the whole picture one click down. Session, weekly, the Fable bucket, and a reset timeline, for every login you've got.</p>
+              <div class="s01b-cta"><a class="btn primary lg" href="#s07">Install Sidestep →</a><a class="btn lg" href="#s03">What the numbers mean</a></div>
+            </div>
+            <div class="s01b-pop"><div id="s01bApp"></div></div>
+          </div>
+        </div>
+        <div class="w s01b-strip"><span><b>5H</b> session</span><span><b>7D</b> weekly</span><span><b>FABLE</b> its own bucket</span><span><b>±7D</b> reset tape</span><span><b>5 MIN</b> refresh</span><span>native swift · <b>zero electron</b></span></div>
+      </div>
+    </div>
+
+    <!-- C · The Wall -->
+    <div class="var" data-var="2" data-label="The Wall">
+      <div class="s01c" id="s01c"><div class="ss-hero ss-scroll" aria-hidden="true"><svg class="ss" viewBox="50 62 466 556"><use href="#ssTop" class="ss-t"/><use href="#ssBot" class="ss-b"/></svg></div><div class="w s01c-in">
+        <div class="s01c-lbl"><span id="s01cWho">JOHN · 7D WEEKLY · RESETS <span style="color:var(--ink2)">WED 3P</span></span><b id="s01cPct">0%</b></div>
+        <div class="s01c-lad" id="s01cLad" data-k="ok"></div>
+        <div class="s01c-sub"><span>MON 17</span><span>TUE 25</span></div>
+        <h1><span class="a">Enough,</span><span class="b">said Claude.</span></h1>
+        <div class="s01c-row">
+          <p>Sidestep keeps every Claude account you own in the menu bar. The moment this bar goes red, Claude Code sidesteps onto the fresh one. Your sessions don't restart. You don't log in. Nobody goes outside.</p>
+          <div class="s01c-cta"><a class="btn primary lg" href="#s07">Install Sidestep →</a><a class="btn lg" href="#s02">Why it exists</a></div>
+        </div>
+        <div class="s01c-mini" id="s01cMini"></div>
+      </div></div>
+    </div>
+
+  </div>
+</section>
+
+<script>(function(){
+  const wait = ms => new Promise(r=>setTimeout(r, reduceMotion?0:ms));
+  const HOT = {John:{s:97,w:71,m:88,sCd:'3H 49M',wCd:'1D 22H'}};
+
+  /* A · the panel does the switch on load */
+  const A = document.getElementById('s01aApp');
+  renderApp(A,{tape:true,footer:true,active:2,override:HOT,onSwitch:a=>{ const s=(HOT[a.k]||a); pillTo(s.s??0,s.w??0); }});
+  async function playA(){
+    A.classList.add('pre'); await wait(60); A.classList.remove('pre');
+    const ls=[...A.querySelectorAll('.ladder')]; ls.forEach(l=>fillLadder(l,0));
+    A.querySelectorAll('.win b').forEach(b=>{ b.dataset.w=b.dataset.w||b.style.width; b.style.width='0'; });
+    if(A._active()!==2) A._go(2);
+    await wait(500);
+    const t0=performance.now();
+    await new Promise(res=>{(function f(t){ const k=Math.min(1,(t-t0)/(reduceMotion?1:1000)), e=1-Math.pow(1-k,3); ls.forEach(l=>fillLadder(l,Math.round(+l.dataset.p*e))); k<1?requestAnimationFrame(f):res(); })(t0);});
+    A.querySelectorAll('.win b').forEach(b=>b.style.width=b.dataset.w);
+    pillTo(97,71);
+    await wait(1100);
+    A._go(1);   // the sidestep: John is cooked, Derek is fresh
+  }
+  document.getElementById('s01aReplay').addEventListener('click',playA);
+  A.closest('.var')._onShow = playA;
+  if(A.closest('.var').classList.contains('on')) (document.fonts?document.fonts.ready:Promise.resolve()).then(()=>setTimeout(playA,300));
+
+  /* B · the popover under the menu bar */
+  const B = document.getElementById('s01bApp');
+  const bPill = document.getElementById('s01bPill');
+  renderApp(B,{tape:true,footer:true,active:2,onSwitch:(a)=>{ const s=a.s??0,w=a.w??0; bPill.querySelector('.t').textContent=s+'% · '+w+'%'; bPill.querySelector('.g').className='g '+(Math.max(s,w)>=80?'c':Math.max(s,w)>=50?'w':''); pillTo(s,w); }});
+  B.closest('.var')._onShow = async()=>{ B._layout(); await wait(900); if(B._active()===2) B._go(1); await wait(1600); B._go(2); };
+
+  /* C · the giant ladder */
+  const C = document.getElementById('s01c'), lad = document.getElementById('s01cLad'), pct = document.getElementById('s01cPct');
+  for(let i=0;i<24;i++) lad.appendChild(document.createElement('i'));
+  const mini = document.getElementById('s01cMini');
+  renderApp(mini,{header:false,footer:false,accounts:[ACCTS[2],ACCTS[1]],active:0,override:HOT,toast:false});
+  async function playC(){
+    C.classList.remove('go'); pct.classList.remove('hot'); C.classList.remove('fresh');
+    document.getElementById('s01cWho').innerHTML='JOHN · 7D WEEKLY · RESETS <span style="color:var(--ink2)">WED 3P</span>';
+    if(mini._active()!==0) mini._go(0);
+    const set=p=>{ const on=Math.round(p/100*24); lad.dataset.k=sev(p); [...lad.children].forEach((s,i)=>{ s.classList.toggle('on',i<on); s.classList.toggle('tip',i===on-1&&p>=80); }); pct.textContent=p+'%'; pct.classList.toggle('hot',p>=80); };
+    set(0); await wait(250);
+    const t0=performance.now();
+    await new Promise(res=>{(function f(t){ const k=Math.min(1,(t-t0)/(reduceMotion?1:1900)), e=1-Math.pow(1-k,2); set(Math.round(97*e)); if(e>.55) C.classList.add('go'); k<1?requestAnimationFrame(f):res(); })(t0);});
+    mini._layout(); await wait(900); mini._go(1);            // the sidestep: knob drops to Derek
+    await wait(700);
+    document.getElementById('s01cWho').innerHTML='DEREK · 7D WEEKLY · RESETS <span style="color:var(--ink2)">SAT 9P</span>';
+    C.classList.add('fresh');
+    const t1=performance.now(), from=97;                      // the big bar is Derek's now: drain to his 0%
+    await new Promise(res=>{(function f(t){ const k=Math.min(1,(t-t1)/(reduceMotion?1:900)), e=1-Math.pow(1-k,3); set(Math.round(from*(1-e))); k<1?requestAnimationFrame(f):res(); })(t1);});
+  }
+  C.closest('.var')._onShow = playC;
+})();</script>

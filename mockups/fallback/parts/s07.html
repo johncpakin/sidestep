@@ -1,0 +1,216 @@
+<style>/* s07 · Install (numbered 06 on the page) */
+/* shared: terminal lines + the top strip's pill reveal */
+#s07 .term .s07-l{display:block;white-space:pre;min-height:1.8em}
+#s07 .term .s07-l.s07-fin{color:var(--ink);font-weight:600}
+#s07 .term .s07-l.s07-fin::before{content:"✓ ";color:var(--acc)}
+#s07 .term .s07-t{color:var(--ink)}
+#s07 .s07-strip{display:none}
+#s07 .s07-strip .mb{height:34px;font-size:12.5px}
+#s07 .s07-strip .pill{opacity:0;transform:translateX(22px);transition:opacity .4s,transform .55s cubic-bezier(.2,1.2,.3,1),background .3s}
+#s07 .s07-strip.on .pill{opacity:1;transform:none}
+#s07 .s07-strip.on .pill.flash{background:rgba(245,133,31,.28)}
+#s07 .s07-bar{font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4);display:flex;justify-content:space-between;gap:14px;padding:0 4px}
+#s07 .s07-bar b{color:var(--ink3);font-weight:500}
+
+/* ── A · The Big Terminal ── */
+.s07a-wrap{background:#0a0d11;border-bottom:1px solid var(--line2);padding:0 0 96px;position:relative;overflow:hidden}
+.s07a-wrap::before{content:"";position:absolute;left:50%;top:30%;width:1200px;height:600px;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(245,133,31,.14),rgba(245,133,31,.03) 45%,transparent 70%);pointer-events:none}
+.s07a-top{position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin:72px 0 26px}
+.s07a-h{font:700 clamp(30px,3.6vw,44px)/1.05 var(--cond);letter-spacing:-.02em;color:var(--ink);margin-top:12px;max-width:22ch}
+.s07a-h .o{color:var(--acc)}
+.s07a-meta{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink4);display:flex;gap:18px;flex-wrap:wrap;justify-content:flex-end}
+.s07a-meta b{color:var(--ink3);font-weight:500}
+.s07a-stage{position:relative;z-index:1}
+.s07a-stage .term{font-size:clamp(14px,1.45vw,19px);line-height:1.8;padding:26px 34px 30px;min-height:460px;border-color:var(--line);box-shadow:0 50px 120px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.05);border-radius:14px}
+.s07a-tbar{display:flex;align-items:center;gap:8px;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4);padding:0 6px 10px}
+.s07a-tbar i{width:10px;height:10px;border-radius:50%;background:#2c343f;display:inline-block}
+.s07a-tbar i:first-child{background:#e0554a}.s07a-tbar i:nth-child(2){background:#f0b32a}.s07a-tbar i:nth-child(3){background:#4cc36a}
+.s07a-tbar span{margin-left:10px}
+.s07a-tbar b{margin-left:auto;color:var(--ink3);font-weight:500}
+.s07a-cap{margin-top:14px;font:400 12.5px/1.6 var(--mono);color:var(--ink4);text-align:right}
+.s07a-cap b{color:var(--acc);font-weight:500}
+@media (max-width:900px){.s07a-wrap{padding-bottom:64px}.s07a-top{flex-direction:column;align-items:flex-start;gap:14px;margin-top:48px}.s07a-meta{justify-content:flex-start}.s07a-stage .term{font-size:12.5px;padding:16px 16px 18px;min-height:0}.s07a-cap{text-align:left}}
+
+/* ── B · One Command ── */
+.s07b-wrap{padding:0 0 96px;background:linear-gradient(180deg,var(--bg),#0d1116)}
+.s07b-grid{display:grid;grid-template-columns:300px 1fr;gap:56px;align-items:start;margin-top:72px}
+.s07b-h{font:700 44px/1 var(--cond);letter-spacing:-.02em;margin:14px 0 18px;color:var(--ink)}
+.s07b-h .o{color:var(--acc)}
+.s07b-p{font:400 15.5px/1.6 var(--sans);color:var(--ink2)}
+.s07b-p + .s07b-p{margin-top:12px}
+.s07b-p code{font-size:.9em}
+.s07b-req{margin-top:26px;display:flex;flex-direction:column;gap:9px;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);border-top:1px solid var(--line2);padding-top:18px}
+.s07b-req span b{color:var(--ink);font-weight:500;margin-right:8px}
+.s07b-quip{margin-top:22px;font:400 14.5px/1.5 var(--sans);color:var(--ink3);font-style:italic}
+.s07b-hero{display:flex;flex-direction:column;gap:14px;position:sticky;top:90px}
+.s07b-hero .term{font-size:14px;line-height:1.8;padding:20px 24px 22px;min-height:400px;box-shadow:0 40px 90px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.05);border-color:var(--line)}
+.s07b-cap{font:400 12px var(--mono);color:var(--ink4);letter-spacing:.04em;text-align:right;opacity:0;transition:opacity .5s .3s}
+.s07b-cap.on{opacity:1}
+.s07b-cap b{color:var(--acc);font-weight:500}
+@media (max-width:900px){.s07b-wrap{padding-bottom:64px}.s07b-grid{grid-template-columns:1fr;gap:34px;margin-top:48px}.s07b-hero{position:static}.s07b-hero .term{font-size:12.5px;min-height:0;padding:16px 16px 18px}.s07b-cap{text-align:left}}
+
+/* ── C · The Reveal ── */
+.s07c-wrap{padding:0 0 96px;position:relative;overflow:hidden}
+.s07c-wrap::before{content:"";position:absolute;right:-10%;top:0;width:900px;height:700px;background:radial-gradient(ellipse at center,rgba(245,133,31,.13),transparent 65%);pointer-events:none;opacity:0;transition:opacity 1.2s}
+.s07c-wrap.lit::before{opacity:1}
+.s07c-grid{display:grid;grid-template-columns:1fr 480px;gap:40px;align-items:stretch;position:relative;z-index:1;margin-top:12px}
+.s07c-left{display:flex;flex-direction:column;gap:10px;padding-top:24px;min-width:0}
+.s07c-left .term{font-size:13px;line-height:1.62;padding:16px 20px;flex:none;min-height:0;overflow:hidden;border-color:var(--line);box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.s07c-head{margin-bottom:14px}
+.s07c-h{font:700 clamp(30px,3.4vw,42px)/1.05 var(--cond);letter-spacing:-.02em;color:var(--ink);margin:10px 0 10px;max-width:20ch}
+.s07c-h .o{color:var(--acc)}
+.s07c-p{font:400 15px/1.55 var(--sans);color:var(--ink2);max-width:52ch}
+.s07c-cap{font:400 12px/1.6 var(--mono);color:var(--ink4);opacity:0;transition:opacity .6s .4s}
+.s07c-cap.on{opacity:1}
+.s07c-cap b{color:var(--ink2);font-weight:500}
+.s07c-right{position:relative;padding-top:28px}
+.s07c-pop{position:relative;transform-origin:top center;opacity:0;transform:translateY(-10px) scale(.98);transition:opacity .55s cubic-bezier(.2,.9,.2,1.1),transform .55s cubic-bezier(.2,.9,.2,1.1);filter:drop-shadow(0 30px 60px rgba(0,0,0,.7))}
+.s07c-pop::before{content:none;position:absolute;top:-6px;right:var(--caret,60px);width:12px;height:12px;background:#1a2029;border-left:1px solid var(--line);border-top:1px solid var(--line);transform:rotate(45deg)}
+.s07c-right.on .s07c-pop{opacity:1;transform:none}
+@media (max-width:1100px){.s07c-grid{grid-template-columns:1fr 440px}}
+@media (max-width:900px){.s07c-wrap{padding-bottom:64px}.s07c-grid{grid-template-columns:1fr;gap:28px;align-items:start}.s07c-left{padding-top:40px}.s07c-left .term{font-size:12.5px;flex:none;min-height:0;padding:16px}.s07c-pop{transform-origin:top center}.s07c-pop::before{display:none}.s07c-pop .app{margin:0 auto}}
+</style>
+<section class="sblk" id="s07" data-sec="s07" data-count="3">
+  <header class="sbar"><div class="sbar-w">
+    <div class="sbar-id"><span class="sbar-n">06</span><span class="sbar-t">Install</span><span class="sbar-k">one command · then look up</span></div>
+    <div class="sbar-nav"><span class="sbar-lbl" data-lbl>The Big Terminal</span>
+      <button class="sw-arw" data-step="-1" aria-label="Previous version">‹</button>
+      <div class="sw-dots"><button class="sw-dot on" data-go="0" title="The Big Terminal">A</button><button class="sw-dot" data-go="1" title="One Command">B</button><button class="sw-dot" data-go="2" title="The Reveal">C</button></div>
+      <button class="sw-arw" data-step="1" aria-label="Next version">›</button></div>
+  </div></header>
+  <div class="vars">
+
+    <!-- A · The Big Terminal -->
+    <div class="var on" data-var="0" data-label="The Big Terminal">
+      <div class="s07a-wrap">
+        <div class="s07-strip" id="s07aStrip"><div class="mb flush"><div class="l"><span class="a">Sidestep</span><span>File</span><span>Edit</span><span>View</span><span>Window</span><span>Help</span></div><div class="r"><span class="pill"><span class="g"></span><span class="t">17% · 4%</span></span><span>Mon 9:43 AM</span></div></div></div>
+        <div class="w">
+          <div class="s07a-top">
+            <div class="rv">
+              <div class="eyebrow"><b>06</b> · Install</div>
+              <h2 class="s07a-h">One command. Two minutes, <span class="o">generously.</span></h2>
+            </div>
+            <div class="s07a-meta rv d1"><span><b>macOS</b> 14+</span><span><b>Apple silicon</b> &amp; Intel</span><span><b>Free</b> &amp; open</span><span>A <b>Swift</b> package</span></div>
+          </div>
+          <div class="s07a-stage rv d1">
+            <div class="s07a-tbar"><i></i><i></i><i></i><span>sidestep · zsh</span><b>~/Developer/sidestep</b></div>
+            <div class="term" id="s07aTerm" aria-live="polite"></div>
+            <div class="s07a-cap rv d2">Sign in to the rest and you're done.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- B · One Command -->
+    <div class="var" data-var="1" data-label="One Command">
+      <div class="s07b-wrap">
+        <div class="s07-strip" id="s07bStrip"><div class="mb flush"><div class="l"><span class="a">Sidestep</span><span>File</span><span>Edit</span><span>View</span><span>Window</span><span>Help</span></div><div class="r"><span class="pill"><span class="g"></span><span class="t">17% · 4%</span></span><span>Mon 9:43 AM</span></div></div></div>
+        <div class="w">
+          <div class="s07b-grid">
+            <div>
+              <div class="eyebrow rv"><b>06</b> · Install</div>
+              <h2 class="s07b-h rv d1">One command.<br><span class="o">Then it's just there.</span></h2>
+              <p class="s07b-p rv d2">It's a Swift package. <code>build-app.sh --install</code> compiles it, signs it, and drops it in Applications. Open it once and look up.</p>
+              <p class="s07b-p rv d2">Sign in to the accounts you already have. Sidestep starts polling on its own and the pill shows up in the menu bar. That's the tutorial.</p>
+              <div class="s07b-req rv d3"><span><b>OS</b> macOS 14 Sonoma or newer</span><span><b>CPU</b> Apple silicon and Intel</span><span><b>Size</b> a native app, not a browser</span><span><b>Cost</b> zero</span></div>
+              <p class="s07b-quip rv d3">Rate limits are a you problem now. Sorry.</p>
+            </div>
+            <div class="s07b-hero rv d1">
+              <div class="s07-bar"><b>sidestep · zsh</b><span>~/Developer/sidestep</span></div>
+              <div class="term" id="s07bTerm" aria-live="polite"></div>
+              <div class="s07b-cap" id="s07bCap"><b>17% · 4%</b> · john@sidestep.sh · session · weekly · in your menu bar</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- C · The Reveal -->
+    <div class="var" data-var="2" data-label="The Reveal">
+      <div class="s07c-wrap" id="s07cWrap">
+        <div class="s07-strip" id="s07cStrip"><div class="mb flush"><div class="l"><span class="a">Sidestep</span><span>File</span><span>Edit</span><span>View</span><span>Window</span><span>Help</span></div><div class="r"><span class="pill" id="s07cPill"><span class="g"></span><span class="t">17% · 4%</span></span><span>Mon 9:43 AM</span></div></div></div>
+        <div class="w">
+          <div class="s07c-grid">
+            <div class="s07c-left rv d1">
+              <div class="s07c-head">
+                <div class="eyebrow"><b>06</b> · Install</div>
+                <h2 class="s07c-h">Build it. <span class="o">There it is.</span></h2>
+                <p class="s07c-p">One command. Then every account you're signed into is one click down.</p>
+              </div>
+              <div class="s07-bar"><b>sidestep · zsh</b><span>~/Developer/sidestep</span></div>
+              <div class="term" id="s07cTerm" aria-live="polite"></div>
+              <div class="s07c-cap" id="s07cCap">That's the real popover, sixty seconds after install. <b>+ ADD ACCOUNT</b> signs in the rest; drag the knob whenever one runs dry.</div>
+            </div>
+            <div class="s07c-right rv d2" id="s07cRight">
+              <div class="s07c-pop" id="s07cPop"><div id="s07cApp"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<script>(function(){
+  const sec=document.getElementById('s07'); if(!sec) return;
+  const vars=sec.querySelectorAll(':scope > .vars > .var');
+  const CMD='./scripts/build-app.sh --install', OPEN='open /Applications/Sidestep.app';
+  const LINES=[
+    ['g','Building for production…'],
+    ['','Compiling Swift Module \'Sidestep\' (14 sources)'],
+    ['','Build complete!  [12.41s]'],
+    ['g','codesign --force --sign - Sidestep.app'],
+    ['','Sidestep.app: signed app bundle'],
+    ['g','cp -R Sidestep.app /Applications/'],
+    ['o','Installed → /Applications/Sidestep.app'],
+  ];
+  /* shared typing engine: types the build, prints output, types `open …`, prints the ✓ line, then onDone */
+  function runTerm(term, onDone){
+    clearTimeout(term._t); term.innerHTML='';
+    const line=(cls)=>{ const s=document.createElement('span'); s.className='s07-l'+(cls?' '+cls:''); term.appendChild(s); return s; };
+    const prompt=(txt)=>{ const l=line(); l.innerHTML='<span class="o">$</span> <span class="s07-t">'+(txt||'')+'</span><span class="cur"></span>'; return l; };
+    const fin=()=>{ line('s07-fin').textContent='Sidestep is in your menu bar.'; prompt(); onDone&&onDone(); };
+    if(reduceMotion){
+      const p=prompt(CMD); p.querySelector('.cur').remove();
+      LINES.forEach(([c,t])=>{ line(c).textContent=t; });
+      const q=prompt(OPEN); q.querySelector('.cur').remove();
+      fin(); return;
+    }
+    function typeInto(l, str, next){ const t=l.querySelector('.s07-t'); let i=0; (function step(){ t.textContent=str.slice(0,++i); if(i<str.length) term._t=setTimeout(step,30+Math.random()*38); else term._t=setTimeout(()=>{ l.querySelector('.cur').remove(); next(); },380); })(); }
+    typeInto(prompt(), CMD, ()=>{
+      let j=0; (function out(){ const [c,txt]=LINES[j++]; line(c).textContent=txt; if(j<LINES.length) term._t=setTimeout(out, j===3||j===5?520:220); else term._t=setTimeout(()=>typeInto(prompt(), OPEN, ()=>{ term._t=setTimeout(fin,420); }),500); })();
+    });
+  }
+  /* top-strip pill: reveal, and update to an account's numbers */
+  function stripShow(strip){ strip.classList.add('on'); const p=strip.querySelector('.pill'); p.classList.add('flash'); setTimeout(()=>p.classList.remove('flash'),900); }
+  function stripSet(strip,s,w){ const p=strip.querySelector('.pill'); p.querySelector('.t').textContent=s+'% · '+w+'%'; const g=p.querySelector('.g'); g.className='g '+(Math.max(s,w)>=80?'c':Math.max(s,w)>=50?'w':''); p.classList.add('flash'); setTimeout(()=>p.classList.remove('flash'),900); }
+  function stripReset(strip){ strip.classList.remove('on'); stripSet(strip,17,4); strip.querySelector('.pill').classList.remove('flash'); }
+
+  /* A */
+  const aT=document.getElementById('s07aTerm'), aS=document.getElementById('s07aStrip');
+  vars[0]._onShow=()=>{ stripReset(aS); runTerm(aT,()=>{ stripShow(aS); pillTo(17,4); }); };
+
+  /* B */
+  const bT=document.getElementById('s07bTerm'), bS=document.getElementById('s07bStrip'), bC=document.getElementById('s07bCap');
+  vars[1]._onShow=()=>{ stripReset(bS); bC.classList.remove('on'); runTerm(bT,()=>{ stripShow(bS); bC.classList.add('on'); pillTo(17,4); }); };
+
+  /* C · popover drops from the pill, then one switch to Derek */
+  const cT=document.getElementById('s07cTerm'), cS=document.getElementById('s07cStrip'), cR=document.getElementById('s07cRight'), cW=document.getElementById('s07cWrap'), cEl=document.getElementById('s07cApp'), cPop=document.getElementById('s07cPop'), cPill=document.getElementById('s07cPill'), cCap=document.getElementById('s07cCap');
+  const C_ACCTS=[ACCTS[1],ACCTS[2],ACCTS[3]];
+  let cApp=null;
+  function balance(){ if(innerWidth<=900){ cT.style.height=''; return; } const cCapEl=document.getElementById('s07cCap'); const po=cPop.getBoundingClientRect(), tr=cT.getBoundingClientRect(); if(!po.height) return; const h=po.bottom-tr.top-cCapEl.offsetHeight-12; cT.style.height='auto'; const need=cT.scrollHeight; cT.style.height=Math.max(need,h)+'px'; }
+  function caret(){ const pr=cPill.getBoundingClientRect(), po=cPop.getBoundingClientRect(); if(!pr.width||!po.width) return; const r=po.right-(pr.left+pr.width/2)-6; cPop.style.setProperty('--caret', Math.max(20,Math.min(po.width-32,r))+'px'); }
+  vars[2]._onShow=()=>{
+    cR.classList.remove('on'); cW.classList.remove('lit'); cCap.classList.remove('on'); stripReset(cS); clearTimeout(cEl._t);
+    cApp=renderApp(cEl,{accounts:C_ACCTS,active:1,tape:true,footer:true,onSwitch:a=>{ stripSet(cS,a.s,a.w); pillTo(a.s,a.w); }});
+    cApp._layout(); balance(); if(document.fonts) document.fonts.ready.then(()=>{cApp._layout(); balance();});
+    runTerm(cT,()=>{
+      stripShow(cS); pillTo(17,4); caret(); balance();
+      cEl._t=setTimeout(()=>{ cR.classList.add('on'); cW.classList.add('lit'); cCap.classList.add('on'); cApp._layout(); caret();
+        cEl._t=setTimeout(()=>{ cApp._layout(); cApp._go(0); }, reduceMotion?0:1400);
+      }, reduceMotion?0:650);
+    });
+  };
+  window.addEventListener('resize',()=>{caret(); balance();});
+  vars[0]._onShow();
+})();</script>

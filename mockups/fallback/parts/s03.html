@@ -1,0 +1,280 @@
+<style>/* s03 */
+#s03 .s03-pad{padding-top:112px;padding-bottom:112px}
+#s03 h2{font-size:46px;font-weight:700;line-height:1.05;margin:14px 0 18px}
+#s03 h2 .o{color:var(--acc)}
+#s03 p.s03-lead{font-size:17px;color:var(--ink2);max-width:52ch}
+#s03 p.s03-sm{font-size:14.5px;color:var(--ink3);max-width:46ch;margin-top:12px}
+/* ── A · One Row, Annotated ── */
+.s03a-grid{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start}
+.s03a-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 20px 18px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.s03a-zoom{zoom:1.5;position:relative}
+.s03a-zoom .app{box-shadow:none;border:0;background:transparent;padding:6px 0 4px}
+.s03a-tt{position:absolute;z-index:6;pointer-events:none;background:rgba(16,20,26,.96);border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:5px 10px;font:500 10px var(--mono);color:var(--ink);letter-spacing:.03em;white-space:nowrap;box-shadow:0 6px 16px rgba(0,0,0,.5);transform:translate(-50%,calc(-100% - 8px));opacity:0;transition:opacity .25s,left .35s cubic-bezier(.2,.8,.2,1),top .35s cubic-bezier(.2,.8,.2,1)}
+.s03a-tt.show{opacity:1}
+.s03a-tt::after{content:"";position:absolute;left:50%;bottom:-5px;margin-left:-5px;border:5px solid transparent;border-top-color:rgba(16,20,26,.96);border-bottom:0}
+.s03a-legend{display:flex;align-items:flex-start;gap:8px;padding:10px 0 0;margin-top:8px;border-top:1px dashed var(--line);font:500 8px/1.35 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.s03a-legend > span{position:relative;padding-top:8px}
+.s03a-legend > span::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;border-radius:2px;background:var(--acc);opacity:.7}
+.s03a-legend .l1{width:122px;flex:none}.s03a-legend .l2{width:44px;flex:none}.s03a-legend .l3{flex:1}.s03a-legend .l4{width:38px;flex:none;text-align:right}.s03a-legend .l5{width:52px;flex:none;text-align:right}
+.s03a-legend b{display:block;color:var(--ink);font-weight:600;font-size:8.5px}
+.s03a-hint{margin-top:14px;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)}
+.s03a-hint i{font-style:normal;color:var(--acc)}
+.s03a-gauge{list-style:none;margin:26px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.s03a-gauge li{display:grid;grid-template-columns:76px 1fr;gap:14px;align-items:center;font-size:14.5px;color:var(--ink2)}
+.s03a-gauge li b{display:block;white-space:nowrap;font:600 11px var(--mono);letter-spacing:.1em;color:var(--ink);text-align:right}
+.s03a-gauge li i{display:block;height:8px;border-radius:2px;margin-top:4px;background:var(--ink2)}
+.s03a-gauge li.wn i{background:var(--warn);box-shadow:0 0 6px rgba(240,179,42,.4)}.s03a-gauge li.cr i{background:var(--crit);box-shadow:0 0 6px rgba(224,85,74,.5)}
+/* the global .w content class leaks onto .g.w pill dots; neutralise inside s03 only */
+#s03 .mb .pill .g.w{padding:0;margin:0;max-width:none}
+/* ── B · Three Moods ── */
+.s03b-grid{display:grid;grid-template-columns:1fr 480px;gap:56px;align-items:center}
+.s03b-moods{display:flex;flex-direction:column;gap:22px;margin-top:34px}
+.s03b-mood{opacity:0;transform:translateX(-14px);transition:opacity .5s cubic-bezier(.2,.8,.2,1),transform .5s cubic-bezier(.2,.8,.2,1)}
+.s03b-mood.in{opacity:1;transform:none}
+.s03b-cap{display:flex;gap:12px;align-items:baseline;margin-top:8px;font-size:14px;color:var(--ink3)}
+.s03b-cap b{font:600 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);flex:none}
+.s03b-cap b.wn{color:var(--warn)}.s03b-cap b.cr{color:var(--crit)}
+.s03b-panel{position:relative}
+.s03b-note{margin-top:16px;font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4);text-align:right}
+/* ── C · The Ladder ── */
+.s03c-head{text-align:center;max-width:720px;margin:0 auto}
+.s03c-head p.s03-lead{margin:0 auto}
+.s03c-stage{max-width:900px;margin:44px auto 0}
+.s03c-mbwrap{opacity:0;transform:translateY(-8px);transition:.5s cubic-bezier(.2,.8,.2,1)}
+.s03c-mbwrap.in{opacity:1;transform:none}
+.s03c-board{margin-top:18px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:30px 28px 26px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.s03c-row{display:flex;align-items:center;gap:18px;font-family:var(--mono)}
+.s03c-lbl{width:44px;flex:none;font:600 18px var(--mono);letter-spacing:.1em;color:var(--ink2)}
+.s03c-ladder{flex:1;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:5px;height:44px}
+.s03c-ladder i{display:block;border-radius:3px;background:var(--seg);transition:background .12s,box-shadow .12s}
+.s03c-ladder i.on{background:var(--ink2)}
+.s03c-ladder[data-k="warn"] i.on{background:var(--warn);box-shadow:0 0 8px rgba(240,179,42,.4)}
+.s03c-ladder[data-k="crit"] i.on{background:var(--crit);box-shadow:0 0 8px rgba(224,85,74,.5)}
+.s03c-ladder i.on.tip{animation:s03cBreathe .9s ease-in-out infinite alternate}
+@keyframes s03cBreathe{to{opacity:.45}}
+.s03c-pct{width:78px;flex:none;text-align:right;font:600 30px var(--mono);color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.s03c-cd{width:96px;flex:none;text-align:right;font:500 15px var(--mono);color:var(--ink2);font-variant-numeric:tabular-nums;white-space:nowrap;cursor:default}
+.s03c-ticks{position:relative;height:16px;margin:8px 0 0 62px;margin-right:calc(78px + 96px + 36px);font:500 9px var(--mono);letter-spacing:.12em;color:var(--ink4)}
+.s03c-ticks span{position:absolute;top:0;transform:translateX(-50%);padding-top:6px}
+.s03c-ticks span::before{content:"";position:absolute;left:50%;top:0;width:1px;height:5px;background:var(--ink4)}
+.s03c-ticks span.wn{color:var(--warn)}.s03c-ticks span.cr{color:var(--crit)}
+.s03c-slide{margin:26px 0 0;display:flex;align-items:center;gap:18px}
+.s03c-slide label{font:500 10.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);flex:none}
+.s03c-slide input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;background:#0b0e12;box-shadow:inset 0 1px 3px rgba(0,0,0,.9);outline:0;margin:0;cursor:pointer}
+.s03c-slide input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#3b4452,#1c2129 70%);box-shadow:0 2px 6px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.18),inset 0 0 0 9px #1c2129,inset 0 0 0 10px #d66a12,0 0 10px rgba(245,133,31,.55);cursor:grab;border:0}
+.s03c-slide input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:#2a313c;box-shadow:0 2px 6px rgba(0,0,0,.7),inset 0 0 0 9px #1c2129,inset 0 0 0 10px #d66a12;cursor:grab;border:0}
+.s03c-slide input[type=range]:focus-visible{outline:2px solid var(--acc);outline-offset:4px}
+.s03c-say{margin-top:22px;min-height:3.2em;display:flex;gap:14px;align-items:baseline;border-top:1px solid var(--line2);padding-top:16px}
+.s03c-say b{font:600 10.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;flex:none;color:var(--ink3)}
+.s03c-say b.wn{color:var(--warn)}.s03c-say b.cr{color:var(--crit)}
+.s03c-say span{font:500 20px var(--cond);color:var(--ink);letter-spacing:-.01em}
+.s03c-foot{margin-top:18px;text-align:center;font-size:14px;color:var(--ink3)}
+@media (max-width:900px){
+  #s03 .s03-pad{padding-top:80px;padding-bottom:80px}
+  #s03 h2{font-size:36px}
+  .s03a-grid,.s03b-grid{grid-template-columns:1fr;gap:34px}
+  .s03a-zoom{zoom:1}
+  .s03b-grid{align-items:start}
+  .s03b-panel .app{margin:0 auto}
+  .s03c-board{padding:22px 16px 20px}
+  .s03c-pct{width:64px;font-size:24px}.s03c-cd{display:none}
+  .s03c-ticks{margin-right:calc(64px + 18px)}
+  .s03c-ladder{height:32px;gap:3px}
+  .s03c-say span{font-size:17px}
+}
+</style>
+<section class="sblk" id="s03" data-sec="s03" data-count="3">
+  <header class="sbar"><div class="sbar-w">
+    <div class="sbar-id"><span class="sbar-n">03</span><span class="sbar-t">The meter</span><span class="sbar-k">what the app shows · every bucket, every account, one glance</span></div>
+    <div class="sbar-nav"><span class="sbar-lbl" data-lbl>One Row, Annotated</span>
+      <button class="sw-arw" data-step="-1" aria-label="Previous version">‹</button>
+      <div class="sw-dots"><button class="sw-dot on" data-go="0" title="One Row, Annotated">A</button><button class="sw-dot" data-go="1" title="Three Moods">B</button><button class="sw-dot" data-go="2" title="The Ladder">C</button></div>
+      <button class="sw-arw" data-step="1" aria-label="Next version">›</button></div>
+  </div></header>
+  <div class="vars">
+
+    <!-- ═══ A · One Row, Annotated ═══ -->
+    <div class="var on" data-var="0" data-label="One Row, Annotated">
+      <div class="w s03-pad">
+        <div class="s03a-grid">
+          <div>
+            <div class="eyebrow rv"><b>03</b> · The meter</div>
+            <h2 class="rv d1">One row per account. <span class="o">Read it at a glance.</span></h2>
+            <p class="s03-lead rv d2">Session (5H), weekly (7D), and the Fable row: Fable gets its own weekly bucket, so it gets its own line. Each one is a 24-segment ladder, a percentage, and a countdown to the reset. Polled every 60 seconds from Anthropic's own usage endpoint, so the numbers are the numbers.</p>
+            <ul class="s03a-gauge rv d3">
+              <li><b>UNDER 50%<i></i></b><span>Grey. A fuel gauge you don't look at.</span></li>
+              <li class="wn"><b>50 TO 79%<i></i></b><span>Amber. Half a tank. Plan the next stop.</span></li>
+              <li class="cr"><b>80% AND UP<i></i></b><span>Red, and the last segment breathes. Time to switch.</span></li>
+            </ul>
+            <p class="s03-sm rv d3">Hover a countdown and it says the reset in words a human uses. "Today at 8:10 PM", not a Unix timestamp.</p>
+          </div>
+          <div class="rv d1">
+            <div class="s03a-card">
+              <div class="s03a-zoom">
+                <div id="s03aApp"></div>
+                <div class="s03a-legend">
+                  <span class="l1"><b>Account</b>who, tier</span>
+                  <span class="l2"><b>Label</b>5H · 7D · FABLE</span>
+                  <span class="l3"><b>Ladder</b>24 segments · fills left to right · colour is the severity</span>
+                  <span class="l4"><b>%</b>used</span>
+                  <span class="l5"><b>Reset in</b>hover for the day</span>
+                </div>
+              </div>
+            </div>
+            <div class="s03a-hint"><i>↖</i> Hover either countdown yourself. It's the real tooltip.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ B · Three Moods ═══ -->
+    <div class="var" data-var="1" data-label="Three Moods">
+      <div class="w s03-pad">
+        <div class="s03b-grid">
+          <div>
+            <div class="eyebrow rv"><b>03</b> · The meter</div>
+            <h2 class="rv d1">Two numbers in the menu bar. <span class="o">You don't open the panel until you need to.</span></h2>
+            <p class="s03-lead rv d2">The title is the active account's session and weekly usage. The dot is the mood. That's the whole interface for about 95% of your week.</p>
+            <div class="s03b-moods">
+              <div class="s03b-mood" data-mood="0">
+                <div class="mb"><div class="l"><span></span><span class="a">Claude Code</span><span>File</span><span>Edit</span><span>View</span></div><div class="r"><span class="pill"><span class="g"></span>6% · 30%</span><span>Mon 9:41</span></div></div>
+                <div class="s03b-cap"><b>Normal day</b><span>Orange dot. Nobody's thinking about limits. Correct.</span></div>
+              </div>
+              <div class="s03b-mood" data-mood="1">
+                <div class="mb"><div class="l"><span></span><span class="a">Claude Code</span><span>File</span><span>Edit</span><span>View</span></div><div class="r"><span class="pill"><span class="g w"></span>41% · 62%</span><span>Wed 3:12</span></div></div>
+                <div class="s03b-cap"><b class="wn">Heads up</b><span>Amber. The week is more than half gone. Maybe check the panel.</span></div>
+              </div>
+              <div class="s03b-mood" data-mood="2">
+                <div class="mb"><div class="l"><span></span><span class="a">Claude Code</span><span>File</span><span>Edit</span><span>View</span></div><div class="r"><span class="pill"><span class="g c"></span>97% · 71%</span><span>Fri 4:58</span></div></div>
+                <div class="s03b-cap"><b class="cr">Friday</b><span>Red. The session's cooked. Open the panel, drag the knob, keep going.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="s03b-panel rv d2">
+            <div id="s03bApp"></div>
+            <div class="s03b-note">UPD · EVERY · REQ SINCE LAUNCH · the header keeps the receipts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ C · The Ladder ═══ -->
+    <div class="var" data-var="2" data-label="The Ladder">
+      <div class="w s03-pad">
+        <div class="s03c-head">
+          <div class="eyebrow rv"><b>03</b> · The meter</div>
+          <h2 class="rv d1">Read it at a glance. <span class="o">Then go back to work.</span></h2>
+          <p class="s03-lead rv d2">Twenty-four segments. Grey, then amber at 50, then red at 80. Drag the slider and watch what the menu bar would be telling you.</p>
+        </div>
+        <div class="s03c-stage rv d2">
+          <div class="s03c-mbwrap"><div class="mb"><div class="l"><span></span><span class="a">Claude Code</span><span>File</span><span>Edit</span><span>View</span></div><div class="r"><span class="pill"><span class="g" id="s03cDot"></span><span id="s03cPill">17% · 31%</span></span><span>Tue 2:07</span></div></div></div>
+          <div class="s03c-board">
+            <div class="s03c-row">
+              <span class="s03c-lbl">5H</span>
+              <div class="s03c-ladder" id="s03cLadder" data-k="ok"></div>
+              <span class="s03c-pct" id="s03cPct">17%</span>
+              <span class="s03c-cd" id="s03cCd" title="Today at 8:10 PM">3H 49M</span>
+            </div>
+            <div class="s03c-ticks"><span style="left:0">0</span><span class="wn" style="left:50%">50 · AMBER</span><span class="cr" style="left:80%">80 · RED</span><span style="left:100%">100</span></div>
+            <div class="s03c-slide"><label for="s03cRange">Drag it</label><input type="range" id="s03cRange" min="0" max="100" value="17" aria-label="Session usage percent"></div>
+            <div class="s03c-say"><b id="s03cK">Cruising</b><span id="s03cSay">Cruising. Nobody's counting.</span></div>
+          </div>
+          <p class="s03c-foot">Weekly stays at 31% in this demo. In the app both numbers move, and the Fable row gets its own thin ladder.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<script>(function(){
+  const sec = document.getElementById('s03');
+  const vars = sec.querySelectorAll(':scope > .vars > .var');
+  const timers = [];
+  const clear = () => { while(timers.length){ const t=timers.pop(); clearTimeout(t); clearInterval(t); } };
+  const later = (fn, ms) => { const t=setTimeout(fn, reduceMotion?0:ms); timers.push(t); return t; };
+
+  /* ── A · single row at 1.5x, ladders sweep in, pinned tooltip walks the countdowns ── */
+  const aEl = document.getElementById('s03aApp');
+  renderApp(aEl, {header:false, shifter:false, accounts:[ACCTS[2]], active:0, fluid:true, toast:false});
+  const aTip = document.createElement('div'); aTip.className='s03a-tt'; aEl.appendChild(aTip);
+  function aPin(cd){
+    aTip.textContent = cd.closest('.row').querySelector('.ladder').dataset.tip;
+    aTip.style.left = (cd.offsetLeft + cd.offsetWidth/2) + 'px';
+    aTip.style.top  = (cd.offsetTop + 1) + 'px';
+    aTip.classList.add('show');
+  }
+  vars[0]._onShow = function(){
+    clear();
+    aTip.classList.remove('show');
+    const ladders = [...aEl.querySelectorAll('.ladder')];
+    if(reduceMotion){ ladders.forEach(l=>fillLadder(l,+l.dataset.p)); }
+    else {
+      ladders.forEach((l,i)=>{
+        const target = +l.dataset.p, start = performance.now() + i*120, dur = 650;
+        fillLadder(l,0);
+        (function tick(){ const k=Math.min(1,(performance.now()-start)/dur); if(k>0) fillLadder(l, Math.round(target*(1-Math.pow(1-k,3)))); if(k<1) requestAnimationFrame(tick); })();
+      });
+    }
+    const cds = [...aEl.querySelectorAll('.row .cd')].filter(c=>!c.classList.contains('na'));
+    let i = 0;
+    later(()=>{ aPin(cds[0]); const iv=setInterval(()=>{ i=(i+1)%cds.length; aPin(cds[i]); }, 2600); timers.push(iv); }, 950);
+    /* real hover wins over the pinned demo */
+    cds.forEach(c=>{ c.addEventListener('mouseenter',()=>aTip.classList.remove('show')); });
+  };
+
+  /* ── B · full panel, moods stagger in ── */
+  const bEl = document.getElementById('s03bApp');
+  renderApp(bEl, {active:2, upd:'30S', every:'5 MIN', req:12, onSwitch:a=>pillTo(a.s??0, a.w??0)});
+  const moods = [...sec.querySelectorAll('.s03b-mood')];
+  vars[1]._onShow = function(){
+    clear();
+    moods.forEach(m=>m.classList.remove('in'));
+    moods.forEach((m,i)=>later(()=>m.classList.add('in'), 180 + i*260));
+    later(()=>bEl._layout && bEl._layout(), 60);
+  };
+
+  /* ── C · the big ladder ── */
+  const cL = document.getElementById('s03cLadder'), cPct=document.getElementById('s03cPct'), cCd=document.getElementById('s03cCd'),
+        cPill=document.getElementById('s03cPill'), cDot=document.getElementById('s03cDot'), cSay=document.getElementById('s03cSay'), cK=document.getElementById('s03cK'),
+        cRange=document.getElementById('s03cRange'), cMb=sec.querySelector('.s03c-mbwrap');
+  cL.innerHTML = '<i></i>'.repeat(SEG);
+  const W = 31;
+  const SAY = [
+    [0,  'Cruising',      'Cruising. Nobody\'s counting.'],
+    [25, 'Cruising',      'A quarter in. Still not a thought in your head about it.'],
+    [50, 'Heads up',      'Half a tank. Maybe don\'t start the big refactor.'],
+    [65, 'Heads up',      'Amber and climbing. Glance at who else has room.'],
+    [80, 'Switch',        'Drag the knob now, not after the next 429.'],
+    [93, 'Switch',        'The last segment is breathing at you. That\'s on purpose.'],
+    [100,'Wall',          'You knew this was coming. So did the app. Different account, same session.'],
+  ];
+  function cSet(p){
+    p = Math.max(0, Math.min(100, Math.round(p)));
+    const k = sev(p), on = Math.round(p/100*SEG);
+    cL.dataset.k = k;
+    [...cL.children].forEach((s,i)=>{ s.classList.toggle('on', i<on); s.classList.toggle('tip', i===on-1 && p>=80); });
+    cPct.textContent = p+'%';
+    cPill.textContent = p+'% · '+W+'%';
+    cDot.className = 'g '+(k==='crit'?'c':k==='warn'?'w':'');
+    cCd.textContent = p>=100 ? '3H 49M' : '3H 49M';
+    let row = SAY[0]; for(const r of SAY){ if(p>=r[0]) row=r; }
+    cK.textContent = row[1]; cK.className = k==='crit'?'cr':k==='warn'?'wn':''; cSay.textContent = row[2];
+    if(cRange.value != p) cRange.value = p;
+  }
+  cRange.addEventListener('input', ()=>{ clear(); cSet(+cRange.value); });
+  vars[2]._onShow = function(){
+    clear();
+    cMb.classList.remove('in'); later(()=>cMb.classList.add('in'), 80);
+    if(reduceMotion){ cSet(17); return; }
+    /* sweep 0 → 84 → 17 so the reader sees every colour once */
+    const path = [[0,0],[84,1100],[17,900]]; let seg=0, from=0, t0=performance.now();
+    cSet(0);
+    (function tick(){
+      const [to,dur] = path[seg]; const k = dur? Math.min(1,(performance.now()-t0)/dur) : 1;
+      cSet(from + (to-from)*(1-Math.pow(1-k,3)));
+      if(k<1) requestAnimationFrame(tick);
+      else if(++seg<path.length){ from=to; t0=performance.now()+220; requestAnimationFrame(tick); }
+    })();
+  };
+  cSet(17);
+})();</script>

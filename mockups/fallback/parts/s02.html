@@ -1,0 +1,386 @@
+<style>/* s02 */
+/* ── shared-ish bits, still scoped ── */
+#s02 .s02-eye{font:500 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+#s02 .s02-eye b{color:var(--acc);font-weight:500}
+
+/* ═══════════ A · 4:47 PM ═══════════ */
+.s02a{position:relative;padding:104px 0 112px;overflow:hidden;background:
+  radial-gradient(120% 70% at 50% -10%,rgba(224,85,74,.10),transparent 62%),
+  linear-gradient(180deg,#0b0e12,#10141a 55%,#0b0e12)}
+.s02a::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(180deg,rgba(255,255,255,.022) 0 1px,transparent 1px 4px)}
+.s02a > .w{position:relative}
+.s02a-clock{display:flex;align-items:flex-end;justify-content:center;gap:20px;flex-wrap:wrap;margin:14px 0 6px}
+.s02a-t{font-family:var(--cond);font-weight:700;font-size:clamp(84px,17vw,236px);line-height:.82;
+  letter-spacing:-.045em;color:var(--ink);font-variant-numeric:tabular-nums;
+  text-shadow:0 0 90px rgba(224,85,74,.22)}
+.s02a-t em{font-style:normal;color:var(--crit)}
+.s02a-t .s02a-pm{font-size:.3em;letter-spacing:.04em;color:var(--ink3);margin-left:.12em}
+.s02a-side{display:flex;flex-direction:column;gap:7px;padding-bottom:clamp(10px,2vw,26px);min-width:0}
+.s02a-side span{font:500 11px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink4);white-space:nowrap}
+.s02a-side span b{color:var(--ink2);font-weight:500}
+.s02a-rule{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:26px 0 40px}
+.s02a-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:44px;align-items:stretch}
+.s02a-termcol{display:flex;flex-direction:column;min-width:0}
+.s02a-term{min-height:290px;flex:1;position:relative}
+.s02a-term .s02a-l{white-space:pre-wrap;word-break:break-word;min-height:1.75em}
+.s02a-cap{font:400 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink4);margin-top:10px}
+.s02a h2{font-size:clamp(30px,3.4vw,44px);font-weight:700;line-height:1.03;margin:12px 0 18px}
+.s02a h2 .o{color:var(--acc)}
+.s02a p{font-size:16.5px;line-height:1.62;color:var(--ink2);margin:0 0 15px;max-width:46ch}
+.s02a p b{color:var(--ink);font-weight:600}
+.s02a-mbwrap{margin-top:26px}
+.s02a-mbwrap .s02-eye{display:block;margin-bottom:9px}
+.s02a-kick{margin-top:22px;padding-left:15px;border-left:2px solid var(--crit);
+  font:600 15.5px/1.5 var(--sans);color:var(--ink)}
+@media (max-width:900px){
+  .s02a{padding:72px 0 80px}
+  .s02a-grid{grid-template-columns:1fr;gap:30px}
+  .s02a-clock{justify-content:flex-start;gap:14px}
+  .s02a-side{padding-bottom:8px}
+}
+
+/* ═══════════ B · The Two Numbers ═══════════ */
+.s02b{padding:100px 0 108px;background:linear-gradient(180deg,#10141a,#0d1116)}
+.s02b-head{max-width:70ch;margin-bottom:44px}
+.s02b-head h2{font-size:clamp(30px,3.6vw,48px);font-weight:700;line-height:1.02;margin:12px 0 16px}
+.s02b-head h2 .o{color:var(--acc)}
+.s02b-head p{font-size:17px;line-height:1.6;color:var(--ink2);max-width:56ch}
+.s02b-split{display:grid;grid-template-columns:minmax(0,1fr) 92px minmax(0,1fr);align-items:stretch;gap:0}
+.s02b-half{min-width:0;display:flex;flex-direction:column;gap:16px;padding:26px 26px 28px;border:1px solid var(--line2);border-radius:14px}
+.s02b-half.bad{background:linear-gradient(180deg,rgba(224,85,74,.07),rgba(224,85,74,0) 62%);border-color:rgba(224,85,74,.24)}
+.s02b-half.good{background:linear-gradient(180deg,rgba(245,133,31,.08),rgba(245,133,31,0) 62%);border-color:rgba(245,133,31,.26)}
+.s02b-tag{display:flex;align-items:center;gap:9px;font:600 10.5px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink3)}
+.s02b-tag i{font-style:normal;width:7px;height:7px;border-radius:50%;background:var(--crit);box-shadow:0 0 9px var(--crit)}
+.s02b-half.good .s02b-tag i{background:var(--acc);box-shadow:0 0 9px var(--acc)}
+.s02b-big{display:flex;align-items:baseline;gap:12px;font-family:var(--cond);font-weight:700;
+  font-size:clamp(46px,6vw,78px);line-height:.9;letter-spacing:-.035em;color:var(--crit);font-variant-numeric:tabular-nums}
+.s02b-half.good .s02b-big{color:var(--acc)}
+.s02b-sub{font:500 10.5px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink4);margin-top:-4px}
+.s02b-panel{position:relative}
+.s02b-panel .app{width:100%}
+.s02b-cap{font:400 14.5px/1.55 var(--sans);color:var(--ink2);margin-top:auto}
+.s02b-cap b{color:var(--ink);font-weight:600}
+.s02b-mid{position:relative;display:grid;place-items:center;align-self:stretch}
+.s02b-mid::before{content:"";position:absolute;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,transparent,var(--line),transparent)}
+.s02b-arw{position:relative;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid var(--line);background:linear-gradient(180deg,#1d232c,#141920);color:var(--acc);
+  font:400 22px var(--mono);line-height:1;box-shadow:0 6px 22px rgba(0,0,0,.55)}
+.s02b-arw b{font-weight:400;transform:translateY(-1px)}
+.s02b-note{margin-top:14px;font:500 9.5px var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink4);writing-mode:vertical-rl;white-space:nowrap}
+.s02b-foot{margin-top:34px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;
+  font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink4)}
+.s02b-foot em{font-style:normal;color:var(--acc)}
+/* the reveal beat */
+.s02b .s02b-right{opacity:0;transform:translateX(16px);transition:opacity .55s cubic-bezier(.2,.8,.2,1),transform .55s cubic-bezier(.2,.8,.2,1)}
+.s02b.lit .s02b-right{opacity:1;transform:none}
+.s02b .s02b-arw{opacity:.28;transform:scale(.86)}
+.s02b.lit .s02b-arw{opacity:1;transform:none;transition:opacity .4s,transform .4s cubic-bezier(.3,1.6,.4,1)}
+@media (prefers-reduced-motion:reduce){.s02b .s02b-right,.s02b .s02b-arw{opacity:1;transform:none}}
+@media (max-width:960px){
+  .s02b{padding:70px 0 78px}
+  .s02b-split{grid-template-columns:1fr;gap:18px}
+  .s02b-mid{padding:4px 0}
+  .s02b-mid::before{top:auto;bottom:auto;left:12%;right:12%;width:auto;height:1px;
+    background:linear-gradient(90deg,transparent,var(--line),transparent)}
+  .s02b-arw b{transform:rotate(90deg)}
+  .s02b-note{writing-mode:horizontal-tb;margin-top:10px}
+  .s02b .s02b-right{transform:translateY(16px)}
+}
+
+/* ═══════════ C · The Spreadsheet In Your Head ═══════════ */
+.s02c{padding:100px 0 110px;background:
+  radial-gradient(90% 60% at 78% 20%,rgba(245,133,31,.07),transparent 60%),#10141a}
+.s02c h2{font-size:clamp(30px,3.7vw,50px);font-weight:700;line-height:1.02;margin:12px 0 16px;max-width:19ch}
+.s02c h2 .o{color:var(--acc)}
+.s02c-lede{font-size:16.5px;line-height:1.6;color:var(--ink2);max-width:48ch;margin-bottom:0}
+.s02c-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:56px;align-items:stretch;margin-top:52px}
+.s02c-col{min-width:0;display:flex;flex-direction:column}
+.s02c-lbl{font:500 10.5px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink4);
+  display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.s02c-lbl::after{content:"";flex:1;height:1px;background:var(--line2)}
+.s02c-pad{display:grid;grid-template-columns:1fr 1fr;gap:20px 18px}
+.s02c-note{position:relative;background:linear-gradient(180deg,#1b2129,#151a21);
+  border:1px dashed rgba(255,255,255,.16);border-radius:3px;padding:18px 16px 20px;
+  font:400 14px/1.45 var(--mono);color:var(--ink2);box-shadow:0 10px 26px rgba(0,0,0,.42);
+  opacity:0;transform:translateY(12px) rotate(0deg) scale(.97);
+  transition:opacity .45s ease,transform .45s cubic-bezier(.3,1.5,.45,1)}
+.s02c-note::before{content:"";position:absolute;left:50%;top:-9px;width:56px;height:17px;margin-left:-28px;
+  background:rgba(255,255,255,.07);border:1px solid var(--line2);border-radius:1px;transform:rotate(-2deg)}
+.s02c-note i{display:block;font-style:normal;font:500 9.5px var(--mono);letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink4);margin-bottom:8px}
+.s02c-note u{text-decoration:none;position:relative;display:inline-block;white-space:nowrap}
+.s02c-note u::after{content:"";position:absolute;left:-2px;right:-2px;top:52%;height:2px;
+  background:var(--acc);border-radius:1px;transform:scaleX(0);transform-origin:0 50%;
+  transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.s02c-note.rot1{transform:translateY(12px) rotate(-1.6deg) scale(.97)}
+.s02c-note.rot2{transform:translateY(12px) rotate(1.9deg) scale(.97)}
+.s02c-note.rot3{transform:translateY(12px) rotate(1.1deg) scale(.97)}
+.s02c-note.rot4{transform:translateY(12px) rotate(-2.2deg) scale(.97)}
+.s02c-note.up{margin-top:-10px}
+.s02c-note.dn{margin-top:16px}
+.s02c.lit .s02c-note{opacity:1}
+.s02c.lit .s02c-note.rot1{transform:rotate(-1.6deg)}
+.s02c.lit .s02c-note.rot2{transform:rotate(1.9deg)}
+.s02c.lit .s02c-note.rot3{transform:rotate(1.1deg)}
+.s02c.lit .s02c-note.rot4{transform:rotate(-2.2deg)}
+.s02c.answered .s02c-note{opacity:.58}
+.s02c.answered .s02c-note u::after{transform:scaleX(1)}
+.s02c-panelwrap{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+.s02c.lit .s02c-panelwrap{opacity:1;transform:none}
+.s02c-panelwrap .app{width:100%}
+.s02c-under{margin-top:18px;font:400 14.5px/1.6 var(--sans);color:var(--ink2)}
+.s02c-under b{color:var(--ink);font-weight:600}
+.s02c-vs{margin-top:auto;padding-top:34px;font:500 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink4)}
+.s02c-vs em{font-style:normal;color:var(--acc)}
+@media (prefers-reduced-motion:reduce){
+  .s02c .s02c-note,.s02c .s02c-panelwrap{opacity:1!important;transform:none!important}
+  .s02c .s02c-note u::after{transform:scaleX(1)}
+}
+@media (max-width:1040px){.s02c-grid{grid-template-columns:1fr;gap:40px}}
+@media (max-width:640px){
+  .s02c{padding:70px 0 78px}
+  .s02c-pad{grid-template-columns:1fr;gap:22px}
+  .s02c-note.up,.s02c-note.dn{margin-top:0}
+}
+</style>
+
+<section class="sblk" id="s02" data-sec="s02" data-count="3">
+  <header class="sbar"><div class="sbar-w">
+    <div class="sbar-id"><span class="sbar-n">02</span><span class="sbar-t">The wall</span><span class="sbar-k">the problem · you hit the limit at the worst possible minute</span></div>
+    <div class="sbar-nav"><span class="sbar-lbl" data-lbl>4:47 PM</span>
+      <button class="sw-arw" data-step="-1" aria-label="Previous version">‹</button>
+      <div class="sw-dots"><button class="sw-dot on" data-go="0" title="4:47 PM">A</button><button class="sw-dot" data-go="1" title="The Two Numbers">B</button><button class="sw-dot" data-go="2" title="The Spreadsheet In Your Head">C</button></div>
+      <button class="sw-arw" data-step="1" aria-label="Next version">›</button></div>
+  </div></header>
+
+  <div class="vars">
+
+    <!-- ────────────── A · 4:47 PM ────────────── -->
+    <div class="var on" data-var="0" data-label="4:47 PM">
+      <div class="s02a">
+        <div class="w">
+          <div class="s02-eye rv"><b>02</b> · The wall</div>
+          <div class="s02a-clock rv d1">
+            <div class="s02a-t">4:<em>47</em><span class="s02a-pm">PM</span></div>
+            <div class="s02a-side">
+              <span>FRIDAY</span>
+              <span>THREE FILES FROM <b>DONE</b></span>
+              <span>WEEKLY LIMIT · <b>REACHED</b></span>
+            </div>
+          </div>
+          <div class="s02a-rule rv d1"></div>
+
+          <div class="s02a-grid">
+            <div class="rv d2 s02a-termcol">
+              <div class="term s02a-term" id="s02a-term"></div>
+              <div class="s02a-cap">Real output, lightly abbreviated. The part where you cry is not shown.</div>
+            </div>
+
+            <div class="rv d3">
+              <h2>Claude said you've had <span class="o">enough</span>. You haven't.</h2>
+              <p>You have another account. It's right there. It's in another browser, its token is in the Keychain, and getting to it means logging out, opening a browser you don't use, pasting a code back into a terminal, then restarting every terminal you had going.</p>
+              <p><b>Twelve minutes, minimum.</b> Longer if you fat-finger the paste. And every running session loses the thread it was holding.</p>
+              <div class="s02a-mbwrap">
+                <span class="s02-eye">Meanwhile, up in the menu bar</span>
+                <div class="mb">
+                  <div class="l"><span class="a">Sidestep</span><span>File</span><span>View</span><span>Help</span></div>
+                  <div class="r"><span class="pill"><span class="g c"></span>97% · 71%</span><span>Fri 4:47 PM</span></div>
+                </div>
+              </div>
+              <div class="s02a-kick">So you close the laptop and go outside like some kind of animal.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ────────────── B · The Two Numbers ────────────── -->
+    <div class="var" data-var="1" data-label="The Two Numbers">
+      <div class="s02b" id="s02b-root">
+        <div class="w">
+          <div class="s02b-head">
+            <div class="s02-eye rv"><b>02</b> · The wall</div>
+            <h2 class="rv d1">One account is at the wall. <span class="o">The other one is at zero.</span></h2>
+            <p class="rv d1">John hit his weekly limit at 4:47 on a Friday. Derek's account hasn't been touched all week. Claude Code only knows about one of them. Sidestep knows about both, and moves you over in one drag.</p>
+          </div>
+
+          <div class="s02b-split">
+            <div class="s02b-half bad rv d2">
+              <div class="s02b-tag"><i></i>4:47 PM · the wall</div>
+              <div class="s02b-big">97% <span>·</span> 71%</div>
+              <div class="s02b-sub">session · weekly · john@sidestep.sh</div>
+              <div class="s02b-panel" id="s02b-p1"></div>
+              <div class="mb">
+                <div class="l"><span class="a">Sidestep</span><span>File</span><span>View</span></div>
+                <div class="r"><span class="pill"><span class="g c"></span>97% · 71%</span><span>Fri 4:47</span></div>
+              </div>
+              <p class="s02b-cap">John: 97% session, 71% weekly, reset <b>Wednesday at 3 PM</b>. Stuck until then.</p>
+            </div>
+
+            <div class="s02b-mid rv d2">
+              <div class="s02b-arw"><b>→</b></div>
+              <div class="s02b-note">one drag · no restart</div>
+            </div>
+
+            <div class="s02b-half good s02b-right rv d3">
+              <div class="s02b-tag"><i></i>4:47 PM · plus three seconds</div>
+              <div class="s02b-big">0% <span>·</span> 0%</div>
+              <div class="s02b-sub">session · weekly · derek@sidestep.sh</div>
+              <div class="s02b-panel" id="s02b-p2"></div>
+              <div class="mb">
+                <div class="l"><span class="a">Sidestep</span><span>File</span><span>View</span></div>
+                <div class="r"><span class="pill"><span class="g"></span>0% · 0%</span><span>Fri 4:47</span></div>
+              </div>
+              <p class="s02b-cap">Derek: 0% and 0%. Same terminals, same conversation, three seconds later.</p>
+            </div>
+          </div>
+
+          <div class="s02b-foot rv d3"><em>The gap between those two panels</em> · one knob, three writes, zero restarts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ────────────── C · The Spreadsheet In Your Head ────────────── -->
+    <div class="var" data-var="2" data-label="The Spreadsheet In Your Head">
+      <div class="s02c" id="s02c-root">
+        <div class="w">
+          <div class="s02-eye rv"><b>02</b> · The wall</div>
+          <h2 class="rv d1">Stop keeping a <span class="o">spreadsheet</span> in your head.</h2>
+          <p class="s02c-lede rv d1">Four accounts. Four reset days. Two of them you can't remember signing into. When Claude Code stops at 4:47 on a Friday, this is the file you're querying, and it's a bad file.</p>
+
+          <div class="s02c-grid">
+            <div class="s02c-col">
+              <div class="s02c-lbl rv d2">What you actually have</div>
+              <div class="s02c-pad">
+                <div class="s02c-note rot1" data-i="0"><i>Note to self</i>alexa's is the <u>deep one</u>?<br>or was that last month</div>
+                <div class="s02c-note rot2 dn" data-i="1"><i>Pretty sure</i>john reset <u>tuesday</u>??<br>tuesday-ish. wednesday?</div>
+                <div class="s02c-note rot3 up" data-i="2"><i>Definitely</i>derek is <u>fresh</u> i think<br>haven't used it since june</div>
+                <div class="s02c-note rot4" data-i="3"><i>Oh no</i>nithin is <u>signed out</u><br>which browser was that</div>
+              </div>
+              <div class="s02c-vs rv d3"><em>versus</em> · one panel that already knows</div>
+            </div>
+
+            <div class="s02c-col">
+              <div class="s02c-lbl rv d2">What Sidestep shows you</div>
+              <div class="s02c-panelwrap"><div id="s02c-app"></div></div>
+              <p class="s02c-under">Every account, every ladder, every reset window on one strip. <b>Derek is at zero and resets Saturday.</b> That's the whole answer, and you didn't have to remember any of it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>(function(){
+  var sec = document.getElementById('s02');
+  var vars = sec.querySelectorAll(':scope > .vars > .var');
+
+  /* ══ A · 4:47 PM ══════════════════════════════════════════ */
+  var termEl = document.getElementById('s02a-term');
+  var LINES = [
+    {t:'$ cd ~/dev/sidestep', c:'g', sp:9, p:90},
+    {t:'$ claude', c:'', sp:12, p:121},
+    {t:'  Reading src/sidestep/Shifter.swift…', c:'g', sp:4, p:66},
+    {t:'  Reading src/sidestep/Keychain.swift…', c:'g', sp:4, p:94},
+    {t:'✻ Claude usage limit reached. Your weekly limit', c:'r', sp:6, p:22},
+    {t:'  will reset Wednesday at 3 PM.', c:'r', sp:6, p:198},
+    {t:'$ # cool. cool cool cool.', c:'g', sp:9, p:154},
+    {t:'$ # the other account is right there.', c:'g', sp:7, p:200},
+    {t:'$ claude /logout', c:'', sp:12, p:82},
+    {t:'  Logged out. Credentials cleared.', c:'g', sp:4, p:110},
+    {t:'$ claude /login', c:'', sp:12, p:82},
+    {t:'  Opening browser… paste code#state when done:', c:'y', sp:4, p:154},
+    {t:'  › ', c:'o', sp:33, p:330}
+  ];
+  var stop = null;
+  function typeTerm(){
+    if(!termEl) return;
+    if(stop){ stop(); stop = null; }
+    termEl.innerHTML = '';
+    var cur = document.createElement('span'); cur.className = 'cur';
+    if(reduceMotion){
+      LINES.forEach(function(L){
+        var d = document.createElement('div');
+        d.className = 's02a-l' + (L.c ? ' ' + L.c : '');
+        d.textContent = L.t;
+        termEl.appendChild(d);
+      });
+      termEl.lastChild.appendChild(cur);
+      return;
+    }
+    var li = 0, timer = null, dead = false;
+    stop = function(){ dead = true; clearTimeout(timer); };
+    (function line(){
+      if(dead) return;
+      if(li >= LINES.length) return;
+      var L = LINES[li];
+      var d = document.createElement('div');
+      d.className = 's02a-l' + (L.c ? ' ' + L.c : '');
+      termEl.appendChild(d); d.appendChild(cur);
+      var ci = 0;
+      (function ch(){
+        if(dead) return;
+        if(ci < L.t.length){
+          d.insertBefore(document.createTextNode(L.t.charAt(ci++)), cur);
+          timer = setTimeout(ch, L.sp || 16);
+        } else {
+          li++;
+          timer = setTimeout(line, L.p || 240);
+        }
+      })();
+    })();
+  }
+  vars[0]._onShow = typeTerm;
+  typeTerm();
+
+  /* ══ B · The Two Numbers ══════════════════════════════════ */
+  var HOT  = { John: {s:97, w:71, m:88} };
+  var PAIR = [ACCTS[2], ACCTS[1]]; /* John, Derek */
+  var p1 = document.getElementById('s02b-p1');
+  var p2 = document.getElementById('s02b-p2');
+  if(p1) renderApp(p1, {
+    accounts: PAIR, active: 0, override: HOT, busy: true, upd: '0S', every: '5 MIN', req: 41,
+    fluid: true, toast: false,
+    banner: 'WEEKLY LIMIT REACHED ON JOHN · RESETS WED 3 PM'
+  });
+  if(p2) renderApp(p2, {
+    accounts: PAIR, active: 1, upd: '2S', every: '5 MIN', req: 42,
+    fluid: true, toast: false
+  });
+  var bRoot = document.getElementById('s02b-root');
+  var bT = null;
+  vars[1]._onShow = function(){
+    if(!bRoot) return;
+    clearTimeout(bT);
+    bRoot.classList.remove('lit');
+    if(reduceMotion){ bRoot.classList.add('lit'); return; }
+    bT = setTimeout(function(){ bRoot.classList.add('lit'); }, 620);
+  };
+
+  /* ══ C · The Spreadsheet In Your Head ═════════════════════ */
+  var cApp = document.getElementById('s02c-app');
+  if(cApp) renderApp(cApp, {
+    active: 2, tape: true, fluid: true, toast: false,
+    upd: '8S', every: '5 MIN', req: 118
+  });
+  var cRoot = document.getElementById('s02c-root');
+  var cNotes = cRoot ? cRoot.querySelectorAll('.s02c-note') : [];
+  var cT = [];
+  vars[2]._onShow = function(){
+    if(!cRoot) return;
+    cT.forEach(clearTimeout); cT = [];
+    cRoot.classList.remove('lit', 'answered');
+    cNotes.forEach(function(n){ n.style.transitionDelay = ''; });
+    if(reduceMotion){ cRoot.classList.add('lit', 'answered'); return; }
+    cNotes.forEach(function(n, i){ n.style.transitionDelay = (i * 110) + 'ms'; });
+    cT.push(setTimeout(function(){ cRoot.classList.add('lit'); }, 60));
+    cT.push(setTimeout(function(){
+      cNotes.forEach(function(n, i){ n.style.transitionDelay = (i * 90) + 'ms'; });
+      cRoot.classList.add('answered');
+    }, 1500));
+  };
+})();</script>

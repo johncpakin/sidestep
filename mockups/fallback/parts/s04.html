@@ -1,0 +1,256 @@
+<style>/* s04 */
+#s04{padding:0}
+/* ── A · Drag It ───────────────────────────────────────────── */
+.s04a-wrap{padding:104px 0 112px}
+.s04a-grid{display:grid;grid-template-columns:minmax(300px,1fr) auto;gap:48px;align-items:center}
+.s04a-h{font-size:clamp(52px,7.4vw,92px);line-height:.9;font-weight:700;letter-spacing:-.03em;margin:14px 0 18px}
+.s04a-h b{color:var(--acc);font-weight:700}
+.s04a-p{font-size:16.5px;line-height:1.6;color:var(--ink2);max-width:44ch}
+.s04a-call{margin-top:20px;border-left:2px solid var(--warn);background:rgba(240,179,42,.06);padding:12px 14px;font:400 13.5px/1.6 var(--sans);color:var(--ink2);border-radius:0 8px 8px 0}
+.s04a-call b{color:var(--warn);font-weight:600}
+.s04a-read{margin-top:26px;border:1px solid var(--line);border-radius:11px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));padding:14px 16px 15px}
+.s04a-rl{font:500 9.5px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink4)}
+.s04a-rv{display:flex;align-items:center;gap:11px;margin-top:8px;font:600 34px var(--mono);color:var(--ink);letter-spacing:-.01em;font-variant-numeric:tabular-nums;line-height:1}
+.s04a-dot{width:12px;height:12px;border-radius:50%;background:var(--acc);box-shadow:0 0 10px var(--acc);flex:none;transition:background .3s,box-shadow .3s}
+.s04a-rw{margin-top:9px;font:400 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.s04a-rw b{color:var(--acc);font-weight:500}
+.s04a-stage{display:flex;justify-content:flex-end}
+.s04a-zoom{zoom:1.5}
+.s04a-hint{margin-top:16px;text-align:right;font:400 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink4)}
+/* ── B · Three Writes ──────────────────────────────────────── */
+.s04b-wrap{padding:100px 0 108px}
+.s04b-head{max-width:64ch}
+.s04b-h{font-size:clamp(32px,4.2vw,46px);font-weight:700;margin:12px 0 12px;line-height:1.02}
+.s04b-sub{font-size:16px;line-height:1.6;color:var(--ink2)}
+.s04b-cols{margin-top:44px;display:grid;grid-template-columns:1fr 30px 1fr 30px 1fr;align-items:stretch;gap:0}
+.s04b-card{border:1px solid var(--line2);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));padding:18px 18px 20px;display:flex;flex-direction:column;gap:12px;transition:border-color .35s,box-shadow .35s}
+.s04b-card.lit{border-color:rgba(245,133,31,.45);box-shadow:0 0 0 1px rgba(245,133,31,.12),0 14px 40px rgba(0,0,0,.4)}
+.s04b-n{display:flex;align-items:center;gap:10px}
+.s04b-n i{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;font:700 12px var(--mono);font-style:normal;color:var(--ink3);background:rgba(255,255,255,.06);border:1px solid var(--line2);flex:none;transition:.35s}
+.s04b-card.lit .s04b-n i{background:var(--acc);border-color:var(--acc);color:#1a0d02}
+.s04b-n span{font:600 12px var(--cond);letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.s04b-card p{font:400 13.5px/1.6 var(--sans);color:var(--ink3)}
+.s04b-card .term{font-size:11.4px;line-height:1.85;padding:12px 13px}
+.s04b-card .term b{color:var(--ink);font-weight:500}
+.s04b-arrow{display:grid;place-items:center;color:var(--ink4);font:400 16px var(--mono)}
+.s04b-arrow em{font-style:normal;display:block;transform:translateY(-2px)}
+.s04b-tail{margin-top:38px;display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center}
+.s04b-tail p{font:400 15px/1.65 var(--sans);color:var(--ink2)}
+.s04b-tail p b{color:var(--ink);font-weight:600}
+.s04b-mb{display:flex;flex-direction:column;gap:9px}
+.s04b-mblbl{font:500 9.5px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink4)}
+/* ── C · The Locked Gate ───────────────────────────────────── */
+.s04c-bg{background:radial-gradient(900px 460px at 26% 26%,rgba(240,179,42,.15),transparent 68%),linear-gradient(180deg,#161209,#10141a 62%);border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);padding:100px 0 108px}
+.s04c-grid{display:grid;grid-template-columns:480px 1fr;gap:56px;align-items:start}
+.s04c-h{font-size:clamp(32px,4.2vw,48px);font-weight:700;line-height:1.02;margin:12px 0 16px}
+.s04c-h b{color:var(--warn);font-weight:700}
+.s04c-copy p{font:400 16px/1.62 var(--sans);color:var(--ink2);max-width:52ch}
+.s04c-list{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
+.s04c-list li{display:flex;gap:12px;align-items:flex-start;font:400 14px/1.55 var(--sans);color:var(--ink2);border-top:1px solid var(--line2);padding-top:12px}
+.s04c-list li i{font-style:normal;font:500 9.5px var(--mono);letter-spacing:.14em;color:var(--warn);width:78px;flex:none;text-transform:uppercase;padding-top:3px}
+.s04c-list li b{color:var(--ink);font-weight:600}
+.s04c-panel{position:relative}
+.s04c-pulse{animation:s04c-pulse 1.05s ease-out 2}
+@keyframes s04c-pulse{0%{box-shadow:0 0 0 0 rgba(240,179,42,.55)}70%{box-shadow:0 0 0 10px rgba(240,179,42,0)}100%{box-shadow:0 0 0 0 rgba(240,179,42,0)}}
+@media (max-width:1080px){
+  .s04a-zoom{zoom:1.2}
+  .s04c-grid{grid-template-columns:1fr;gap:40px}
+  .s04b-tail{grid-template-columns:1fr;gap:26px}
+}
+@media (max-width:900px){
+  .s04a-wrap,.s04b-wrap,.s04c-bg{padding:72px 0 76px}
+  .s04a-grid{grid-template-columns:1fr;gap:34px}
+  .s04a-stage{justify-content:flex-start}
+  .s04a-zoom{zoom:1}
+  .s04a-hint{text-align:left}
+  .s04b-cols{grid-template-columns:1fr;gap:14px}
+  .s04b-arrow{height:20px}
+  .s04b-arrow em{transform:rotate(90deg)}
+}
+</style>
+<section class="sblk" id="s04" data-sec="s04" data-count="3">
+  <header class="sbar"><div class="sbar-w">
+    <div class="sbar-id"><span class="sbar-n">04</span><span class="sbar-t">The shifter</span><span class="sbar-k">one slot, one gate per account, no restart</span></div>
+    <div class="sbar-nav"><span class="sbar-lbl" data-lbl>Drag It</span>
+      <button class="sw-arw" data-step="-1" aria-label="Previous version">‹</button>
+      <div class="sw-dots"><button class="sw-dot on" data-go="0" title="Drag It">A</button><button class="sw-dot" data-go="1" title="Three Writes">B</button><button class="sw-dot" data-go="2" title="The Locked Gate">C</button></div>
+      <button class="sw-arw" data-step="1" aria-label="Next version">›</button></div>
+  </div></header>
+  <div class="vars">
+
+    <!-- ═══ A · Drag It ═══ -->
+    <div class="var on" data-var="0" data-label="Drag It">
+      <div class="s04a-wrap"><div class="w">
+        <div class="s04a-grid">
+          <div class="s04a-copy rv">
+            <div class="eyebrow"><b>04</b> · The shifter</div>
+            <h2 class="s04a-h">Go <b>on.</b></h2>
+            <p class="s04a-p">A slot down the left, one gate per account, a knob parked in the one you're using. Grab it, pull it down a gate, let go. It chunks into place and Claude Code is on the other account before you've finished the sentence you were typing.</p>
+            <div class="s04a-call">Try dropping it on <b>Alexa</b>. Her refresh token went bad, so her gate is hatched, and the knob shakes and springs back. The app would rather say no than switch you onto a login that doesn't work.</div>
+            <div class="s04a-read">
+              <div class="s04a-rl">Menu bar title</div>
+              <div class="s04a-rv"><span class="s04a-dot" id="s04a-dot"></span><span id="s04a-num">17% · 4%</span></div>
+              <div class="s04a-rw">session · weekly for <b id="s04a-who">John</b></div>
+            </div>
+          </div>
+          <div class="s04a-stage rv d1">
+            <div>
+              <div class="s04a-zoom"><div id="s04a-app"></div></div>
+              <div class="s04a-hint">Drag the knob · or click a gate</div>
+            </div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- ═══ B · Three Writes ═══ -->
+    <div class="var" data-var="1" data-label="Three Writes">
+      <div class="s04b-wrap"><div class="w">
+        <div class="s04b-head rv">
+          <div class="eyebrow"><b>04</b> · The shifter</div>
+          <h2 class="s04b-h">A switch is three writes. Here they are.</h2>
+          <p class="s04b-sub">No daemon, no shim, no rewriting of Claude Code. Sidestep edits the three places your login actually lives and gets out of the way. In this order.</p>
+        </div>
+        <div class="s04b-cols">
+          <div class="s04b-card rv" id="s04b-c1">
+            <div class="s04b-n"><i>1</i><span>Snapshot</span></div>
+            <p>The login that's leaving gets filed to disk under its own email, so it's still there when you want it back.</p>
+            <div class="term">$ write <b>~/.cli-proxy-api/</b><br>&nbsp;&nbsp;&nbsp;&nbsp;<b>claude-john@sidestep.sh.json</b><br><span class="g">access + refresh + expiry, 0600</span></div>
+          </div>
+          <div class="s04b-arrow rv d1"><em>→</em></div>
+          <div class="s04b-card rv d1" id="s04b-c2">
+            <div class="s04b-n"><i>2</i><span>Swap</span></div>
+            <p>The account you picked gets written into the one Keychain item Claude Code reads. Same item, new tokens.</p>
+            <div class="term"><span class="g">$ security add-generic-password \</span><br>&nbsp;&nbsp;-s <span class="o">"Claude Code-credentials"</span> \<br>&nbsp;&nbsp;-a <b>john</b> -U</div>
+          </div>
+          <div class="s04b-arrow rv d2"><em>→</em></div>
+          <div class="s04b-card rv d2" id="s04b-c3">
+            <div class="s04b-n"><i>3</i><span>Point</span></div>
+            <p>One field in your config says which account is yours. It gets updated, and the old file is kept next to it.</p>
+            <div class="term"><span class="g">~/.claude.json · bak .sidestep-bak</span><br><span class="r">- "oauthAccount": john@sidestep.sh</span><br><span class="o">+ "oauthAccount": derek@sidestep.sh</span></div>
+          </div>
+        </div>
+        <div class="s04b-tail">
+          <p class="rv d3">Claude Code doesn't hold your token in memory. Every turn it shells out to <code>security find-generic-password</code> and caches the answer for <b>30 seconds</b>. So the session you left running in the other window picks up the new account on its next turn, all by itself. <b>Nothing restarts.</b> No relaunch, no "please quit and reopen", no lost context.</p>
+          <div class="s04b-mb rv d3">
+            <div class="s04b-mblbl">Menu bar title</div>
+            <div class="mb"><div class="l"><span class="a">Claude</span><span>File</span><span>Edit</span><span>View</span></div><div class="r"><span class="pill" id="s04b-pill"><span class="g"></span><span id="s04b-pt">17% · 4%</span></span><span>100%</span><span>Tue 8:12 PM</span></div></div>
+            <div class="s04b-mblbl" id="s04b-cap">John, 17% into the session</div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- ═══ C · The Locked Gate ═══ -->
+    <div class="var" data-var="2" data-label="The Locked Gate">
+      <div class="s04c-bg"><div class="w">
+        <div class="s04c-grid">
+          <div class="s04c-panel rv"><div id="s04c-app"></div></div>
+          <div class="s04c-copy rv d1">
+            <div class="eyebrow"><b>04</b> · The shifter</div>
+            <h2 class="s04c-h">The gate that <b>won't open.</b></h2>
+            <p>Refresh tokens rot. Sign in somewhere else, let another tool rotate it, leave it alone long enough, and Anthropic stops taking it. Most apps find out at the worst possible moment, halfway through a request. Sidestep finds out on the next poll and tells you before you've committed to anything.</p>
+            <ul class="s04c-list">
+              <li><i>The rows</i><span>Go to dashes. No made-up zero, no stale number from an hour ago. <b>It doesn't know, so it doesn't say.</b></span></li>
+              <li><i>The note</i><span>Names who the token actually belongs to, because half the time you signed in as the wrong person in a browser you forgot was logged in.</span></li>
+              <li><i>The gate</i><span>Goes hatched, and the knob refuses it. <b>You cannot switch onto a broken login by accident.</b></span></li>
+              <li><i>The fix</i><span>Hit SIGN IN, or + ADD ACCOUNT. Real OAuth, real browser, and the fresh token gets written to the proxy copy too, so nothing goes stale behind your back again.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div></div>
+    </div>
+
+  </div>
+</section>
+<script>(function(){
+  var sec = document.getElementById('s04');
+  var vars = sec.querySelectorAll(':scope > .vars > .var');
+  var dotc = function(p){ return p>=80?'var(--crit)':p>=50?'var(--warn)':'var(--acc)'; };
+
+  /* ── A · Drag It ── */
+  var aNum = document.getElementById('s04a-num'), aWho = document.getElementById('s04a-who'), aDot = document.getElementById('s04a-dot');
+  function aRead(a){
+    var hi = Math.max(a.s, a.w), c = dotc(hi);
+    aNum.textContent = a.s + '% · ' + a.w + '%';
+    aWho.textContent = a.k;
+    aDot.style.background = c; aDot.style.boxShadow = '0 0 10px ' + c;
+    pillTo(a.s, a.w);
+  }
+  var aApp = renderApp(document.getElementById('s04a-app'), {
+    header:false, footer:false, active:2,
+    onSwitch:function(a){ if(a && a.s != null) aRead(a); }
+  });
+
+  /* The panel is drawn at 1.5x, so pointer travel and panel pixels disagree.
+     Park the real knob, ride a mirror of it, and divide the drag by the zoom. */
+  function zoomDrag(app, wrap){
+    var sh = app.querySelector('.shifter'), orig = app.querySelector('.knob');
+    if(!sh || !orig) return;
+    orig.style.visibility = 'hidden'; orig.style.pointerEvents = 'none';
+    var knob = document.createElement('div');
+    knob.className = 'knob'; knob.title = 'Drag to switch account';
+    sh.appendChild(knob);
+    var dragging = false, sy = 0, st = 0, z = 1;
+    function sync(){ if(dragging) return; knob.style.top = orig.style.top; knob.className = orig.className; }
+    sync();
+    new MutationObserver(sync).observe(orig, {attributes:true, attributeFilter:['style','class']});
+    function tops(){ return [].map.call(app.querySelectorAll('.gate'), function(g){ return parseFloat(g.style.top); }); }
+    function near(G,y){ var n=0; G.forEach(function(g,j){ if(Math.abs(g-y) < Math.abs(G[n]-y)) n=j; }); return n; }
+    function mark(n){ [].forEach.call(app.querySelectorAll('.gate'), function(g,j){ g.classList.toggle('on', j===n); }); }
+    knob.addEventListener('pointerdown', function(e){
+      var G = tops(); if(!G.length) return;
+      z = parseFloat(getComputedStyle(wrap).zoom) || 1;
+      dragging = true; sy = e.clientY; st = parseFloat(knob.style.top) || G[0];
+      knob.classList.add('drag'); knob.setPointerCapture(e.pointerId);
+    });
+    knob.addEventListener('pointermove', function(e){
+      if(!dragging) return; var G = tops();
+      var y = Math.max(G[0], Math.min(G[G.length-1], st + (e.clientY - sy)/z));
+      knob.style.top = y + 'px'; mark(near(G, y));
+    });
+    knob.addEventListener('pointerup', function(){
+      if(!dragging) return; dragging = false; knob.classList.remove('drag');
+      var G = tops(), n = near(G, parseFloat(knob.style.top)), cur = app._active();
+      knob.style.transition = 'none'; knob.style.top = G[cur] + 'px';
+      void knob.offsetWidth; knob.style.transition = ''; mark(cur);
+      setTimeout(function(){ app._go(n); }, 20);
+    });
+  }
+  zoomDrag(aApp, document.querySelector('.s04a-zoom'));
+
+  vars[0]._onShow = function(){ aApp._layout && aApp._layout(); };
+
+  /* ── B · Three Writes ── */
+  var cards = ['s04b-c1','s04b-c2','s04b-c3'].map(function(id){ return document.getElementById(id); });
+  var bPt = document.getElementById('s04b-pt'), bPill = document.getElementById('s04b-pill'), bCap = document.getElementById('s04b-cap');
+  var bT = [];
+  vars[1]._onShow = function(){
+    bT.forEach(clearTimeout); bT = [];
+    cards.forEach(function(c){ c.classList.remove('lit'); });
+    bPt.textContent = '17% · 4%'; bCap.textContent = 'John, 17% into the session';
+    bPill.querySelector('.g').className = 'g';
+    var step = reduceMotion ? 0 : 300;
+    cards.forEach(function(c,i){ bT.push(setTimeout(function(){ c.classList.add('lit'); }, step*i)); });
+    bT.push(setTimeout(function(){
+      bPt.textContent = '0% · 0%'; bCap.textContent = 'Derek, fresh weekly, same window';
+    }, step*4));
+  };
+
+  /* ── C · The Locked Gate ── */
+  var cApp = renderApp(document.getElementById('s04c-app'), {
+    active:2, footer:true, banner:'ALEXA · REFRESH TOKEN REJECTED · SIGN IN AGAIN', toast:false
+  });
+  var cT = [];
+  vars[2]._onShow = function(){
+    cT.forEach(clearTimeout); cT = [];
+    cApp._layout && cApp._layout();
+    var knob = cApp.querySelector('.knob'), gates = cApp.querySelectorAll('.gate'), btn = cApp.querySelector('.glass.warn');
+    if(!knob || !gates.length) return;
+    if(btn) btn.classList.remove('s04c-pulse');
+    if(reduceMotion){ if(btn) btn.classList.add('s04c-pulse'); return; }
+    cT.push(setTimeout(function(){ knob.style.top = gates[0].style.top; }, 420));
+    cT.push(setTimeout(function(){ cApp._go(0); }, 880));
+    cT.push(setTimeout(function(){ if(btn){ btn.classList.remove('s04c-pulse'); void btn.offsetWidth; btn.classList.add('s04c-pulse'); } }, 1180));
+  };
+})();</script>
