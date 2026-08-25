@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sidestep Looks</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Geist+Mono:wght@400;500&family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+  :root{
+    --page-bg:#e9e7e2; --page-ink:#1f1d1a; --page-muted:#6b665d; --page-line:#d3cfc6; --page-card:#f6f5f2;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ --page-bg:#151513; --page-ink:#ebe8e1; --page-muted:#928c80; --page-line:#2b2a26; --page-card:#1d1d1a; }
+  }
+  :root[data-theme="dark"]{ --page-bg:#151513; --page-ink:#ebe8e1; --page-muted:#928c80; --page-line:#2b2a26; --page-card:#1d1d1a; }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page-bg);color:var(--page-ink);font-family:Manrope,-apple-system,"Helvetica Neue",sans-serif;padding:40px 32px 64px}
+  .intro{max-width:64ch;margin:0 auto 36px}
+  .intro h1{font:600 28px/1.15 "Bricolage Grotesque",Manrope,sans-serif;margin:0 0 10px;text-wrap:balance}
+  .intro p{margin:0;color:var(--page-muted);font-size:14px;line-height:1.55}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(480px,1fr));gap:40px 32px;max-width:1080px;margin:0 auto}
+  @media (max-width:560px){.grid{grid-template-columns:1fr}.panel{transform:scale(.85);transform-origin:top left}}
+  .look{display:flex;flex-direction:column;gap:14px}
+  .cap{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:12.5px;line-height:1.5;padding:12px 14px;background:var(--page-card);border:1px solid var(--page-line);border-radius:6px}
+  .cap b{font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:10.5px;color:var(--page-muted);padding-top:2px}
+  .cap span{color:var(--page-ink)}
+  .panel{width:480px;border-radius:12px;overflow:hidden;box-shadow:0 18px 48px rgba(0,0,0,.28),0 1px 0 rgba(255,255,255,.06) inset;font-variant-numeric:tabular-nums}
+  .foot{max-width:64ch;margin:40px auto 0;font-size:12px;color:var(--page-muted);line-height:1.5}
+
+  /* ───────── 1 · FLIGHT DECK ───────── */
+  .fd{background:#1b2028;color:#d7dde6;font-family:"IBM Plex Sans Condensed","Helvetica Neue",Arial,sans-serif;padding:14px 16px 16px}
+  .fd .hdr{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid #2f3742;padding-bottom:8px;margin-bottom:10px}
+  .fd .hdr h2{margin:0;font:600 13px/1 "IBM Plex Sans Condensed",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#9fb0c4}
+  .fd .hdr small{font:400 11px "IBM Plex Mono",monospace;color:#6c7a8c}
+  .fd .acct{display:grid;grid-template-columns:118px 1fr;gap:6px 12px;padding:9px 0;border-bottom:1px solid #242b35}
+  .fd .acct:last-of-type{border-bottom:0}
+  .fd .who{display:flex;flex-direction:column;gap:3px}
+  .fd .who .n{font-weight:600;font-size:14px;letter-spacing:.01em}
+  .fd .who .t{font:400 10px "IBM Plex Mono",monospace;color:#6c7a8c;letter-spacing:.06em}
+  .fd .who .act{display:inline-block;margin-top:2px;font:500 9px "IBM Plex Mono",monospace;color:#1b2028;background:#7fd3a3;padding:2px 5px;letter-spacing:.12em;width:max-content}
+  .fd .rows{display:flex;flex-direction:column;gap:5px}
+  .fd .row{display:grid;grid-template-columns:52px 1fr 40px 74px;align-items:center;gap:8px;font:400 10.5px "IBM Plex Mono",monospace}
+  .fd .row .lbl{color:#8a99ad;letter-spacing:.06em}
+  .fd .row .pct{text-align:right;font-weight:500;color:#e8eef5}
+  .fd .row .rst{color:#6c7a8c;text-align:right}
+  .fd .ladder{display:grid;grid-template-columns:repeat(24,1fr);gap:2px;height:10px}
+  .fd .ladder i{background:#2a323d;border-radius:1px}
+  .fd .ladder[data-p] i{--on:#6fbe8e}
+  .fd .ladder.warn i{--on:#e9b35b}.fd .ladder.crit i{--on:#e46f5a}
+  .fd .ladder i.on{background:var(--on);box-shadow:0 0 6px color-mix(in oklab,var(--on) 60%,transparent)}
+  .fd .tape{margin-top:12px;border-top:1px solid #2f3742;padding-top:8px}
+  .fd .tape .rule{position:relative;height:38px;background:repeating-linear-gradient(90deg,#3a4452 0 1px,transparent 1px 100%/calc(100%/14));background-size:calc(100%/14) 100%}
+  .fd .tape .now{position:absolute;left:50%;top:-4px;bottom:0;width:1px;background:#7fd3a3}
+  .fd .tape .now::after{content:"NOW";position:absolute;top:-10px;left:4px;font:500 8px "IBM Plex Mono",monospace;color:#7fd3a3;letter-spacing:.14em}
+  .fd .tape .win{position:absolute;height:5px;background:#3f4b5b;border-radius:1px}
+  .fd .tape .win b{position:absolute;left:0;top:0;bottom:0;background:#6fbe8e;border-radius:1px}
+  .fd .tape .win.warn b{background:#e9b35b}
+  .fd .tape .win::after{content:attr(data-l);position:absolute;right:-2px;top:7px;font:400 8px "IBM Plex Mono",monospace;color:#6c7a8c;white-space:nowrap}
+  .fd .tape .days{display:flex;justify-content:space-between;font:400 8px "IBM Plex Mono",monospace;color:#526073;margin-top:4px;letter-spacing:.1em}
+
+  /* ───────── 2 · LEDGER ───────── */
+  .lg{background:#f9f8f4;color:#1c2333;font-family:Manrope,"Helvetica Neue",sans-serif;padding:18px 20px 16px}
+  .lg .hdr{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #1c2333;padding-bottom:8px}
+  .lg .hdr h2{margin:0;font:600 22px/1 Fraunces,Georgia,serif;font-variation-settings:"opsz" 40;letter-spacing:-.01em}
+  .lg .hdr small{font-size:11px;color:#6d7385;letter-spacing:.04em}
+  .lg .acct{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:12px 0;border-bottom:1px solid #d9dbe0}
+  .lg .acct:last-of-type{border-bottom:0}
+  .lg .n{font-weight:600;font-size:13.5px}
+  .lg .n em{font-style:normal;font-weight:500;color:#6d7385;font-size:11px;margin-left:8px}
+  .lg .n .act{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#1f7a6d;margin-left:8px}
+  .lg .big{font:700 30px/1 Fraunces,Georgia,serif;font-variation-settings:"opsz" 96;color:#1c2333;text-align:right;grid-row:span 3;align-self:center;letter-spacing:-.02em}
+  .lg .big s{text-decoration:none;font-size:14px;color:#6d7385;font-weight:400}
+  .lg .rule{display:grid;grid-template-columns:70px 1fr 38px 96px;align-items:center;gap:10px;font-size:11px;color:#3d4457}
+  .lg .rule .l{color:#6d7385}
+  .lg .rule .p{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+  .lg .rule .r{color:#6d7385;text-align:right;font-size:10.5px}
+  .lg .ink{position:relative;height:8px;border:1px solid #1c2333;border-radius:0}
+  .lg .ink b{position:absolute;inset:0;right:auto;background:repeating-linear-gradient(135deg,#1c2333 0 1.5px,transparent 1.5px 4px);}
+  .lg .ink.acc b{background:repeating-linear-gradient(135deg,#1f7a6d 0 1.5px,transparent 1.5px 4px)}
+  .lg .ink.crit{border-color:#a8412f}.lg .ink.crit b{background:#a8412f}
+  .lg .tl{margin-top:12px;padding-top:10px;border-top:2px solid #1c2333}
+  .lg .tl .head{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#6d7385;margin-bottom:6px}
+  .lg .tl .lane{display:grid;grid-template-columns:78px 1fr;gap:8px;align-items:center;font-size:11px;padding:3px 0}
+  .lg .tl .lane .bar{position:relative;height:7px;background:repeating-linear-gradient(90deg,#d9dbe0 0 1px,transparent 1px 100%);background-size:calc(100%/14) 100%}
+  .lg .tl .lane .bar::before{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:#a8412f}
+  .lg .tl .w{position:absolute;top:0;bottom:0;border:1px solid #1c2333;background:#f9f8f4}
+  .lg .tl .w b{position:absolute;inset:0;right:auto;background:repeating-linear-gradient(135deg,#1c2333 0 1.5px,transparent 1.5px 4px)}
+  .lg .tl .w::after{content:attr(data-l);position:absolute;left:calc(100% + 5px);top:-3px;font-size:9.5px;color:#6d7385;white-space:nowrap}
+  .lg .tl .w.flip::after{left:auto;right:calc(100% + 5px)}
+
+  /* ───────── 3 · SONAR ───────── */
+  .sn{background:radial-gradient(120% 90% at 30% 0%,#123239 0%,#0b1f25 55%,#081a1f 100%);color:#d9ecef;font-family:"Bricolage Grotesque",Manrope,sans-serif;padding:16px 18px 18px}
+  .sn .hdr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+  .sn .hdr h2{margin:0;font:800 20px/1 "Bricolage Grotesque",sans-serif;font-variation-settings:"opsz" 96;letter-spacing:-.02em;color:#e8f4f6}
+  .sn .hdr small{font:400 10.5px "Geist Mono",monospace;color:#6f9aa3}
+  .sn .list{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .sn .card{display:grid;grid-template-columns:76px 1fr;gap:10px;align-items:center;padding:10px 10px;border-radius:10px;background:rgba(255,255,255,.035);border:1px solid rgba(154,206,214,.12)}
+  .sn .card.active{border-color:#5fd4c4;background:rgba(95,212,196,.07)}
+  .sn .rings{width:76px;height:76px;position:relative}
+  .sn .rings svg{width:76px;height:76px;transform:rotate(-90deg)}
+  .sn .rings circle{fill:none;stroke-linecap:round}
+  .sn .rings .tr{stroke:rgba(154,206,214,.14)}
+  .sn .rings .w{stroke:#5fd4c4}.sn .rings .w.warn{stroke:#f0b55a}.sn .rings .w.crit{stroke:#f2705e}
+  .sn .rings .s{stroke:#9bd7ff}
+  .sn .rings .dot{position:absolute;inset:0;display:grid;place-items:center;font:500 13px "Geist Mono",monospace;color:#e8f4f6}
+  .sn .rings .dot small{display:block;font-size:8px;color:#6f9aa3;letter-spacing:.1em;text-align:center}
+  .sn .meta{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .sn .meta .n{font-weight:600;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sn .meta .n i{font-style:normal;color:#5fd4c4;font-size:9px;letter-spacing:.12em;margin-left:6px;vertical-align:1px}
+  .sn .meta .k{font:400 10px "Geist Mono",monospace;color:#8fb7be;display:flex;gap:6px;align-items:center}
+  .sn .meta .k::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--c)}
+  .sn .meta .k b{color:#e8f4f6;font-weight:500}
+  .sn .meta .btn{margin-top:4px;font:500 10px "Geist Mono",monospace;color:#0b1f25;background:#9bd7ff;border:0;border-radius:4px;padding:3px 7px;width:max-content;letter-spacing:.06em}
+  .sn .strip{margin-top:12px;position:relative;height:46px;border-top:1px solid rgba(154,206,214,.14)}
+  .sn .strip .axis{position:absolute;left:0;right:0;top:20px;height:1px;background:rgba(154,206,214,.25)}
+  .sn .strip .now{position:absolute;left:50%;top:6px;height:30px;width:1px;background:#5fd4c4;box-shadow:0 0 8px #5fd4c4}
+  .sn .strip .now::before{content:"now";position:absolute;top:-8px;left:5px;font:400 9px "Geist Mono",monospace;color:#5fd4c4}
+  .sn .strip .m{position:absolute;top:20px;width:9px;height:9px;border-radius:50%;transform:translate(-50%,-50%);background:var(--c);box-shadow:0 0 10px var(--c)}
+  .sn .strip .m::after{content:attr(data-l);position:absolute;top:10px;left:50%;transform:translateX(-50%);white-space:nowrap;font:400 9px "Geist Mono",monospace;color:#8fb7be}
+  .sn .strip .m.up::after{top:auto;bottom:10px}
+  .sn .strip .d{position:absolute;bottom:0;font:400 8px "Geist Mono",monospace;color:#4f7f88;transform:translateX(-50%)}
+
+  /* ───────── 4 · CHANNEL STRIP ───────── */
+  .cs{background:linear-gradient(180deg,#2b2b2e,#202023);color:#e6e2da;font-family:Rajdhani,"Helvetica Neue",sans-serif;padding:12px 14px 14px}
+  .cs .hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .cs .hdr h2{margin:0;font:700 15px/1 Rajdhani,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#c9c3b8}
+  .cs .hdr small{font:400 10px "JetBrains Mono",monospace;color:#8b857a}
+  .cs .rack{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .cs .ch{background:linear-gradient(180deg,#39393d,#2a2a2d);border:1px solid #17171a;border-radius:6px;padding:8px 8px 9px;display:flex;flex-direction:column;align-items:center;gap:7px;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+  .cs .ch .scribble{width:100%;background:#eae4d3;color:#1c1c1c;font:700 11px/1.1 Rajdhani,sans-serif;letter-spacing:.04em;text-align:center;padding:5px 3px;border-radius:2px;text-transform:uppercase;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cs .ch.active .scribble{background:#8fd46b}
+  .cs .ch .tier{font:400 8.5px "JetBrains Mono",monospace;color:#8b857a;letter-spacing:.08em}
+  .cs .meters{display:grid;grid-template-columns:22px 14px 8px;gap:6px;align-items:end;height:118px}
+  .cs .fader{position:relative;height:100%;width:22px;background:#151517;border-radius:3px;box-shadow:inset 0 0 0 1px #0d0d0f}
+  .cs .fader::before{content:"";position:absolute;left:50%;top:6px;bottom:6px;width:2px;margin-left:-1px;background:#0a0a0b}
+  .cs .fader .fill{position:absolute;left:3px;right:3px;bottom:3px;border-radius:2px;background:linear-gradient(0deg,#8fd46b,#c8e36a 70%,#f0b755)}
+  .cs .fader .fill.crit{background:linear-gradient(0deg,#8fd46b,#f0b755 55%,#ef6a52)}
+  .cs .fader .knob{position:absolute;left:-3px;right:-3px;height:14px;background:linear-gradient(180deg,#d5d0c6,#8f8a80);border-radius:2px;box-shadow:0 2px 3px rgba(0,0,0,.6);transform:translateY(50%)}
+  .cs .fader .knob::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:#2a2a2d}
+  .cs .led{display:flex;flex-direction:column-reverse;gap:2px;height:100%;width:14px}
+  .cs .led i{flex:1;background:#151517;border-radius:1px}
+  .cs .led i.on{background:#8fd46b;box-shadow:0 0 4px #8fd46b}
+  .cs .led i.on.y{background:#f0b755;box-shadow:0 0 4px #f0b755}
+  .cs .led i.on.r{background:#ef6a52;box-shadow:0 0 4px #ef6a52}
+  .cs .pip{width:8px;height:100%;background:#151517;border-radius:4px;position:relative}
+  .cs .pip b{position:absolute;left:1px;right:1px;bottom:1px;border-radius:3px;background:#9bd7ff}
+  .cs .vals{display:grid;grid-template-columns:22px 14px 8px;gap:6px;font:600 9px "JetBrains Mono",monospace;text-align:center;color:#c9c3b8}
+  .cs .rst{font:400 8.5px "JetBrains Mono",monospace;color:#8b857a;text-align:center;line-height:1.4}
+  .cs .btn{font:700 10px Rajdhani,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#1c1c1c;background:#c9c3b8;border:0;border-radius:3px;padding:3px 9px;width:100%}
+  .cs .btn.on{background:#8fd46b}
+  .cs .legend{display:flex;gap:14px;justify-content:center;margin-top:10px;font:400 8.5px "JetBrains Mono",monospace;color:#8b857a;letter-spacing:.08em}
+
+  @media (prefers-reduced-motion:no-preference){
+    .fd .ladder i.on:last-of-type,.cs .led i.on:last-child{animation:blink 1.6s ease-in-out infinite}
+    @keyframes blink{50%{opacity:.55}}
+  }
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <h1>Four looks for the Sidestep panel</h1>
+  <p>Same content in every one — alexa, Lilabot, derek and john with session, weekly and model-scoped buckets plus the ±7-day reset windows. What changes is the instrument: how the bar is drawn, what typeface carries the numbers, and what kind of object the panel pretends to be.</p>
+</div>
+
+<div class="grid">
+
+<!-- 1 · FLIGHT DECK -->
+<div class="look">
+  <div class="panel fd">
+    <div class="hdr"><h2>Claude · Usage</h2><small>upd 00:42 ago · every 5m · 118 req</small></div>
+
+    <div class="acct">
+      <div class="who"><span class="n">alexa</span><span class="t">MAX 20X</span><span class="act">ACTIVE</span></div>
+      <div class="rows">
+        <div class="row"><span class="lbl">5H</span><div class="ladder" data-p="6"></div><span class="pct">6%</span><span class="rst">2:09P</span></div>
+        <div class="row"><span class="lbl">7D</span><div class="ladder" data-p="30"></div><span class="pct">30%</span><span class="rst">TUE 7P</span></div>
+        <div class="row"><span class="lbl">FABLE</span><div class="ladder" data-p="40"></div><span class="pct">40%</span><span class="rst">TUE 7P</span></div>
+      </div>
+    </div>
+    <div class="acct">
+      <div class="who"><span class="n">Lilabot741</span><span class="t">MAX 20X</span></div>
+      <div class="rows">
+        <div class="row"><span class="lbl">5H</span><div class="ladder" data-p="2"></div><span class="pct">2%</span><span class="rst">2:50P</span></div>
+        <div class="row"><span class="lbl">7D</span><div class="ladder" data-p="3"></div><span class="pct">3%</span><span class="rst">FRI 3P</span></div>
+        <div class="row"><span class="lbl">FABLE</span><div class="ladder" data-p="6"></div><span class="pct">6%</span><span class="rst">FRI 3P</span></div>
+      </div>
+    </div>
+    <div class="acct">
+      <div class="who"><span class="n">derek</span><span class="t">MAX 5X</span></div>
+      <div class="rows">
+        <div class="row"><span class="lbl">5H</span><div class="ladder warn" data-p="41"></div><span class="pct">41%</span><span class="rst">4:30P</span></div>
+        <div class="row"><span class="lbl">7D</span><div class="ladder warn" data-p="62"></div><span class="pct">62%</span><span class="rst">THU 9A</span></div>
+      </div>
+    </div>
+    <div class="acct">
+      <div class="who"><span class="n">john</span><span class="t">MAX 20X</span></div>
+      <div class="rows">
+        <div class="row"><span class="lbl">5H</span><div class="ladder" data-p="12"></div><span class="pct">12%</span><span class="rst">1:15P</span></div>
+        <div class="row"><span class="lbl">7D</span><div class="ladder crit" data-p="78"></div><span class="pct">78%</span><span class="rst">SUN 11P</span></div>
+      </div>
+    </div>
+
+    <div class="tape">
+      <div class="rule">
+        <div class="now"></div>
+        <div class="win" style="left:36%;width:50%;top:4px" data-l="alexa · Tue 7p"><b style="width:30%"></b></div>
+        <div class="win" style="left:50%;width:50%;top:14px" data-l="Lilabot · Fri 3p"><b style="width:3%"></b></div>
+        <div class="win warn" style="left:12%;width:50%;top:24px" data-l="derek · Thu 9a"><b style="width:62%"></b></div>
+        <div class="win warn" style="left:0;width:50%;top:34px" data-l="john · Sun 11p"><b style="width:78%"></b></div>
+      </div>
+      <div class="days"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+    </div>
+  </div>
+  <div class="cap">
+    <b>Look</b><span>Flight deck. A cockpit annunciator — dense, all-caps, everything in a column.</span>
+    <b>Type</b><span>IBM Plex Sans Condensed for names · IBM Plex Mono for every number and reset time.</span>
+    <b>Bars</b><span>24-segment LED ladders; the last lit segment breathes. The reset Gantt becomes a tape ruler with a hatched used-portion.</span>
+    <b>Good at</b><span>Most information per pixel. Reads well at a glance from across the room; four accounts fit without scrolling.</span>
+  </div>
+</div>
+
+<!-- 2 · LEDGER -->
+<div class="look">
+  <div class="panel lg">
+    <div class="hdr"><h2>Usage statement</h2><small>Mon 24 Aug · 10:41</small></div>
+
+    <div class="acct">
+      <div class="n">alexa@example.com <em>Max 20×</em><span class="act">● signed in</span></div>
+      <div class="big">30<s>%</s></div>
+      <div class="rule"><span class="l">Session 5h</span><div class="ink"><b style="width:6%"></b></div><span class="p">6%</span><span class="r">resets 2:09 pm</span></div>
+      <div class="rule"><span class="l">Week</span><div class="ink"><b style="width:30%"></b></div><span class="p">30%</span><span class="r">Tue 7:00 pm</span></div>
+      <div class="rule"><span class="l">Fable</span><div class="ink acc"><b style="width:40%"></b></div><span class="p">40%</span><span class="r">Tue 7:00 pm</span></div>
+    </div>
+    <div class="acct">
+      <div class="n">lilabot@example.com <em>Max 20×</em></div>
+      <div class="big">3<s>%</s></div>
+      <div class="rule"><span class="l">Session 5h</span><div class="ink"><b style="width:2%"></b></div><span class="p">2%</span><span class="r">resets 2:50 pm</span></div>
+      <div class="rule"><span class="l">Week</span><div class="ink"><b style="width:3%"></b></div><span class="p">3%</span><span class="r">Fri 3:00 pm</span></div>
+      <div class="rule"><span class="l">Fable</span><div class="ink acc"><b style="width:6%"></b></div><span class="p">6%</span><span class="r">Fri 3:00 pm</span></div>
+    </div>
+    <div class="acct">
+      <div class="n">derek@example.com <em>Max 5×</em></div>
+      <div class="big">62<s>%</s></div>
+      <div class="rule"><span class="l">Session 5h</span><div class="ink"><b style="width:41%"></b></div><span class="p">41%</span><span class="r">resets 4:30 pm</span></div>
+      <div class="rule"><span class="l">Week</span><div class="ink"><b style="width:62%"></b></div><span class="p">62%</span><span class="r">Thu 9:00 am</span></div>
+    </div>
+    <div class="acct">
+      <div class="n">john@example.com <em>Max 20×</em></div>
+      <div class="big" style="color:#a8412f">78<s>%</s></div>
+      <div class="rule"><span class="l">Session 5h</span><div class="ink"><b style="width:12%"></b></div><span class="p">12%</span><span class="r">resets 1:15 pm</span></div>
+      <div class="rule"><span class="l">Week</span><div class="ink crit"><b style="width:78%"></b></div><span class="p">78%</span><span class="r">Sun 11:00 pm</span></div>
+    </div>
+
+    <div class="tl">
+      <div class="head"><span>Reset windows</span><span>−7 d · today · +7 d</span></div>
+      <div class="lane"><span>alexa</span><div class="bar"><div class="w" style="left:36%;width:50%" data-l="Tue 7p"><b style="width:30%"></b></div></div></div>
+      <div class="lane"><span>Lilabot741</span><div class="bar"><div class="w flip" style="left:50%;width:50%" data-l="Fri 3p"><b style="width:3%"></b></div></div></div>
+      <div class="lane"><span>derek</span><div class="bar"><div class="w" style="left:12%;width:50%" data-l="Thu 9a"><b style="width:62%"></b></div></div></div>
+      <div class="lane"><span>john</span><div class="bar"><div class="w" style="left:0;width:50%" data-l="Sun 11p"><b style="width:78%"></b></div></div></div>
+    </div>
+  </div>
+  <div class="cap">
+    <b>Look</b><span>Ledger. A printed statement — paper white, ink navy, a single verdigris accent for model buckets.</span>
+    <b>Type</b><span>Fraunces at high optical size for the one big weekly number per account · Manrope for everything else.</span>
+    <b>Bars</b><span>Hairline-boxed rules with cross-hatch fill, like a pen drawing. Critical (≥75%) switches to solid brick red so it's the only solid thing on the page.</span>
+    <b>Good at</b><span>Calm. The big numeral answers "which account do I pick" before you read anything else. Light theme — pairs with a light menu bar.</span>
+  </div>
+</div>
+
+<!-- 3 · SONAR -->
+<div class="look">
+  <div class="panel sn">
+    <div class="hdr"><h2>Sidestep</h2><small>4 accounts · 42s ago · 5m</small></div>
+    <div class="list">
+      <div class="card active">
+        <div class="rings">
+          <svg viewBox="0 0 76 76"><circle class="tr" cx="38" cy="38" r="33" stroke-width="6"/><circle class="w" cx="38" cy="38" r="33" stroke-width="6" stroke-dasharray="62.2 207.3"/><circle class="tr" cx="38" cy="38" r="24" stroke-width="5"/><circle class="s" cx="38" cy="38" r="24" stroke-width="5" stroke-dasharray="9 150.8"/></svg>
+          <div class="dot">30<small>WEEK</small></div>
+        </div>
+        <div class="meta">
+          <span class="n">alexa<i>ACTIVE</i></span>
+          <span class="k" style="--c:#5fd4c4">week <b>30%</b> · Tue 7p</span>
+          <span class="k" style="--c:#9bd7ff">5h <b>6%</b> · 2:09p</span>
+          <span class="k" style="--c:#c6a5ff">Fable <b>40%</b></span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="rings">
+          <svg viewBox="0 0 76 76"><circle class="tr" cx="38" cy="38" r="33" stroke-width="6"/><circle class="w" cx="38" cy="38" r="33" stroke-width="6" stroke-dasharray="6.2 207.3"/><circle class="tr" cx="38" cy="38" r="24" stroke-width="5"/><circle class="s" cx="38" cy="38" r="24" stroke-width="5" stroke-dasharray="3 150.8"/></svg>
+          <div class="dot">3<small>WEEK</small></div>
+        </div>
+        <div class="meta">
+          <span class="n">Lilabot741</span>
+          <span class="k" style="--c:#5fd4c4">week <b>3%</b> · Fri 3p</span>
+          <span class="k" style="--c:#9bd7ff">5h <b>2%</b> · 2:50p</span>
+          <span class="k" style="--c:#c6a5ff">Fable <b>6%</b></span>
+          <button class="btn">SWITCH →</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="rings">
+          <svg viewBox="0 0 76 76"><circle class="tr" cx="38" cy="38" r="33" stroke-width="6"/><circle class="w warn" cx="38" cy="38" r="33" stroke-width="6" stroke-dasharray="128.5 207.3"/><circle class="tr" cx="38" cy="38" r="24" stroke-width="5"/><circle class="s" cx="38" cy="38" r="24" stroke-width="5" stroke-dasharray="61.8 150.8"/></svg>
+          <div class="dot">62<small>WEEK</small></div>
+        </div>
+        <div class="meta">
+          <span class="n">derek</span>
+          <span class="k" style="--c:#f0b55a">week <b>62%</b> · Thu 9a</span>
+          <span class="k" style="--c:#9bd7ff">5h <b>41%</b> · 4:30p</span>
+          <button class="btn">SWITCH →</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="rings">
+          <svg viewBox="0 0 76 76"><circle class="tr" cx="38" cy="38" r="33" stroke-width="6"/><circle class="w crit" cx="38" cy="38" r="33" stroke-width="6" stroke-dasharray="161.7 207.3"/><circle class="tr" cx="38" cy="38" r="24" stroke-width="5"/><circle class="s" cx="38" cy="38" r="24" stroke-width="5" stroke-dasharray="18.1 150.8"/></svg>
+          <div class="dot">78<small>WEEK</small></div>
+        </div>
+        <div class="meta">
+          <span class="n">john</span>
+          <span class="k" style="--c:#f2705e">week <b>78%</b> · Sun 11p</span>
+          <span class="k" style="--c:#9bd7ff">5h <b>12%</b> · 1:15p</span>
+          <button class="btn">SWITCH →</button>
+        </div>
+      </div>
+    </div>
+    <div class="strip">
+      <div class="axis"></div><div class="now"></div>
+      <div class="m" style="left:86%;--c:#5fd4c4" data-l="alexa Tue 7p"></div>
+      <div class="m up" style="left:100%;--c:#5fd4c4;margin-left:-6px" data-l="Lila Fri"></div>
+      <div class="m up" style="left:62%;--c:#f0b55a" data-l="derek Thu 9a"></div>
+      <div class="m" style="left:50%;--c:#f2705e;margin-left:8px" data-l="john Sun 11p"></div>
+      <span class="d" style="left:7%">−6d</span><span class="d" style="left:25%">−3d</span><span class="d" style="left:75%">+3d</span><span class="d" style="left:93%">+6d</span>
+    </div>
+  </div>
+  <div class="cap">
+    <b>Look</b><span>Sonar. Deep petrol ground, a 2×2 of cards so all four accounts are visible at once.</span>
+    <b>Type</b><span>Bricolage Grotesque (wide, a little eccentric) for the title and names · Geist Mono for readouts.</span>
+    <b>Bars</b><span>Concentric rings — outer = weekly, inner = 5h session, the number in the middle is the week. Model bucket is a colour-keyed line, not a third ring. Reset timeline collapses to glowing pips on one axis, so overlap is literally two dots touching.</span>
+    <b>Good at</b><span>Comparison. Rings make "who has the most left" a shape, not a number, and the grid keeps the panel short.</span>
+  </div>
+</div>
+
+<!-- 4 · CHANNEL STRIP -->
+<div class="look">
+  <div class="panel cs">
+    <div class="hdr"><h2>Sidestep</h2><small>5m poll · 118 req</small></div>
+    <div class="rack">
+      <div class="ch active">
+        <div class="scribble">alexa</div><div class="tier">MAX 20X</div>
+        <div class="meters">
+          <div class="fader"><div class="fill" style="height:30%"><div class="knob"></div></div></div>
+          <div class="led"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="pip"><b style="height:40%"></b></div>
+        </div>
+        <div class="vals"><span>30</span><span>6</span><span>40</span></div>
+        <div class="rst">7d Tue 7p<br>5h 2:09p</div>
+        <button class="btn on">Live</button>
+      </div>
+      <div class="ch">
+        <div class="scribble">Lilabot</div><div class="tier">MAX 20X</div>
+        <div class="meters">
+          <div class="fader"><div class="fill" style="height:3%"><div class="knob"></div></div></div>
+          <div class="led"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="pip"><b style="height:6%"></b></div>
+        </div>
+        <div class="vals"><span>3</span><span>2</span><span>6</span></div>
+        <div class="rst">7d Fri 3p<br>5h 2:50p</div>
+        <button class="btn">Switch</button>
+      </div>
+      <div class="ch">
+        <div class="scribble">derek</div><div class="tier">MAX 5X</div>
+        <div class="meters">
+          <div class="fader"><div class="fill" style="height:62%"><div class="knob"></div></div></div>
+          <div class="led"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on y"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="pip"><b style="height:0%"></b></div>
+        </div>
+        <div class="vals"><span>62</span><span>41</span><span>–</span></div>
+        <div class="rst">7d Thu 9a<br>5h 4:30p</div>
+        <button class="btn">Switch</button>
+      </div>
+      <div class="ch">
+        <div class="scribble">john</div><div class="tier">MAX 20X</div>
+        <div class="meters">
+          <div class="fader"><div class="fill crit" style="height:78%"><div class="knob"></div></div></div>
+          <div class="led"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="pip"><b style="height:0%"></b></div>
+        </div>
+        <div class="vals"><span>78</span><span>12</span><span>–</span></div>
+        <div class="rst">7d Sun 11p<br>5h 1:15p</div>
+        <button class="btn">Switch</button>
+      </div>
+    </div>
+    <div class="legend"><span>▮ FADER = WEEK</span><span>▮ LED = 5H</span><span>▮ PIP = MODEL</span></div>
+  </div>
+  <div class="cap">
+    <b>Look</b><span>Channel strip. A four-channel mixer — one strip per account, side by side, brushed-metal knobs on a charcoal rack.</span>
+    <b>Type</b><span>Rajdhani (squared, engineering-plate feel) for scribble-strip labels · JetBrains Mono for values.</span>
+    <b>Bars</b><span>Vertical fader = weekly (the knob sits at your level), 12-step LED meter = session, thin pip = model bucket. The active account's scribble strip and button light green.</span>
+    <b>Good at</b><span>Scanning across. Four verticals next to each other is the fastest way to see "the lowest fader is the one I switch to" — and it's the shortest panel of the four. Weakest at reset times, which are relegated to small text.</span>
+  </div>
+</div>
+
+</div>
+
+<p class="foot">alexa and Lilabot values are live from your accounts; derek and john use sample numbers (they haven't reported usage yet) so every look shows the yellow and red states. Any of these can be rebuilt as the SwiftUI panel — the Gantt and bar mechanics port directly to Canvas.</p>
+
+<script>
+  // Light the LED ladders in the Flight Deck look from their data-p value.
+  document.querySelectorAll('.fd .ladder').forEach(l=>{
+    const p=+l.dataset.p, n=24, on=Math.max(p>0?1:0,Math.round(p/100*n));
+    l.innerHTML=Array.from({length:n},(_,i)=>`<i class="${i<on?'on':''}"></i>`).join('');
+  });
+</script>
+</body>
+</html>

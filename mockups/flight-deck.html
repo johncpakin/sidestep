@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sidestep · Flight Deck</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  /* ── tokens ─────────────────────────────────────────────── */
+  :root{
+    --bg:#1b2028; --bg-2:#161b22; --line:#2f3742; --line-2:#242b35;
+    --ink:#d7dde6; --ink-2:#9fb0c4; --ink-3:#6c7a8c; --ink-4:#526073;
+    --ok:#6fbe8e; --warn:#e9b35b; --crit:#e46f5a; --info:#8fc7ff; --model:#c6a5ff;
+    --seg-off:#2a323d;
+    --sans:"IBM Plex Sans Condensed","Helvetica Neue",Arial,sans-serif;
+    --mono:"IBM Plex Mono",Menlo,monospace;
+    --desk:#0d0f12;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--desk);color:var(--ink);font-family:var(--sans);padding:48px 24px 64px;display:flex;flex-direction:column;align-items:center;gap:28px}
+  h1{font:600 13px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin:0}
+  .note{max-width:480px;font:400 12px/1.6 var(--sans);color:var(--ink-3)}
+  .note b{color:var(--ink-2);font-weight:600}
+
+  /* ── the panel ──────────────────────────────────────────── */
+  .panel{width:480px;background:
+      radial-gradient(60% 40% at 80% 0%,rgba(143,199,255,.07),transparent 70%),
+      radial-gradient(50% 35% at 10% 100%,rgba(111,190,142,.06),transparent 70%),
+      var(--bg);border-radius:12px;box-shadow:0 22px 60px rgba(0,0,0,.55),0 1px 0 rgba(255,255,255,.05) inset;padding:14px 16px 12px;font-variant-numeric:tabular-nums}
+
+  /* header */
+  .hdr{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:9px;margin-bottom:6px}
+  .hdr h2{margin:0;font:600 13px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2)}
+  .hdr .sub{grid-column:1;display:flex;gap:6px;align-items:center;font:400 10px var(--mono);color:var(--ink-3);letter-spacing:.04em;margin-top:5px}
+  .hdr .sub .sel{appearance:none;background:var(--bg-2);border:1px solid var(--line);color:var(--ink-2);font:500 10px var(--mono);padding:2px 18px 2px 6px;border-radius:3px;position:relative;cursor:pointer}
+  .hdr .sub .sel::after{content:"▾";position:absolute;right:5px;top:1px;color:var(--ink-3)}
+  .hdr .rf{grid-column:2;grid-row:1/3;width:30px;height:30px;display:grid;place-items:center;font-size:15px;padding:0;color:var(--ink-2)}
+  .hdr .rf.busy{color:var(--ok)}
+  .hdr .rf.busy span{display:inline-block;animation:spin 1.2s linear infinite}
+
+  /* account block */
+  .accounts{position:relative;padding-left:44px}
+  .acct{display:grid;grid-template-columns:122px 1fr;gap:6px 12px;padding:12px 0 11px;position:relative}
+  .acct+.acct::before{content:"";position:absolute;left:5%;width:90%;top:0;height:1px;background:#414b59;border-radius:1px}
+  .acct.dim .who,.acct.dim .rows{opacity:.55}
+
+  /* ── gear shifter ───────────────────────────────────────── */
+  .shifter{position:absolute;left:0;top:0;bottom:0;width:36px;user-select:none;touch-action:none}
+  .shifter .slot{position:absolute;left:16px;width:6px;border-radius:3px;background:#0e1116;
+    box-shadow:inset 0 1px 3px rgba(0,0,0,.9),0 1px 0 rgba(255,255,255,.05)}
+  .shifter .gate{position:absolute;left:8px;width:22px;height:22px;margin-top:-11px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+  .shifter .gate::before{content:"";width:12px;height:2px;background:#3a4453;border-radius:1px;transition:background .15s,width .15s}
+  .shifter .gate:hover::before{background:var(--ink-2);width:16px}
+  .shifter .gate.on::before{background:var(--ok);width:16px;box-shadow:0 0 6px var(--ok)}
+  .shifter .gate.locked{cursor:not-allowed}
+  .shifter .gate.locked::before{background:repeating-linear-gradient(90deg,var(--warn) 0 2px,transparent 2px 4px);width:14px}
+  .shifter .gate small{position:absolute;left:-10px;top:50%;transform:translateY(-50%);font:500 8px var(--mono);color:var(--ink-4);letter-spacing:.06em}
+  .shifter .knob{position:absolute;left:5px;width:28px;height:28px;margin-top:-14px;border-radius:50%;cursor:grab;z-index:3;
+    background:radial-gradient(circle at 35% 30%,#e9edf2 0,#aeb7c3 35%,#5d6773 75%,#3a424c 100%);
+    box-shadow:0 3px 6px rgba(0,0,0,.6),0 0 0 1px rgba(0,0,0,.6),inset 0 1px 1px rgba(255,255,255,.7),inset 0 -2px 3px rgba(0,0,0,.35);
+    transition:top .18s cubic-bezier(.3,1.4,.5,1)}
+  .shifter .knob::after{content:"";position:absolute;inset:9px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#8fd4a8,#3f8a5e 70%);box-shadow:inset 0 1px 2px rgba(255,255,255,.5),0 0 8px rgba(111,190,142,.5)}
+  .shifter .knob.drag{cursor:grabbing;transition:none;transform:scale(1.06)}
+  .shifter .knob.shake{animation:shake .32s ease-in-out}
+  @keyframes shake{25%{margin-left:-3px}75%{margin-left:3px}}
+  .who{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .who .n{font-weight:600;font-size:14px;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:text;border-radius:4px;padding:0 3px;margin-left:-3px;outline:none}
+  .who .n:hover{background:rgba(255,255,255,.05)}
+  .who .n:focus{background:rgba(143,199,255,.1);box-shadow:0 0 0 1px var(--info)}
+  .who .n .fetch{display:inline-block;width:8px;height:8px;border:1.5px solid var(--ink-3);border-top-color:var(--ok);border-radius:50%;margin-left:6px;vertical-align:1px;animation:spin 1s linear infinite}
+  .who .d{font:400 9.5px var(--mono);color:var(--ink-4);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .who .t{font:400 10px var(--mono);color:var(--ink-3);letter-spacing:.08em}
+  /* same box metrics as .glass so every account's left column is the same height */
+  .who .tag{display:inline-block;margin-top:4px;font:600 9.5px var(--mono);letter-spacing:.14em;padding:4px 10px;width:max-content;border-radius:7px;border:1px solid transparent;line-height:normal}
+  .who .tag.act{color:var(--bg);background:var(--ok)}
+  .who .tag.auth{color:var(--bg);background:var(--warn)}
+  /* glass controls (macOS-style) */
+  .glass{position:relative;font:600 9.5px var(--mono);letter-spacing:.14em;color:var(--ink);cursor:pointer;
+    padding:4px 10px;border-radius:7px;border:1px solid rgba(255,255,255,.14);
+    background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));
+    -webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);
+    box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 -1px 0 rgba(0,0,0,.25) inset,0 1px 2px rgba(0,0,0,.35);
+    transition:background .15s,box-shadow .15s,transform .05s}
+  .glass:hover{background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.08))}
+  .glass:active{transform:translateY(.5px);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03))}
+  .glass:focus-visible{outline:2px solid var(--info);outline-offset:2px}
+  .glass.tint-ok{color:#dff7e8;border-color:rgba(111,190,142,.45);
+    background:linear-gradient(180deg,rgba(111,190,142,.32),rgba(111,190,142,.12));
+    box-shadow:0 1px 0 rgba(255,255,255,.25) inset,0 -1px 0 rgba(0,0,0,.25) inset,0 1px 3px rgba(0,0,0,.35),0 0 14px rgba(111,190,142,.18)}
+  .glass.tint-warn{color:#fff1d6;border-color:rgba(233,179,91,.5);
+    background:linear-gradient(180deg,rgba(233,179,91,.34),rgba(233,179,91,.12));
+    box-shadow:0 1px 0 rgba(255,255,255,.28) inset,0 -1px 0 rgba(0,0,0,.25) inset,0 1px 3px rgba(0,0,0,.35),0 0 16px rgba(233,179,91,.22)}
+  .glass.tint-warn:hover{background:linear-gradient(180deg,rgba(233,179,91,.44),rgba(233,179,91,.18))}
+  .glass .k{opacity:.6;margin-left:6px;letter-spacing:0}
+  .who .sw{margin-top:4px;width:max-content}
+
+  .rows{display:flex;flex-direction:column;gap:5px;min-width:0}
+  .row{display:grid;grid-template-columns:44px 1fr 38px 78px;align-items:center;gap:8px;font:400 10.5px var(--mono)}
+  .row .lbl{color:var(--ink-2);letter-spacing:.08em}
+  .row .lbl.m{color:var(--model)}
+  .row .pct{text-align:right;font-weight:600;color:#eef3f9}
+  .row .rst{color:var(--ink-3);text-align:right;letter-spacing:.02em;white-space:nowrap}
+  .row .rst b{font-weight:500;color:var(--ink-2)}
+
+  .ladder{display:grid;grid-template-columns:repeat(24,1fr);gap:2px;height:10px}
+  .ladder i{background:var(--seg-off);border-radius:1px}
+  .ladder i.on{background:var(--c);box-shadow:0 0 6px color-mix(in oklab,var(--c) 55%,transparent)}
+  .ladder i.on.tip{animation:breathe 1.8s ease-in-out infinite}
+  .ladder[data-k="ok"]{--c:var(--ok)} .ladder[data-k="warn"]{--c:var(--warn)} .ladder[data-k="crit"]{--c:var(--crit)}
+  .ladder[data-k="model"]{--c:var(--model)}
+  .ladder.thin{height:6px;align-self:center}
+
+  .msg{grid-column:2;font:400 10px var(--mono);letter-spacing:.02em;display:flex;gap:6px;align-items:center}
+  .msg.warn{color:var(--warn)} .msg.auth{color:var(--warn)}
+  .msg::before{content:"▲";font-size:8px}
+
+
+  /* gantt */
+  .tape{margin-top:8px;border-top:1px solid var(--line);padding-top:8px}
+  .tape .lg{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .tape .lg h3{margin:0;font:600 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2)}
+  .tape .lg .key{display:flex;gap:12px;font:400 8.5px var(--mono);color:var(--ink-3);letter-spacing:.06em}
+  .tape .lg .key i{display:inline-block;width:14px;height:5px;background:var(--ok);vertical-align:1px;margin-right:4px;border-radius:1px}
+  .tape .lg .key i.h{background:repeating-linear-gradient(90deg,var(--ok) 0 2px,transparent 2px 4px)}
+  .tape .lg .key i.d{width:6px;height:6px;background:var(--ink);transform:rotate(45deg);vertical-align:0}
+
+  .gantt{display:grid;grid-template-columns:60px 1fr;column-gap:8px}
+  .gantt .days{grid-column:2;display:grid;grid-template-columns:repeat(14,1fr);font:400 8px var(--mono);color:var(--ink-4);letter-spacing:.06em;margin-bottom:3px}
+  .gantt .days span{border-left:1px solid var(--line-2);padding-left:3px;line-height:1.1}
+  .gantt .days span b{display:block;font-weight:500;color:var(--ink-3)}
+  .gantt .days span.today{color:var(--ok)} .gantt .days span.today b{color:var(--ok)}
+
+  .lane{display:contents}
+  .lane .nm{font:500 10.5px var(--mono);color:var(--ink-2);display:flex;align-items:center;height:26px;border-top:1px solid var(--line-2)}
+  .lane .nm.act{color:var(--ok)}
+  .lane .tr{position:relative;height:26px;border-top:1px solid var(--line-2);
+    background:repeating-linear-gradient(90deg,var(--line-2) 0 1px,transparent 1px 100%);background-size:calc(100%/14) 100%}
+  .lane .tr::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--ok);opacity:.9;z-index:2}
+  .gantt .days{position:relative}
+  .gantt .days::after{content:"NOW";position:absolute;left:50%;top:-11px;transform:translateX(-50%);font:600 8px var(--mono);color:var(--ok);letter-spacing:.16em}
+
+  .win{position:absolute;top:9px;height:7px;background:#3a4453;border-radius:1px;z-index:1}
+  .win b{position:absolute;left:0;top:0;bottom:0;background:var(--c);border-radius:1px}
+  .win[data-k="ok"]{--c:var(--ok)} .win[data-k="warn"]{--c:var(--warn)} .win[data-k="crit"]{--c:var(--crit)} .win[data-k="model"]{--c:var(--model)}
+  .win.model{top:18px;height:3px;background:#2f3744}
+  .win .end{position:absolute;right:-1px;top:-3px;bottom:-3px;width:2px;background:var(--c)}
+  .win .lb{position:absolute;left:calc(100% + 5px);top:-2px;font:500 8.5px var(--mono);color:var(--ink-2);white-space:nowrap;letter-spacing:.02em}
+  .win .lb small{color:var(--ink-3);font-size:8.5px}
+  .win .lb.flip{left:auto;right:calc(100% + 5px)}
+  .sess{position:absolute;top:2px;width:6px;height:6px;background:var(--ink);transform:translateX(-50%) rotate(45deg);z-index:3}
+  .sess::after{content:attr(data-l);position:absolute;left:9px;top:-2px;transform:rotate(-45deg);transform-origin:0 0;font:400 8px var(--mono);color:var(--ink-3);white-space:nowrap;letter-spacing:.02em}
+
+  /* footer */
+  .ftr{display:flex;align-items:center;gap:10px;border-top:1px solid var(--line);margin-top:10px;padding-top:9px;font:500 10px var(--mono);letter-spacing:.1em;color:var(--ink-2)}
+  .ftr .b{font:600 9.5px var(--mono)}
+  .ftr .sp{flex:1}
+  .ftr label{display:flex;align-items:center;gap:5px;color:var(--ink-3);cursor:pointer}
+  .ftr label i{width:10px;height:10px;border:1px solid var(--ink-3);border-radius:2px;display:inline-grid;place-items:center;font-size:8px;color:var(--ok)}
+
+  /* menu-bar preview */
+  .menubar{width:480px;height:26px;background:linear-gradient(#2a2f37,#22272e);border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding:0 10px;gap:14px;font:500 11px var(--mono);color:#c8d0da;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+  .menubar .item{display:flex;align-items:center;gap:5px;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.08)}
+  .menubar .g{width:13px;height:13px;border-radius:50%;border:2px solid #c8d0da;border-right-color:transparent;transform:rotate(-30deg)}
+  .menubar .dim{opacity:.55}
+
+  @keyframes breathe{50%{opacity:.5}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){.ladder i.on.tip,.hdr .rf.busy span,.who .n .fetch{animation:none}}
+</style>
+</head>
+<body>
+
+<h1>Sidestep · Flight Deck</h1>
+
+<div class="menubar"><span class="dim">Mon Aug 24  10:41 AM</span><span class="item"><span class="g"></span><span id="mbtitle">6% · 30%</span></span><span class="dim">◐ 🔋 ⌥</span></div>
+
+<div class="panel">
+
+  <div class="hdr">
+    <h2>Claude · Usage</h2>
+    <div class="sub">
+      <span>UPD <b style="color:var(--ink-2);font-weight:500">00:42</b> AGO</span>
+      <span>·</span>
+      <span>EVERY</span><span class="sel">5 MIN</span>
+      <span>·</span>
+      <span>118 REQ SINCE LAUNCH</span>
+    </div>
+    <button class="glass rf busy" title="Refreshing…"><span>↻</span></button>
+  </div>
+
+  <div class="accounts" id="accounts">
+    <div class="shifter" id="shifter"><div class="slot" id="slot"></div><div class="knob" id="knob" title="Drag to switch account"></div></div>
+
+    <div class="acct" data-acct="alexa" data-title="6% · 30%">
+      <div class="who">
+        <span class="n" contenteditable="true" spellcheck="false" data-key="alexa" title="Click to rename">alexa</span><i class="fetch" title="fetching"></i>
+        <span class="d">alexa@example.com</span>
+        <span class="t">MAX 20X</span>
+        <span class="tag act">ACTIVE</span>
+      </div>
+      <div class="rows">
+        <div class="row"><span class="lbl">5H</span><div class="ladder" data-k="ok" data-p="6"></div><span class="pct">6%</span><span class="rst"><b>2:09P</b> 3H 28M</span></div>
+        <div class="row"><span class="lbl">7D</span><div class="ladder" data-k="ok" data-p="30"></div><span class="pct">30%</span><span class="rst"><b>TUE 7P</b> 1D 8H</span></div>
+        <div class="row"><span class="lbl m">FABLE</span><div class="ladder thin" data-k="model" data-p="40"></div><span class="pct">40%</span><span class="rst"><b>TUE 7P</b> 1D 8H</span></div>
+      </div>
+    </div>
+
+    <div class="acct" data-acct="Lilabot741" data-title="2% · 3%">
+      <div class="who">
+        <span class="n" contenteditable="true" spellcheck="false" data-key="Lilabot741" title="Click to rename">Lilabot741</span>
+        <span class="d">lilabot@example.com</span>
+        <span class="t">MAX 20X</span>
+        <span class="tag act" hidden>ACTIVE</span>
+      </div>
+      <div class="rows">
+        <div class="row"><span class="lbl">5H</span><div class="ladder" data-k="ok" data-p="2"></div><span class="pct">2%</span><span class="rst"><b>2:50P</b> 4H 09M</span></div>
+        <div class="row"><span class="lbl">7D</span><div class="ladder" data-k="ok" data-p="3"></div><span class="pct">3%</span><span class="rst"><b>FRI 3P</b> 4D 4H</span></div>
+        <div class="row"><span class="lbl m">FABLE</span><div class="ladder thin" data-k="model" data-p="6"></div><span class="pct">6%</span><span class="rst"><b>FRI 3P</b> 4D 4H</span></div>
+      </div>
+    </div>
+
+    <div class="acct" data-acct="derek" data-title="41% · 62%">
+      <div class="who">
+        <span class="n" contenteditable="true" spellcheck="false" data-key="derek" title="Click to rename">derek</span>
+        <span class="d">derek@example.com</span>
+        <span class="t">MAX 5X</span>
+        <span class="tag act" hidden>ACTIVE</span>
+      </div>
+      <div class="rows">
+        <div class="row"><span class="lbl">5H</span><div class="ladder" data-k="warn" data-p="41"></div><span class="pct">41%</span><span class="rst"><b>4:30P</b> 5H 49M</span></div>
+        <div class="row"><span class="lbl">7D</span><div class="ladder" data-k="warn" data-p="62"></div><span class="pct">62%</span><span class="rst"><b>THU 9A</b> 2D 22H</span></div>
+        <div class="row"><span class="lbl m">OPUS</span><div class="ladder thin" data-k="model" data-p="55"></div><span class="pct">55%</span><span class="rst"><b>THU 9A</b> 2D 22H</span></div>
+      </div>
+      <div class="msg warn">EDGE RATE-LIMITED · SHOWING 10:36 DATA</div>
+    </div>
+
+    <div class="acct" data-acct="john" data-title="12% · 78%">
+      <div class="who">
+        <span class="n" contenteditable="true" spellcheck="false" data-key="john" title="Click to rename">john</span>
+        <span class="d">john@example.com</span>
+        <span class="t">MAX 20X</span>
+        <span class="tag act" hidden>ACTIVE</span>
+      </div>
+      <div class="rows">
+        <div class="row"><span class="lbl">5H</span><div class="ladder" data-k="ok" data-p="12"></div><span class="pct">12%</span><span class="rst"><b>1:15P</b> 2H 34M</span></div>
+        <div class="row"><span class="lbl">7D</span><div class="ladder" data-k="crit" data-p="78"></div><span class="pct">78%</span><span class="rst"><b>SUN 11P</b> 6D 12H</span></div>
+        <div class="row"><span class="lbl m">FABLE</span><div class="ladder thin" data-k="model" data-p="91"></div><span class="pct">91%</span><span class="rst"><b>SUN 11P</b> 6D 12H</span></div>
+      </div>
+    </div>
+
+    <div class="acct" data-acct="nithin" data-locked="1">
+      <div class="who">
+        <span class="n" contenteditable="true" spellcheck="false" data-key="nithin" title="Click to rename">nithin</span>
+        <span class="d">nithin@example.com</span>
+        <span class="t">—</span>
+        <span class="tag auth">RE-AUTH</span>
+      </div>
+      <div class="rows">
+        <div class="row"><span class="lbl">5H</span><div class="ladder" data-k="ok" data-p="0"></div><span class="pct" style="color:var(--ink-4)">—</span><span class="rst">—</span></div>
+        <div class="row"><span class="lbl">7D</span><div class="ladder" data-k="ok" data-p="0"></div><span class="pct" style="color:var(--ink-4)">—</span><span class="rst">—</span></div>
+        <div class="msg auth" style="justify-content:space-between">REFRESH TOKEN EXPIRED <button class="glass tint-warn" style="margin:0">SIGN IN<span class="k">→</span></button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- gantt -->
+  <div class="tape">
+    <div class="lg">
+      <h3>Reset windows · ±7 days</h3>
+      <div class="key"><span><i></i>7D WINDOW · FILL = USED</span><span><i class="h" style="height:3px"></i>MODEL</span><span><i class="d"></i>5H RESET</span></div>
+    </div>
+    <div class="gantt">
+      <div class="days">
+        <span>MON<b>17</b></span><span>TUE<b>18</b></span><span>WED<b>19</b></span><span>THU<b>20</b></span><span>FRI<b>21</b></span><span>SAT<b>22</b></span><span>SUN<b>23</b></span>
+        <span class="today">MON<b>24</b></span><span>TUE<b>25</b></span><span>WED<b>26</b></span><span>THU<b>27</b></span><span>FRI<b>28</b></span><span>SAT<b>29</b></span><span>SUN<b>30</b></span>
+      </div>
+
+      <div class="lane"><div class="nm act" data-key="alexa">alexa</div><div class="tr">
+        <div class="win" data-k="ok" style="left:9.5%;width:50%"><b style="width:30%"></b><span class="end"></span><span class="lb">30% <small>TUE 7P</small></span></div>
+        <div class="win model" data-k="model" style="left:9.5%;width:50%"><b style="width:40%"></b></div>
+        <div class="sess" style="left:51.3%" data-l="5H 2:09P"></div>
+      </div></div>
+
+      <div class="lane"><div class="nm" data-key="Lilabot741">Lilabot741</div><div class="tr">
+        <div class="win" data-k="ok" style="left:29.8%;width:50%"><b style="width:3%"></b><span class="end"></span><span class="lb">3% <small>FRI 3P</small></span></div>
+        <div class="win model" data-k="model" style="left:29.8%;width:50%"><b style="width:6%"></b></div>
+        <div class="sess" style="left:51.5%" data-l="5H 2:50P"></div>
+      </div></div>
+
+      <div class="lane"><div class="nm" data-key="derek">derek</div><div class="tr">
+        <div class="win" data-k="warn" style="left:20.5%;width:50%"><b style="width:62%"></b><span class="end"></span><span class="lb">62% <small>THU 9A</small></span></div>
+        <div class="win model" data-k="model" style="left:20.5%;width:50%"><b style="width:55%"></b></div>
+        <div class="sess" style="left:52%" data-l="5H 4:30P"></div>
+      </div></div>
+
+      <div class="lane"><div class="nm" data-key="john">john</div><div class="tr">
+        <div class="win" data-k="crit" style="left:46.4%;width:50%"><b style="width:78%"></b><span class="end"></span><span class="lb flip">78% <small>SUN 11P</small></span></div>
+        <div class="win model" data-k="model" style="left:46.4%;width:50%"><b style="width:91%"></b></div>
+        <div class="sess" style="left:50.9%" data-l="5H 1:15P"></div>
+      </div></div>
+
+      <div class="lane"><div class="nm" style="color:var(--ink-4)" data-key="nithin">nithin</div><div class="tr">
+        <span style="position:absolute;left:52%;top:8px;font:400 8.5px var(--mono);color:var(--ink-4);letter-spacing:.06em">NO DATA · SIGN IN</span>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="ftr">
+    <button class="glass b tint-ok">+ ADD ACCOUNT</button>
+    <span class="sp"></span>
+    <label><i>✓</i>LOGIN ITEM</label>
+    <button class="glass b">QUIT</button>
+  </div>
+
+</div>
+
+<p class="note">
+  <b>The shifter.</b> A vertical gate runs down the left of the accounts with one notch per account and a metallic knob parked in the active gear. Click any notch — or grab the knob and drag — and it chunks down gate by gate with a small settle at each stop, then that account lights up ACTIVE and the menu-bar title follows. A re-auth account is a hatched, locked gate: the knob refuses and springs back. One control, one meaning, its own lane — nothing overlaps the data.<br><br>
+  <b>What's shown.</b> Menu-bar title = active account's <b>5H · 7D</b>. Each account: name, email, tier, then a ladder per bucket — 5H session, 7D weekly, and every model-scoped weekly bucket the API reports (Fable, Opus…) in violet, thinner so it reads as a sub-limit. Right column is the reset time and countdown. Green ≤50 · amber ≤80 · red beyond; the last lit segment breathes on the active account.
+  <b>States:</b> alexa is fetching (spinner by the name, header ↻ spinning) while its last numbers stay on screen; derek shows a soft error note under intact data; nithin shows the re-auth state with a Sign in control.
+  <b>Gantt:</b> ±7 days with dated columns, NOW at centre, a name column, each account's actual 7-day window filled to % used with a labeled end tick, a thin violet model bar beneath, and a ◆ at the 5H reset. Overlap = end ticks in the same column (alexa/Lilabot both reset the same week; john and derek stagger). alexa/Lilabot are live values; derek/john/nithin are sample.
+</p>
+
+<script>
+  // ── gear shifter ──
+  (function(){
+    const wrap=document.getElementById('accounts'), sh=document.getElementById('shifter'),
+          slot=document.getElementById('slot'), knob=document.getElementById('knob'),
+          accts=[...wrap.querySelectorAll('.acct')];
+    let gates=[], active=0, animating=false;
+    function layout(){
+      gates=accts.map(a=>a.offsetTop + a.querySelector('.who').offsetTop + a.querySelector('.n').offsetHeight/2 + 2);
+      slot.style.top=(gates[0]-14)+'px'; slot.style.height=(gates[gates.length-1]-gates[0]+28)+'px';
+      sh.querySelectorAll('.gate').forEach(g=>g.remove());
+      gates.forEach((y,i)=>{
+        const g=document.createElement('div'); g.className='gate'+(i===active?' on':'')+(accts[i].dataset.locked?' locked':'');
+        g.style.top=y+'px'; g.innerHTML='<small>'+(i+1)+'</small>'; g.title=accts[i].dataset.locked?'Sign in first':'Switch to '+accts[i].dataset.acct;
+        g.addEventListener('click',()=>shiftTo(i)); sh.appendChild(g);
+      });
+      knob.style.top=gates[active]+'px';
+    }
+    function setActive(i){
+      active=i;
+      accts.forEach((a,j)=>{ const t=a.querySelector('.tag.act'); if(t) t.hidden=j!==i; a.classList.toggle('dim',false); });
+      sh.querySelectorAll('.gate').forEach((g,j)=>g.classList.toggle('on',j===i));
+      const mb=document.getElementById('mbtitle'); if(mb&&accts[i].dataset.title) mb.textContent=accts[i].dataset.title;
+    }
+    function shiftTo(target){
+      if(animating||target===active) return;
+      if(accts[target].dataset.locked){ knob.classList.remove('shake'); void knob.offsetWidth; knob.classList.add('shake'); return; }
+      animating=true; const dir=Math.sign(target-active); let i=active;
+      (function step(){
+        i+=dir; knob.style.top=gates[i]+'px';
+        sh.querySelectorAll('.gate').forEach((g,j)=>g.classList.toggle('on',j===i));
+        if(i!==target){ setTimeout(step,170); } else { setTimeout(()=>{ setActive(target); animating=false; },120); }
+      })();
+    }
+    // drag
+    let drag=false, startY=0, startTop=0;
+    knob.addEventListener('pointerdown',e=>{ if(animating) return; drag=true; startY=e.clientY; startTop=gates[active]; knob.classList.add('drag'); knob.setPointerCapture(e.pointerId); });
+    knob.addEventListener('pointermove',e=>{ if(!drag) return; const y=Math.max(gates[0],Math.min(gates[gates.length-1],startTop+e.clientY-startY)); knob.style.top=y+'px';
+      let n=0; gates.forEach((g,j)=>{ if(Math.abs(g-y)<Math.abs(gates[n]-y)) n=j; }); sh.querySelectorAll('.gate').forEach((g,j)=>g.classList.toggle('on',j===n)); });
+    knob.addEventListener('pointerup',e=>{ if(!drag) return; drag=false; knob.classList.remove('drag');
+      const y=parseFloat(knob.style.top); let n=0; gates.forEach((g,j)=>{ if(Math.abs(g-y)<Math.abs(gates[n]-y)) n=j; });
+      if(accts[n].dataset.locked||n===active){ knob.style.top=gates[active]+'px'; sh.querySelectorAll('.gate').forEach((g,j)=>g.classList.toggle('on',j===active)); if(accts[n].dataset.locked){ knob.classList.remove('shake'); void knob.offsetWidth; knob.classList.add('shake'); } }
+      else { knob.style.top=gates[n]+'px'; setTimeout(()=>setActive(n),120); } });
+    window.addEventListener('load',layout); window.addEventListener('resize',layout); document.fonts&&document.fonts.ready.then(layout);
+  })();
+
+  // rename: click a name, type, Enter/blur to commit; Gantt lane follows
+  document.querySelectorAll('.who .n[contenteditable]').forEach(n=>{
+    n.addEventListener('keydown',e=>{ if(e.key==='Enter'){e.preventDefault();n.blur();} if(e.key==='Escape'){n.textContent=n.dataset.key;n.blur();} });
+    n.addEventListener('blur',()=>{ const v=n.textContent.trim()||n.dataset.key; n.textContent=v;
+      document.querySelectorAll('.gantt .nm').forEach(l=>{ if(l.dataset.key===n.dataset.key) l.textContent=v; }); });
+  });
+
+  document.querySelectorAll('.ladder').forEach(l=>{
+    const p=+l.dataset.p, n=24, on=p>0?Math.max(1,Math.round(p/100*n)):0;
+    l.innerHTML=Array.from({length:n},(_,i)=>`<i class="${i<on?'on':''}${i===on-1?' tip':''}"></i>`).join('');
+  });
+</script>
+</body>
+</html>
