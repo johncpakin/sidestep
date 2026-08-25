@@ -20,6 +20,8 @@ between accounts in one click — every open terminal follows, no `/logout`, no 
 ![UI](https://img.shields.io/badge/UI-SwiftUI%20%2B%20AppKit-0071e3)
 ![Footprint](https://img.shields.io/badge/menu%20bar-native%2C%20no%20Electron-6fbe8e)
 
+**[GitHub](https://github.com/johncpakin/sidestep)** · [Report an issue](https://github.com/johncpakin/sidestep/issues) · [Build from source](#install)
+
 </div>
 
 ---
