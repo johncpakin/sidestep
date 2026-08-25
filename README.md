@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/SideStepLogo.png" width="128" alt="Sidestep icon">
+
 # Sidestep
 
 **Every Claude account. One menu bar.**
